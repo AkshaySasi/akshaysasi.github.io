@@ -1,0 +1,231 @@
+/* ===========================================
+   MY SPACE - MINIMAL & STANDARD DESIGN
+   =========================================== */
+
+/* Override elaborate myspace.css with minimal design */
+
+#coming-soon {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background: transparent;
+}
+
+.coming-soon-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.coming-soon-icon {
+    margin-bottom: 30px;
+}
+
+.coming-soon-icon i {
+    font-size: 4rem;
+    color: #00aaff;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.coming-soon-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.coming-soon-title span {
+    color: #00aaff;
+}
+
+.coming-soon-subtitle {
+    font-size: 1.1rem;
+    color: #b3b3b3;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+/* Minimal features preview */
+.features-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.feature-item {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    background: rgba(26, 26, 26, 0.8);
+    border-color: rgba(0, 170, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 170, 255, 0.15);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-item span {
+    display: block;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Clean launch info */
+.launch-info {
+    margin: 40px 0;
+}
+
+.launch-text {
+    font-size: 1.2rem;
+    color: #00aaff;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.launch-info .progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.launch-info .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #005dd8, #00aaff);
+    border-radius: 10px;
+    width: 70%;
+    animation: progressGrow 2s ease-out;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
+}
+
+@keyframes progressGrow {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 70%;
+    }
+}
+
+/* Minimal action buttons */
+.coming-soon-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.btn-notify,
+.btn-back {
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-notify {
+    background: linear-gradient(45deg, #005dd8, #00aaff);
+    color: #fff;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 93, 216, 0.3);
+}
+
+.btn-notify:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.4);
+}
+
+.btn-back {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 170, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .coming-soon-title {
+        font-size: 2rem;
+    }
+
+    .coming-soon-subtitle {
+        font-size: 1rem;
+    }
+
+    .features-preview {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
+    }
+
+    .feature-item {
+        padding: 25px 15px;
+    }
+
+    .feature-item i {
+        font-size: 2rem;
+    }
+}
+
+/* Light mode support */
+body.light-theme #coming-soon {
+    background: transparent;
+}
+
+body.light-theme .coming-soon-title,
+body.light-theme .feature-item span {
+    color: #1a1a1a;
+}
+
+body.light-theme .coming-soon-subtitle {
+    color: #4a5568;
+}
+
+body.light-theme .feature-item {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 93, 216, 0.15);
+}
+
+body.light-theme .feature-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
