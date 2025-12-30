@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Space - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="myspace.css">
     <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous"></script>
@@ -20,6 +22,7 @@
     <meta name="theme-color" content="#000000">
 
 </head>
+
 <body>
     <div id="splash">
         <img src="images/logo.png" alt="Logo" class="splash-logo">
@@ -33,7 +36,8 @@
                     <li><a href="index.html">Back to Home</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="myspace.html" class="active">My Space</a></li>
-                    <li><button class="contact-btn" onclick="window.location.href='index.html#contact'">Contact</button></li>
+                    <li><button class="contact-btn" onclick="window.location.href='index.html#contact'">Contact</button>
+                    </li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
                 </ul>
                 <div class="theme-slider">
@@ -42,273 +46,277 @@
                 </div>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
-     
+
 
             <!-- Coming Soon Section -->
-    <section id="coming-soon">
-        <div class="container">
-            <div class="coming-soon-content">
-                <!-- Animated Icon -->
-                <div class="coming-soon-icon">
-                    <i class="fas fa-rocket"></i>
+            <section id="coming-soon">
+                <div class="container">
+                    <div class="coming-soon-content">
+                        <!-- Animated Icon -->
+                        <div class="coming-soon-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+
+                        <!-- Main Message -->
+                        <h1 class="coming-soon-title">My <span>Space</span> is Coming Soon</h1>
+                        <p class="coming-soon-subtitle">
+                            Something amazing is in the works! An exclusive space to showcase my live web apps,
+                            freelance projects, design and AI works, and client success stories.
+                        </p>
+
+                        <!-- Features Preview -->
+                        <div class="features-preview">
+                            <div class="feature-item">
+                                <i class="fas fa-globe"></i>
+                                <span>Live Web Apps</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Freelance Projects</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-palette"></i>
+                                <span>Design Portfolio</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-users"></i>
+                                <span>Client Testimonials</span>
+                            </div>
+                        </div>
+
+                        <!-- Countdown Timer (Optional) -->
+                        <div class="launch-info">
+                            <p class="launch-text">Launching Soon...</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="coming-soon-actions">
+                            <a href="index.html#contact" class="btn-notify">
+                                <i class="fas fa-bell"></i> Get Notified
+                            </a>
+                            <a href="projects.html" class="btn-projects">
+                                <i class="fas fa-code"></i> View Projects Instead
+                            </a>
+                        </div>
+
+                        <!-- Social Connect -->
+                        <div class="social-connect">
+                            <p>Stay connected for updates:</p>
+                            <div class="social-icons">
+                                <a href="https://linkedin.com/in/akshay-sasi" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://twitter.com/_Aks_haY_" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com/ak__sky" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section (Reused from main page) -->
+            <div id="contact">
+                <div class="container-a">
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h1 class="section-title">Get In <span>Touch</span></h1>
+                            <p class="contact-subtitle">Interested in working together? Let's talk!</p>
+
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h3>Email</h3>
+                                        <a href="mailto:akshaysasi12.km@gmail.com">akshaysasi12.km@gmail.com</a>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h3>Phone</h3>
+                                        <a href="tel:+918304912440">+91 8304912440</a>
+                                    </div>
+                                </div>
+
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-text">
+                                        <h3>Location</h3>
+                                        <p>Kannur, Kerala, India</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="social-links">
+                                <h3>Connect With Me</h3>
+                                <div class="social-icons">
+                                    <a href="https://linkedin.com/in/akshay-sasi" target="_blank" class="social-icon">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://github.com/AkshaySasi" target="_blank" class="social-icon">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://twitter.com/_Aks_haY_" target="_blank" class="social-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://instagram.com/ak__sky" target="_blank" class="social-icon">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form">
+                            <h2>Send Me a Message</h2>
+                            <form id="contactForm" class="form">
+                                <div class="form-group">
+                                    <input type="text" id="name" name="name" required minlength="2">
+                                    <label for="name">Your Name</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Your Email</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+                                    <label for="message">Your Message</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <button type="submit" class="submit-btn">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </form>
+
+                            <div id="formStatus"></div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Main Message -->
-                <h1 class="coming-soon-title">My <span>Space</span> is Coming Soon</h1>
-                <p class="coming-soon-subtitle">
-                    Something amazing is in the works! An exclusive space to showcase my live web apps, 
-                    freelance projects, design and AI works, and client success stories.
-                </p>
-
-                <!-- Features Preview -->
-                <div class="features-preview">
-                    <div class="feature-item">
-                        <i class="fas fa-globe"></i>
-                        <span>Live Web Apps</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-briefcase"></i>
-                        <span>Freelance Projects</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-palette"></i>
-                        <span>Design Portfolio</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-users"></i>
-                        <span>Client Testimonials</span>
-                    </div>
-                </div>
-
-                <!-- Countdown Timer (Optional) -->
-                <div class="launch-info">
-                    <p class="launch-text">Launching Soon...</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-
-                <!-- CTA Buttons -->
-                <div class="coming-soon-actions">
-                    <a href="index.html#contact" class="btn-notify">
-                        <i class="fas fa-bell"></i> Get Notified
-                    </a>
-                    <a href="projects.html" class="btn-projects">
-                        <i class="fas fa-code"></i> View Projects Instead
-                    </a>
-                </div>
-
-                <!-- Social Connect -->
-                <div class="social-connect">
-                    <p>Stay connected for updates:</p>
-                    <div class="social-icons">
-                        <a href="https://linkedin.com/in/akshay-sasi" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com/_Aks_haY_" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com/ak__sky" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+                <div class="copyright">
+                    <p>Copyright © <span id="currentYear">2024</span> Akshay Sasi. All rights reserved.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section (Reused from main page) -->
-    <div id="contact">
-        <div class="container-a">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h1 class="section-title">Get In <span>Touch</span></h1>
-                    <p class="contact-subtitle">Interested in working together? Let's talk!</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Email</h3>
-                                <a href="mailto:akshaysasi12.km@gmail.com">akshaysasi12.km@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Phone</h3>
-                                <a href="tel:+918304912440">+91 8304912440</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h3>Location</h3>
-                                <p>Kannur, Kerala, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <h3>Connect With Me</h3>
-                        <div class="social-icons">
-                            <a href="https://linkedin.com/in/akshay-sasi" target="_blank" class="social-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://github.com/yourusername" target="_blank" class="social-icon">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://twitter.com/_Aks_haY_" target="_blank" class="social-icon">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://instagram.com/ak__sky" target="_blank" class="social-icon">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h2>Send Me a Message</h2>
-                    <form id="contactForm" class="form">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required minlength="2">
-                            <label for="name">Your Name</label>
-                            <div class="underline"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Your Email</label>
-                            <div class="underline"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
-                            <label for="message">Your Message</label>
-                            <div class="underline"></div>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                    
-                    <div id="formStatus"></div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>Copyright © <span id="currentYear">2024</span> Akshay Sasi. All rights reserved.</p>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="myspace.js"></script>
-    <script>
-        // Navigation menu
-        var sidemenu = document.getElementById("sidemenu");
-        function openmenu(){
-            sidemenu.style.right = "0";
-        }
-        function closemenu(){
-            sidemenu.style.right = "-200px";
-        }
-
-        // Splash screen
-        window.addEventListener("load", () => {
-            const splash = document.getElementById("splash");
-            splash.style.opacity = 1;
-            setTimeout(() => {
-                splash.style.opacity = 0;
-                splash.style.transition = "opacity 0.3s ease";
-                setTimeout(() => splash.style.display = "none", 300);
-            }, 600);
-        });
-
-        // Theme toggle
-        document.getElementById('theme-toggle').addEventListener('change', function() {
-            document.body.classList.toggle('light-theme');
-            if (this.checked) {
-                localStorage.setItem('theme', 'light');
-            } else {
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-        
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.body.classList.add(savedTheme + '-theme');
-            document.getElementById('theme-toggle').checked = savedTheme === 'light';
-        }
-
-        // Set current year
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Typing Animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const typingText = document.querySelector('.typing-text');
-            const cursor = document.querySelector('.cursor');
-            if (!typingText) return;
-            
-            const designations = ["AI Engineer", "Researcher", "Graphic Designer"];
-            let currentDesignation = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 150;
-            
-            function type() {
-                const fullText = designations[currentDesignation];
-                
-                if (isDeleting) {
-                    typingText.textContent = fullText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typingText.textContent = fullText.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 150;
+            <!-- Scripts -->
+            <script src="myspace.js"></script>
+            <script>
+                // Navigation menu
+                var sidemenu = document.getElementById("sidemenu");
+                function openmenu() {
+                    sidemenu.style.right = "0";
                 }
-                
-                if (!isDeleting && charIndex === fullText.length) {
-                    typingSpeed = 2000;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    currentDesignation = (currentDesignation + 1) % designations.length;
-                    typingSpeed = 500;
+                function closemenu() {
+                    sidemenu.style.right = "-200px";
                 }
-                
-                setTimeout(type, typingSpeed);
-            }
-            
-            setTimeout(type, 1000);
-        });
 
-        // Animated progress bar
-        window.addEventListener('load', () => {
-            const progressFill = document.querySelector('.progress-fill');
-            if (progressFill) {
-                setTimeout(() => {
-                    progressFill.style.width = '80%';
-                }, 500);
-            }
-        });
+                // Splash screen
+                window.addEventListener("load", () => {
+                    const splash = document.getElementById("splash");
+                    splash.style.opacity = 1;
+                    setTimeout(() => {
+                        splash.style.opacity = 0;
+                        splash.style.transition = "opacity 0.3s ease";
+                        setTimeout(() => splash.style.display = "none", 300);
+                    }, 600);
+                });
 
-    </script>
+                // Theme toggle
+                document.getElementById('theme-toggle').addEventListener('change', function () {
+                    document.body.classList.toggle('light-theme');
+                    if (this.checked) {
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.body.classList.add(savedTheme + '-theme');
+                    document.getElementById('theme-toggle').checked = savedTheme === 'light';
+                }
+
+                // Set current year
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+                // Typing Animation
+                document.addEventListener('DOMContentLoaded', function () {
+                    const typingText = document.querySelector('.typing-text');
+                    const cursor = document.querySelector('.cursor');
+                    if (!typingText) return;
+
+                    const designations = ["AI Engineer", "Researcher", "Graphic Designer"];
+                    let currentDesignation = 0;
+                    let charIndex = 0;
+                    let isDeleting = false;
+                    let typingSpeed = 150;
+
+                    function type() {
+                        const fullText = designations[currentDesignation];
+
+                        if (isDeleting) {
+                            typingText.textContent = fullText.substring(0, charIndex - 1);
+                            charIndex--;
+                            typingSpeed = 50;
+                        } else {
+                            typingText.textContent = fullText.substring(0, charIndex + 1);
+                            charIndex++;
+                            typingSpeed = 150;
+                        }
+
+                        if (!isDeleting && charIndex === fullText.length) {
+                            typingSpeed = 2000;
+                            isDeleting = true;
+                        } else if (isDeleting && charIndex === 0) {
+                            isDeleting = false;
+                            currentDesignation = (currentDesignation + 1) % designations.length;
+                            typingSpeed = 500;
+                        }
+
+                        setTimeout(type, typingSpeed);
+                    }
+
+                    setTimeout(type, 1000);
+                });
+
+                // Animated progress bar
+                window.addEventListener('load', () => {
+                    const progressFill = document.querySelector('.progress-fill');
+                    if (progressFill) {
+                        setTimeout(() => {
+                            progressFill.style.width = '80%';
+                        }, 500);
+                    }
+                });
+
+            </script>
+
+            <!-- EmailJS Configuration -->
+            <script src="emailjs-config.js?v=2"></script>
 
 </body>
+
 </html>

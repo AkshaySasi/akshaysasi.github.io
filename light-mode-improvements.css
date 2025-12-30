@@ -1,0 +1,242 @@
+/* ==========================================
+   SECTION HEADING CENTERING
+   ========================================== */
+
+/* Center all section titles */
+.section-title,
+.sub-title {
+    text-align: center !important;
+}
+
+#achievements .section-title,
+#responsibilities .section-title,
+.container-a .section-title {
+    text-align: center !important;
+}
+
+/* ==========================================
+   LIGHT MODE IMPROVEMENTS
+   ========================================== */
+
+/* Light mode theme colors */
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f0 100%) !important;
+    color: #1a1a1a !important;
+}
+
+/* Light mode navbar */
+body.light-theme nav ul.menu {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(30px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+    border: 1px solid rgba(0, 93, 216, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 93, 216, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+body.light-theme nav ul li a {
+    color: #1a1a1a !important;
+}
+
+body.light-theme nav ul li a.active {
+    color: #005dd8 !important;
+}
+
+/* Light mode buttons */
+body.light-theme .contact-btn,
+body.light-theme .btn,
+body.light-theme .resume-btn,
+body.light-theme .tab-btn,
+body.light-theme .tab-button,
+body.light-theme button[type="submit"] {
+    background: rgba(0, 93, 216, 0.12) !important;
+    color: #005dd8 !important;
+    border-color: rgba(0, 93, 216, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 93, 216, 0.15);
+}
+
+body.light-theme .contact-btn:hover,
+body.light-theme .btn:hover,
+body.light-theme .resume-btn:hover {
+    background: rgba(0, 93, 216, 0.2) !important;
+    box-shadow: 0 8px 24px rgba(0, 93, 216, 0.25);
+}
+
+body.light-theme .tab-btn.active,
+body.light-theme .tab-button.active {
+    background: rgba(0, 93, 216, 0.25) !important;
+    color: #003d8f !important;
+}
+
+/* Light mode cards */
+body.light-theme .profile-card,
+body.light-theme .timeline-card,
+body.light-theme .project-card,
+body.light-theme .achievement,
+body.light-theme .role,
+body.light-theme .skill-item {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 93, 216, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 93, 216, 0.08);
+    color: #1a1a1a !important;
+}
+
+body.light-theme .profile-card:hover,
+body.light-theme .timeline-card:hover,
+body.light-theme .skill-item:hover {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(0, 93, 216, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 93, 216, 0.15);
+}
+
+/* Light mode text colors */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme p,
+body.light-theme span {
+    color: #1a1a1a !important;
+}
+
+body.light-theme .tagline {
+    color: #4a5568 !important;
+}
+
+/* Light mode progress bars */
+body.light-theme .progress-bar {
+    background: rgba(0, 93, 216, 0.1);
+}
+
+body.light-theme .progress-fill {
+    background: linear-gradient(90deg, #005dd8, #00aaff);
+    box-shadow: 0 2px 8px rgba(0, 93, 216, 0.3);
+}
+
+/* Light mode timeline */
+body.light-theme .timeline::before {
+    background: rgba(0, 93, 216, 0.3);
+}
+
+body.light-theme .timeline-badge {
+    background: #005dd8;
+    box-shadow: 0 0 0 5px rgba(0, 93, 216, 0.15);
+}
+
+/* ==========================================
+   MINIMAL THEME-MATCHING TOGGLE
+   ========================================== */
+
+.theme-slider {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.theme-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border-radius: 26px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #005dd8, #00aaff);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 93, 216, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode checked state */
+body.light-theme .theme-toggle:checked+.slider {
+    background: rgba(0, 93, 216, 0.15);
+    border-color: rgba(0, 93, 216, 0.3);
+}
+
+body.light-theme .theme-toggle:checked+.slider:before {
+    background: linear-gradient(135deg, #00aaff, #60d5ff);
+}
+
+/* Dark mode (default) */
+.theme-toggle:checked+.slider:before {
+    transform: translateX(24px) translateY(-50%);
+}
+
+/* Hover effects */
+.slider:hover {
+    border-color: rgba(0, 170, 255, 0.4);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 0 12px rgba(0, 170, 255, 0.2);
+}
+
+.slider:hover:before {
+    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.6),
+        0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle glow animation */
+@keyframes toggleGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 2px 6px rgba(0, 93, 216, 0.4),
+            0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 2px 8px rgba(0, 170, 255, 0.6),
+            0 0 0 3px rgba(0, 170, 255, 0.2);
+    }
+}
+
+.slider:before {
+    animation: toggleGlow 3s ease-in-out infinite;
+}
+
+/* Light mode form inputs */
+body.light-theme input,
+body.light-theme textarea {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #1a1a1a !important;
+    border: 1px solid rgba(0, 93, 216, 0.2) !important;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+    color: #6b7280 !important;
+}
+
+/* Light mode contact section */
+body.light-theme #contact {
+    background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%) !important;
+}
+
+body.light-theme .contact-form {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 93, 216, 0.15);
+}
