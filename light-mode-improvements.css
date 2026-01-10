@@ -14,6 +14,40 @@
     text-align: center !important;
 }
 
+/* Center all section headings -強力 */
+#achievements .section-title,
+#responsibilities .section-title,
+#services .section-title,
+#projects h1.section-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+}
+
+#achievements .section-title h1,
+#responsibilities .section-title h1,
+#services .section-title h1,
+h1.section-title {
+    text-align: center !important;
+}
+
+#achievements .section-title .sub-title,
+#responsibilities .section-title .sub-title,
+#services .section-title .sub-title {
+    text-align: center !important;
+}
+
+/* Center animated dividers */
+#achievements .animated-divider,
+#responsibilities .animated-divider,
+#services .animated-divider,
+#projects .animated-divider {
+    margin: 20px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
 /* ==========================================
    LIGHT MODE IMPROVEMENTS
    ========================================== */
