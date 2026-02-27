@@ -28,10 +28,10 @@ nav ul.menu {
     nav ul.menu {
         position: fixed;
         top: 0;
-        right: -200px;
-        width: 200px;
+        right: -250px;
+        width: 250px;
         height: 100vh;
-        padding: 50px 0 !important;
+        padding: 60px 30px !important;
         background: rgba(20, 20, 30, 0.3) !important;
         backdrop-filter: blur(40px) saturate(150%) !important;
         -webkit-backdrop-filter: blur(40px) saturate(150%) !important;
@@ -41,8 +41,8 @@ nav ul.menu {
         /* Only left corners rounded */
         box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5),
             inset 1px 0 0 rgba(255, 255, 255, 0.1);
-        transition: right 0.3s ease;
-        z-index: 999;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 99999;
     }
 
     nav ul.menu li {

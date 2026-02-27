@@ -39,11 +39,11 @@
                     <li><button class="contact-btn" onclick="window.location.href='index.html#contact'">Contact</button>
                     </li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                    <div class="theme-slider">
+                        <input type="checkbox" id="theme-toggle" class="theme-toggle">
+                        <label for="theme-toggle" class="slider"></label>
+                    </div>
                 </ul>
-                <div class="theme-slider">
-                    <input type="checkbox" id="theme-toggle" class="theme-toggle">
-                    <label for="theme-toggle" class="slider"></label>
-                </div>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
@@ -511,7 +511,7 @@
                 sidemenu.style.right = "0";
             }
             function closemenu() {
-                sidemenu.style.right = "-200px";
+                sidemenu.style.right = "-250px";
             }
         </script>
 

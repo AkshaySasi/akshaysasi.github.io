@@ -1,0 +1,527 @@
+/* ==========================================
+   MY SPACE PROFESSIONAL STYLES
+   ========================================== */
+
+/* Inherits clean styles from style.css */
+
+/* Hero Adjustment */
+.career-hero-content {
+    margin-top: 15%;
+    /* Approx vertical centering matching Home */
+    max-width: 800px;
+}
+
+.hero-tagline {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--primary-blue);
+    /* Using variable if defined, else fallback */
+    color: #005dd8;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.career-hero-content h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.career-hero-content h1 .highlight {
+    color: #005dd8;
+}
+
+.hero-subtext {
+    font-size: 18px;
+    color: #ababab;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 14px 40px;
+    font-size: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Product Grid */
+#live-products {
+    padding: 80px 0;
+}
+
+.pro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.pro-card {
+    background: #1f1f1f;
+    /* Matching contact box style card bg */
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pro-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: #005dd8;
+}
+
+.pro-visual {
+    height: 280px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.pro-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: 0.5s;
+}
+
+.pro-card:hover .pro-visual img {
+    transform: scale(1.05);
+    opacity: 0.6;
+}
+
+.pro-visual .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+.pro-card:hover .pro-visual .overlay {
+    opacity: 1;
+}
+
+.view-text {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.pro-info {
+    padding: 25px;
+}
+
+.pro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.pro-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.status-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.live {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10B981;
+}
+
+.status-badge.beta {
+    background: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+}
+
+.pro-desc {
+    color: #ababab;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.tech-stack-mini {
+    display: flex;
+    gap: 10px;
+}
+
+.tech-stack-mini span {
+    font-size: 12px;
+    color: #777;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+
+/* The Lab */
+#lab {
+    padding: 60px 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.lab-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.lab-item {
+    background: #262626;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.lab-item:hover {
+    background: #333;
+    border-color: #555;
+    transform: translateY(-5px);
+}
+
+.lab-icon {
+    font-size: 24px;
+    color: #005dd8;
+    background: rgba(0, 93, 216, 0.1);
+    /* light blue bg */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.lab-details h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.lab-details p {
+    font-size: 14px;
+    color: #ababab;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.lab-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+    border: 1px solid #444;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Modal Pro Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content-pro {
+    width: 80%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #1f1f1f;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid #333;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.close-modal-pro {
+    position: fixed;
+    /* Keep it visible even when scrolling modal */
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 1010;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.close-modal-pro:hover {
+    background: #ff004f;
+    /* Primary accent color from style.css */
+}
+
+/* Modal Internal Layout */
+.modal-cover {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.modal-inner-padding {
+    padding: 40px;
+}
+
+.modal-inner-padding h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.modal-meta-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.modal-link-btn {
+    background: #005dd8;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.modal-body-text {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .career-hero-content h1 {
+        font-size: 40px;
+    }
+
+    .pro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content-pro {
+        width: 95%;
+        height: 95vh;
+    }
+
+    .modal-cover {
+        height: 200px;
+    }
+}
+
+/* ==========================================
+   CAROUSEL & RICH DATA STYLES
+   ========================================== */
+
+/* Carousel Container */
+.carousel-container {
+    height: 400px;
+    /* Taller for better view */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* or contain, depending on preference */
+    object-position: center;
+}
+
+/* Dots Navigation */
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: #fff;
+    transform: scale(1.2);
+}
+
+
+/* Rich Data Section */
+.impact-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.impact-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+}
+
+/* Chart Card */
+.chart-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-card h4 {
+    margin-bottom: 15px;
+    color: #ababab;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chart-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    opacity: 0.9;
+}
+
+/* Stats Grid */
+.stats-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat-card {
+    background: rgba(0, 93, 216, 0.1);
+    /* Subtle blue tint */
+    border: 1px solid rgba(0, 93, 216, 0.2);
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    color: #00aaff;
+}
+
+.stat-info span {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.stat-info strong {
+    display: block;
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-container {
+        height: 250px;
+    }
+
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+}

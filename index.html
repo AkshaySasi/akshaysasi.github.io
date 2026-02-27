@@ -99,14 +99,15 @@
                     <li><a href="index.html#experience">Experience</a></li>
                     <li><a href="index.html#skills">Skills</a></li>
                     <li><a href="projects.html">Projects</a></li>
-                    <li><a href="space.html">My Space</a></li>
+                    <li><a href="myspace.html">My Space</a></li>
                     <li><button class="contact-btn" onclick="window.location.href='#contact'">Contact</button></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
+                    <div class="theme-slider">
+                        <input type="checkbox" id="theme-toggle" class="theme-toggle"
+                            aria-label="Toggle light/dark theme">
+                        <label for="theme-toggle" class="slider"></label>
+                    </div>
                 </ul>
-                <div class="theme-slider">
-                    <input type="checkbox" id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme">
-                    <label for="theme-toggle" class="slider"></label>
-                </div>
                 <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
             </nav>
 
@@ -1151,7 +1152,7 @@
             if (sidemenu) sidemenu.style.right = "0";
         }
         function closemenu() {
-            if (sidemenu) sidemenu.style.right = "-200px";
+            if (sidemenu) sidemenu.style.right = "-250px";
         }
 
         // Tab Switching
