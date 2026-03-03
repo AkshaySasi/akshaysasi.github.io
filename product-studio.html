@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akshay Sasi | Product Studio</title>
+    <meta name="description"
+        content="Product Studio by Akshay Sasi - Live products, experiments, and systems in progress. Explore AI-powered tools and SaaS products.">
+    <link rel="canonical" href="https://akshaysasi.github.io/product-studio.html">
+
+    <!-- Preconnect for Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts (single link tag) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="theme-color" content="#000000">
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <img src="images/logo.png" alt="Akshay Sasi Logo" class="splash-logo" loading="lazy">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="/images/logo.png" class="logo" alt="Akshay Sasi Logo"
+                    onclick="window.location.href='/'" style="cursor: pointer;">
+                <ul id="sidemenu" class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/product-studio.html">Products</a></li>
+                    <li><a href="/blogs.html">Blogs</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><button class="contact-btn"
+                            onclick="window.location.href='/#contact'">Contact</button></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
+                    <div class="theme-slider">
+                        <input type="checkbox" id="theme-toggle" class="theme-toggle"
+                            aria-label="Toggle light/dark theme">
+                        <label for="theme-toggle" class="slider"></label>
+                    </div>
+                </ul>
+                <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
+                <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
+            </nav>
+
+            <!-- Hero -->
+            <div class="career-hero-content">
+                <span class="hero-tagline">The Builder's Archive</span>
+                <h1>Product <span class="highlight">Studio</span></h1>
+                <p class="hero-subtext">
+                    Live products, experiments, and systems in progress.
+                </p>
+                <div class="hero-actions">
+                    <a href="#live-products" class="btn btn-primary">View Products</a>
+                    <a href="/research.html" class="btn btn-secondary">The Lab <i class="fas fa-flask"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-arrow" id="scrollArrow" onclick="window.scrollBy({top:window.innerHeight,behavior:'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+
+    <!-- Live Products Section -->
+    <div id="live-products">
+        <div class="container">
+            <h2 class="sub-title">The Products<span style="color: var(--primary);">.</span></h2>
+
+            <div class="pro-grid">
+                <!-- Glass LM -->
+                <div class="pro-card" onclick="openProductModal('glasslm')">
+                    <div class="pro-visual">
+                        <img src="images/glasslm-real.png" alt="Glass LM"
+                            onerror="this.src='images/placeholder-glass.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>Glass LM</h3>
+                            <span class="status-badge live">Live Service</span>
+                        </div>
+                        <p class="pro-desc">Enterprise-grade AI middleware ensuring data sovereignty and security for
+                            LLM integrations.</p>
+                        <div class="tech-stack-mini">
+                            <span>Python</span>
+                            <span>React JS</span>
+                            <span>Middleware</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hoomify -->
+                <div class="pro-card" onclick="openProductModal('hoomify')">
+                    <div class="pro-visual">
+                        <img src="images/hoomify-real.png" alt="Hoomify"
+                            onerror="this.src='images/placeholder-hoomify.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>Hoomify</h3>
+                            <span class="status-badge live">SaaS Product</span>
+                        </div>
+                        <p class="pro-desc">Advanced NLP tool for humanizing AI-generated content, bypassing detection
+                            algorithms.</p>
+                        <div class="tech-stack-mini">
+                            <span>Transformers</span>
+                            <span>Next.js</span>
+                            <span>SaaS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botfolio -->
+                <div class="pro-card" onclick="openProductModal('botfolio')">
+                    <div class="pro-visual">
+                        <img src="images/botfolio-real.png" alt="Botfolio"
+                            onerror="this.src='images/placeholder-botfolio.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>Botfolio</h3>
+                            <span class="status-badge beta">Public Beta</span>
+                        </div>
+                        <p class="pro-desc">RAG-powered portfolio builder turning JSON resumes into interactive chatbot
+                            experiences.</p>
+                        <div class="tech-stack-mini">
+                            <span>RAG</span>
+                            <span>React</span>
+                            <span>AI Agent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delumie -->
+                <div class="pro-card" onclick="openProductModal('delumie')">
+                    <div class="pro-visual">
+                        <img src="images/delumie-real.png" alt="Delumie"
+                            onerror="this.src='images/placeholder-delumie.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>Delumie</h3>
+                            <span class="status-badge beta">Public Beta</span>
+                        </div>
+                        <p class="pro-desc">Local-first AI healthcare companion giving personalized insights while
+                            keeping data 100% offline.</p>
+                        <div class="tech-stack-mini">
+                            <span>Local AI</span>
+                            <span>Privacy</span>
+                            <span>Mobile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superforms -->
+                <div class="pro-card" onclick="openProductModal('superforms')">
+                    <div class="pro-visual">
+                        <img src="images/superforms-real.png" alt="Superforms"
+                            onerror="this.src='images/placeholder-superforms.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>Superforms</h3>
+                            <span class="status-badge live">In Development</span>
+                        </div>
+                        <p class="pro-desc">Generative UI system converting raw intent into high-conversion, dynamic
+                            forms.</p>
+                        <div class="tech-stack-mini">
+                            <span>GenUI</span>
+                            <span>Vue.js</span>
+                            <span>Growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FixMyDocs -->
+                <div class="pro-card" onclick="openProductModal('fixmydocs')">
+                    <div class="pro-visual">
+                        <img src="images/fixmydocs-real.png" alt="FixMyDocs"
+                            onerror="this.src='images/glass-lm.png'">
+                        <div class="overlay">
+                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="pro-info">
+                        <div class="pro-header">
+                            <h3>FixMyDocs</h3>
+                            <span class="status-badge live">Live Product</span>
+                        </div>
+                        <p class="pro-desc">AI document processing tool to restructure and clean messy files in seconds.
+                        </p>
+                        <div class="tech-stack-mini">
+                            <span>React</span>
+                            <span>AI Parsing</span>
+                            <span>Productivity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="product-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Product details">
+        <div class="modal-content-pro">
+            <button class="close-modal-pro" onclick="closeProductModal()" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div id="modal-body-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="images/logo.png" alt="Akshay Sasi Logo" loading="lazy">
+                <span>&copy; <span id="currentYear"></span> Akshay Sasi. All rights reserved.</span>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/projects.html">Projects</a>
+                <a href="/product-studio.html">Studio</a>
+                <a href="/blogs.html">Blogs</a>
+                <a href="/research.html">Research</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/akshay-sasi" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/_Aks_haY_" target="_blank" rel="noopener noreferrer"
+                    aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ak__sky" target="_blank" rel="noopener noreferrer"
+                    aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/shared.js"></script>
+
+    <!-- Supabase + Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/analytics.js" defer></script>
+
+    <script src="js/shared-modal.js"></script>
+    <script src="js/product-interactions.js"></script>
+
+    <!-- Command Palette -->
+    <div class="cmd-palette-overlay" id="cmdPalette">
+        <div class="cmd-palette">
+            <div class="cmd-palette-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmdPaletteInput" placeholder="Type a command or search..." autocomplete="off">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="cmd-palette-results" id="cmdPaletteResults"></div>
+        </div>
+    </div>
+</body>
+
+</html>

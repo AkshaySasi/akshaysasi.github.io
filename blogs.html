@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- BASIC META -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TITLE -->
+    <title>Blog | Akshay Sasi - Thoughts & Insights on AI, Engineering & Design</title>
+
+    <!-- DESCRIPTION -->
+    <meta name="description"
+        content="Read blog posts by Akshay Sasi on AI, Machine Learning, Engineering, Design, and more. Thoughts, tutorials, and insights from an AI Engineer and Researcher.">
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://akshaysasi.github.io/blogs.html">
+
+    <!-- AUTHOR -->
+    <meta name="author" content="Akshay Sasi">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#000000">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Blog | Akshay Sasi">
+    <meta property="og:description"
+        content="Thoughts & insights on AI, Engineering, Design, and more by Akshay Sasi.">
+    <meta property="og:image" content="https://akshaysasi.github.io/images/og-image.png">
+    <meta property="og:url" content="https://akshaysasi.github.io/blogs.html">
+    <meta property="og:type" content="website">
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Akshay Sasi">
+    <meta name="twitter:description"
+        content="Thoughts & insights on AI, Engineering, Design, and more by Akshay Sasi.">
+    <meta name="twitter:image" content="https://akshaysasi.github.io/images/og-image.png">
+    <meta name="twitter:creator" content="@_Aks_haY_">
+
+    <!-- FONTS -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap"
+        as="style">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous" defer></script>
+
+    <!-- ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" defer></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <img src="images/logo.png" alt="Akshay Sasi Logo" class="splash-logo" loading="lazy">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header / Hero -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="/images/logo.png" class="logo" alt="Akshay Sasi Logo"
+                    onclick="window.location.href='/'" style="cursor: pointer;">
+                <ul id="sidemenu" class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/product-studio.html">Products</a></li>
+                    <li><a href="/blogs.html">Blogs</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><button class="contact-btn"
+                            onclick="window.location.href='/#contact'">Contact</button></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
+                    <div class="theme-slider">
+                        <input type="checkbox" id="theme-toggle" class="theme-toggle"
+                            aria-label="Toggle light/dark theme">
+                        <label for="theme-toggle" class="slider"></label>
+                    </div>
+                </ul>
+                <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
+                <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
+            </nav>
+
+            <!-- Hero Content -->
+            <div class="career-hero-content">
+                <span class="hero-tagline">Thoughts & Insights</span>
+                <h1>Blog</h1>
+                <p class="hero-subtext">
+                    Exploring ideas in AI, engineering, design, and everything in between.
+                </p>
+            </div>
+        </div>
+        <div class="scroll-arrow" id="scrollArrow" onclick="window.scrollBy({top:window.innerHeight,behavior:'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <div id="blog-section">
+        <div class="container">
+
+            <!-- Blog Controls: Search + Tag Filters -->
+            <div class="blog-controls">
+                <div class="blog-search">
+                    <input type="text" id="blogSearchInput" placeholder="Search posts...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="tag-filters">
+                    <button class="tag-pill active" data-tag="all">All</button>
+                    <button class="tag-pill" data-tag="ai">AI</button>
+                    <button class="tag-pill" data-tag="engineering">Engineering</button>
+                    <button class="tag-pill" data-tag="design">Design</button>
+                    <button class="tag-pill" data-tag="thoughts">Thoughts</button>
+                </div>
+            </div>
+
+            <!-- Blog Grid (populated dynamically by JS) -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog cards will be injected here by js/blogs.js -->
+            </div>
+
+            <!-- Empty State (shown when no posts match or no posts yet) -->
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-feather-alt"></i>
+                <h3>No posts yet</h3>
+                <p>New articles are on the way. Check back soon!</p>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                <button class="btn btn-primary" id="loadMoreBtn">
+                    Load More <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Blog Detail View (hidden by default, shown when a post is opened) -->
+    <div id="blog-detail" class="blog-detail-view" style="display: none;">
+        <div class="container">
+            <div class="blog-detail-back" id="blogDetailBack">
+                <i class="fas fa-arrow-left"></i> Back to all posts
+            </div>
+            <img class="blog-detail-cover" id="blogDetailCover" src="" alt="Blog cover image">
+            <h1 class="blog-detail-title" id="blogDetailTitle"></h1>
+            <div class="blog-detail-meta" id="blogDetailMeta">
+                <span id="blogDetailDate"><i class="fas fa-calendar-alt"></i></span>
+                <span id="blogDetailReadTime"><i class="fas fa-clock"></i></span>
+                <span id="blogDetailAuthor"><i class="fas fa-user"></i> Akshay Sasi</span>
+            </div>
+            <div class="blog-detail-content" id="blogDetailContent">
+                <!-- Rendered markdown content goes here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="copyright">
+            <p>Copyright &copy; <span id="currentYear"></span> Akshay Sasi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- CDN: Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- CDN: marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+    <!-- Shared utilities (menu, theme, splash, nav, footer year) -->
+    <script src="js/shared.js" defer></script>
+
+    <!-- Supabase + Analytics -->
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/analytics.js" defer></script>
+
+    <!-- Blog-specific logic -->
+    <script src="js/blogs.js" defer></script>
+
+    <!-- Command Palette -->
+    <div class="cmd-palette-overlay" id="cmdPalette">
+        <div class="cmd-palette">
+            <div class="cmd-palette-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmdPaletteInput" placeholder="Type a command or search..." autocomplete="off">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="cmd-palette-results" id="cmdPaletteResults"></div>
+        </div>
+    </div>
+</body>
+
+</html>

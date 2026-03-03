@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="glassmorphic-styles.css">
-    <link rel="stylesheet" href="light-mode-improvements.css">
-    <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous"></script>
-    <link rel="canonical" href="https://akshaysasi.github.io/projects.html" />
-    <!-- Favicon Setup -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="manifest" href="site.webmanifest">
+    <title>Projects | Akshay Sasi</title>
+    <meta name="description" content="Explore Akshay Sasi's projects in AI, Machine Learning, Computer Vision, and Web Development.">
+    <link rel="canonical" href="https://akshaysasi.github.io/projects.html">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="theme-color" content="#000000">
 
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/pages.css">
+
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
@@ -31,25 +35,30 @@
     <div id="header">
         <div class="container">
             <nav>
-                <img src="images/logo.png" class="logo" href="#header" alt="Logo" loading="lazy">
+                <img src="/images/logo.png" class="logo" alt="Akshay Sasi Logo" onclick="window.location.href='/'" style="cursor:pointer;">
                 <ul id="sidemenu" class="menu">
-                    <li><a href="index.html">Back to Home</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="space.html">My Space</a></li>
-                    <li><button class="contact-btn" onclick="window.location.href='index.html#contact'">Contact</button>
-                    </li>
-                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/product-studio.html">Products</a></li>
+                    <li><a href="/blogs.html">Blogs</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><button class="contact-btn" onclick="window.location.href='/#contact'">Contact</button></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
                     <div class="theme-slider">
-                        <input type="checkbox" id="theme-toggle" class="theme-toggle">
+                        <input type="checkbox" id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark theme">
                         <label for="theme-toggle" class="slider"></label>
                     </div>
                 </ul>
-                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+                <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
+                <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
             </nav>
             <div class="header-text">
                 <h1>My <span>Projects</span></h1>
                 <p><span class="typing-text"></span><span class="cursor">|</span></p>
             </div>
+        </div>
+        <div class="scroll-arrow" id="scrollArrow" onclick="window.scrollBy({top:window.innerHeight,behavior:'smooth'})">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </div>
 
@@ -107,7 +116,7 @@
                             <span>ReactJS</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="baymax">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -139,7 +148,7 @@
                             <span>Diffusion models</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="groove">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -175,7 +184,7 @@
                             <span>Scikit-learn</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="heartbrain">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -206,7 +215,7 @@
                             <span>Computer Vision</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="texture">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -238,7 +247,7 @@
                             <span>Hugging Face</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="genscraper">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -270,7 +279,7 @@
                             <span>Face Recognition</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="pryme">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -302,7 +311,7 @@
                             <span>Machine Learning</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="mcgt">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -334,7 +343,7 @@
                             <span>Branding</span>
                         </div>
                         <div class="project-footer">
-                            <a href="#" class="project-btn">
+                            <a href="#" class="project-btn" data-project-id="sapience">
                                 View Details <i class="fas fa-arrow-right"></i>
                             </a>
                             <div class="project-stats">
@@ -450,270 +459,27 @@
         </div>
     </div>
 
-    <!-- Project Details Modals -->
-    <div class="modal-overlay" id="project-modal">
-        <div class="modal-container">
-            <span class="close-modal"><i class="fas fa-times"></i></span>
-            <div class="modal-content">
-                <div class="modal-image">
-                    <img src="" alt="Project Image" id="modal-image">
-                </div>
-                <div class="modal-details">
-                    <h2 id="modal-title"></h2>
-                    <div class="modal-description">
-                        <p id="modal-description"></p>
-                    </div>
-
-                    <div class="modal-features">
-                        <h3>Key Features</h3>
-                        <ul id="modal-features">
-                            <!-- Features will be populated dynamically -->
-                        </ul>
-                    </div>
-
-                    <div class="tech-tags" id="modal-tech-tags">
-                        <!-- Tech tags will be populated dynamically -->
-                    </div>
-
-                    <div class="modal-challenges">
-                        <h3>Challenges & Solutions</h3>
-                        <p id="modal-challenges"></p>
-                    </div>
-
-                    <div class="modal-links">
-                        <a href="" class="project-link" target="_blank" id="modal-code-link">
-                            <i class="fab fa-github"></i> View Source Code
-                        </a>
-                        <a href="" class="project-link secondary" download id="modal-doc-link">
-                            <i class="fas fa-file-pdf"></i> Documentation
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!-- Project Details Modal -->
+    <div id="project-modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Project details">
+        <div class="modal-content-pro">
+            <button class="close-modal-pro" onclick="closeProjectModal()" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <div id="project-modal-body"></div>
         </div>
+    </div>
 
-        <script>
-            window.addEventListener("load", () => {
-                const splash = document.getElementById("splash");
-                splash.style.opacity = 1;
-                setTimeout(() => {
-                    splash.style.opacity = 0;
-                    splash.style.transition = "opacity 0.3s ease";
-                    setTimeout(() => splash.style.display = "none", 300);
-                }, 600);
-            });
-        </script>
+    <!-- JavaScript -->
+    <script src="/js/shared.js" defer></script>
+    <script src="/js/shared-modal.js"></script>
+    <script src="/js/projects.js" defer></script>
 
-        <script>
-            var sidemenu = document.getElementById("sidemenu");
+    <!-- Supabase + Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/analytics.js" defer></script>
 
-            function openmenu() {
-                sidemenu.style.right = "0";
-            }
-            function closemenu() {
-                sidemenu.style.right = "-250px";
-            }
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const typingText = document.querySelector('.typing-text');
-                const cursor = document.querySelector('.cursor');
-                const designations = ["AI Projects", "Web Development", "Creative Designs"];
-                let currentDesignation = 0;
-                let charIndex = 0;
-                let isDeleting = false;
-                let typingSpeed = 150;
-
-                function type() {
-                    const fullText = designations[currentDesignation];
-
-                    if (isDeleting) {
-                        typingText.textContent = fullText.substring(0, charIndex - 1);
-                        charIndex--;
-                        typingSpeed = 50;
-                    } else {
-                        typingText.textContent = fullText.substring(0, charIndex + 1);
-                        charIndex++;
-                        typingSpeed = 150;
-                    }
-
-                    if (!isDeleting && charIndex === fullText.length) {
-                        typingSpeed = 2000;
-                        isDeleting = true;
-                    } else if (isDeleting && charIndex === 0) {
-                        isDeleting = false;
-                        currentDesignation = (currentDesignation + 1) % designations.length;
-                        typingSpeed = 500;
-                    }
-
-                    setTimeout(type, typingSpeed);
-                }
-
-                setTimeout(type, 1000);
-            });
-        </script>
-
-        <!-- EmailJS Configuration -->
-        <script src="emailjs-config.js?v=2"></script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const filterButtons = document.querySelectorAll('.filter-btn');
-                const projectCards = document.querySelectorAll('.project-card');
-                const searchInput = document.getElementById('searchInput');
-                const sortSelect = document.getElementById('sortSelect');
-
-                filterButtons.forEach(button => {
-                    button.addEventListener('click', function () {
-                        filterButtons.forEach(btn => btn.classList.remove('active'));
-                        this.classList.add('active');
-
-                        const filterValue = this.getAttribute('data-filter');
-                        projectCards.forEach(card => {
-                            const categories = card.getAttribute('data-category').split(' ');
-                            if (filterValue === 'all' || categories.includes(filterValue)) {
-                                card.style.display = 'block';
-                                card.style.animation = 'fadeIn 0.5s ease forwards';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-
-                searchInput.addEventListener('input', function () {
-                    const searchTerm = this.value.toLowerCase();
-                    projectCards.forEach(card => {
-                        const name = card.getAttribute('data-name').toLowerCase();
-                        if (name.includes(searchTerm)) {
-                            card.style.display = 'block';
-                            card.style.animation = 'fadeIn 0.5s ease forwards';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-
-                sortSelect.addEventListener('change', function () {
-                    const sortValue = this.value;
-                    const cardsArray = Array.from(projectCards);
-                    cardsArray.sort((a, b) => {
-                        const aValue = a.getAttribute(sortValue === 'name-asc' ? 'data-name' :
-                            sortValue === 'name-desc' ? 'data-name' :
-                                sortValue === 'date-new' ? 'data-date' : 'data-date');
-                        const bValue = b.getAttribute(sortValue === 'name-asc' ? 'data-name' :
-                            sortValue === 'name-desc' ? 'data-name' :
-                                sortValue === 'date-new' ? 'data-date' : 'data-date');
-                        if (sortValue === 'name-desc') return bValue.localeCompare(aValue);
-                        if (sortValue === 'date-new') return new Date(bValue) - new Date(aValue);
-                        if (sortValue === 'date-old') return new Date(aValue) - new Date(bValue);
-                        return aValue.localeCompare(bValue);
-                    });
-                    const projectsGrid = document.querySelector('.projects-grid');
-                    cardsArray.forEach(card => projectsGrid.appendChild(card));
-                    projectCards.forEach(card => card.style.animation = 'fadeIn 0.5s ease forwards');
-                });
-            });
-        </script>
-
-        <script>
-            document.getElementById('theme-toggle').addEventListener('change', function () {
-                document.body.classList.toggle('light-theme');
-                if (this.checked) {
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                document.body.classList.add(savedTheme + '-theme');
-                document.getElementById('theme-toggle').checked = savedTheme === 'light';
-            }
-        </script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const projectCards = document.querySelectorAll('.project-card .project-btn');
-                const modalOverlay = document.getElementById('project-modal');
-                const closeModal = document.querySelector('.close-modal');
-                const modalImage = document.getElementById('modal-image');
-                const modalTitle = document.getElementById('modal-title');
-                const modalDescription = document.getElementById('modal-description');
-                const modalFeatures = document.getElementById('modal-features');
-                const modalTechTags = document.getElementById('modal-tech-tags');
-                const modalChallenges = document.getElementById('modal-challenges');
-                const modalCodeLink = document.getElementById('modal-code-link');
-                const modalDocLink = document.getElementById('modal-doc-link');
-
-                projectCards.forEach(card => {
-                    card.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const projectCard = this.closest('.project-card');
-                        const imageSrc = projectCard.querySelector('.project-image img').src;
-                        const title = projectCard.querySelector('h3').textContent;
-                        const description = projectCard.querySelector('.project-description').textContent;
-                        const techTags = projectCard.querySelectorAll('.project-tech span');
-                        const challenges = generateChallenges(title); // Dynamic challenge generation
-                        const codeLink = projectCard.querySelector('.code-link')?.href || '#';
-                        const docLink = generateDocLink(title); // Dynamic doc link generation
-
-                        // Populate modal content
-                        modalImage.src = imageSrc;
-                        modalTitle.textContent = title;
-                        modalDescription.textContent = description;
-                        modalFeatures.innerHTML = '';
-                        techTags.forEach(tag => {
-                            const span = document.createElement('span');
-                            span.textContent = tag.textContent;
-                            modalTechTags.appendChild(span);
-                        });
-                        modalChallenges.textContent = challenges;
-                        modalCodeLink.href = codeLink;
-                        modalDocLink.href = docLink;
-                        modalDocLink.download = `${title.replace(/\s+/g, '-')}-Documentation.pdf`;
-
-                        // Show modal
-                        modalOverlay.style.display = 'flex';
-                        document.body.style.overflow = 'hidden';
-                    });
-                });
-
-                closeModal.addEventListener('click', function () {
-                    modalOverlay.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                });
-
-                modalOverlay.addEventListener('click', function (e) {
-                    if (e.target === modalOverlay) {
-                        modalOverlay.style.display = 'none';
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-
-                // Dynamic challenge generation (example function)
-                function generateChallenges(title) {
-                    const challengeMap = {
-                        'Baymax.AI: Emotionally Intelligent Conversational AI Agent': 'Training a sentiment-aware model required handling imbalanced datasets. Solved by using data augmentation and fine-tuning with a balanced loss function.',
-                        'ThinkOnIT: Agentic Research Assistant': 'Ensuring high relevance in search results was challenging. Addressed by implementing a hybrid retrieval system with semantic search.',
-                        'Unveiling the Heart-Brain Connection (Thesis Project)': 'Synchronizing ECG and EEG data posed timing issues. Resolved with a time-alignment algorithm and cross-validation.',
-                        'Texture-Based Food Contamination Detection Framework (Term Paper)': 'Lighting variations affected detection. Mitigated with adaptive thresholding and image preprocessing.',
-                        'Gen-Scraper: AI Review Analyzer for Amazon': 'Handling CAPTCHA was difficult. Overcame by integrating a headless browser with retry logic.',
-                        'PryMe - Privacy Focused Social Media Application': 'Ensuring end-to-end encryption performance was a challenge. Optimized with lightweight cryptographic libraries.',
-                        'MCGT - Morse Code Gesture Translator': 'Developing robust gesture recognition required extensive testing with different lighting conditions and hand sizes. The biggest challenge was minimizing false positives while maintaining real-time performance. This was solved by implementing a dual-validation system that cross-checks gestures with temporal patterns.',
-                        'Portfolio Website': 'Ensuring cross-browser compatibility was tricky. Resolved with modern CSS resets and testing across multiple browsers.',
-                        'Brand Identity Design - Sapience Edu Connect': 'Balancing creativity with client feedback was challenging. Managed through iterative design reviews and mockups.'
-                    };
-                    return challengeMap[title] || 'No specific challenges documented for this project.';
-                }
-
-                // Dynamic documentation link generation (example function)
-                function generateDocLink(title) {
-                    return `docs/${title.replace(/\s+/g, '-')}-Documentation.pdf` || '#';
-                }
-            });
-        </script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="/js/contact.js" defer></script>
 
         <!-- Premium Footer -->
         <footer class="premium-footer">
@@ -729,21 +495,21 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html"><i class="fas fa-arrow-right"></i> Home</a></li>
-                        <li><a href="index.html#about"><i class="fas fa-arrow-right"></i> About</a></li>
-                        <li><a href="index.html#experience"><i class="fas fa-arrow-right"></i> Experience</a></li>
-                        <li><a href="index.html#skills"><i class="fas fa-arrow-right"></i> Skills</a></li>
+                        <li><a href="/"><i class="fas fa-arrow-right"></i> Home</a></li>
+                        <li><a href="/projects.html"><i class="fas fa-arrow-right"></i> Projects</a></li>
+                        <li><a href="/product-studio.html"><i class="fas fa-arrow-right"></i> Product Studio</a></li>
+                        <li><a href="/blogs.html"><i class="fas fa-arrow-right"></i> Blogs</a></li>
                     </ul>
                 </div>
 
-                <!-- Projects & Work -->
+                <!-- More -->
                 <div class="footer-section">
-                    <h3>Projects & Work</h3>
+                    <h3>More</h3>
                     <ul class="footer-links">
-                        <li><a href="projects.html"><i class="fas fa-arrow-right"></i> All Projects</a></li>
-                        <li><a href="space.html"><i class="fas fa-arrow-right"></i> My Space</a></li>
-                        <li><a href="index.html#publications"><i class="fas fa-arrow-right"></i> Publications</a></li>
-                        <li><a href="index.html#achievements"><i class="fas fa-arrow-right"></i> Achievements</a></li>
+                        <li><a href="/research.html"><i class="fas fa-arrow-right"></i> Research</a></li>
+                        <li><a href="/#about"><i class="fas fa-arrow-right"></i> About</a></li>
+                        <li><a href="/#experience"><i class="fas fa-arrow-right"></i> Experience</a></li>
+                        <li><a href="/#skills"><i class="fas fa-arrow-right"></i> Skills</a></li>
                     </ul>
                 </div>
 
@@ -779,11 +545,18 @@
             </div>
         </footer>
 
-        <script>
-            // Set current year
-            const yearEl = document.getElementById('currentYear');
-            if (yearEl) yearEl.textContent = new Date().getFullYear();
-        </script>
+    <!-- Command Palette -->
+    <div class="cmd-palette-overlay" id="cmdPalette">
+        <div class="cmd-palette">
+            <div class="cmd-palette-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmdPaletteInput" placeholder="Type a command or search..." autocomplete="off">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="cmd-palette-results" id="cmdPaletteResults"></div>
+        </div>
+    </div>
+
 </body>
 
 </html>
