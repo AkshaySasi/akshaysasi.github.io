@@ -6,7 +6,7 @@ var products = {
     glasslm: {
         title: "Glass LM",
         desc: "Glass LM is an enterprise-grade AI middleware solution designed to solve the data sovereignty challenge. It acts as a secure 'glass box' layer between corporate infrastructure and public LLMs (like GPT-4 or Claude). The system employs a proprietary PII sanitization pipeline using local NLP models to redact sensitive entities before requests leave the premise, allowing enterprises to leverage state-of-the-art AI while maintaining 100% compliance with GDPR, HIPAA, and SOC2 standards.",
-        liveLink: "#",
+        liveLink: "https://glasslm.space/",
         repoLink: "",
         statusBadge: "live",
         statusLabel: "Live Service",
@@ -76,7 +76,7 @@ var products = {
     botfolio: {
         title: "Botfolio",
         desc: "Botfolio is an AI-first website builder for developers. It automates the portfolio creation process by ingesting a standard JSON resume or LinkedIn profile, vectorizing the experience data, and deploying a personalized portfolio site with an embedded RAG agent. Recruiters can chat with the portfolio to ask specific questions like 'Do you have experience with Kubernetes in production?', receiving accurate context-aware answers instantly.",
-        liveLink: "#",
+        liveLink: "https://botfolio.space/",
         repoLink: "",
         statusBadge: "beta",
         statusLabel: "Public Beta",
@@ -111,7 +111,7 @@ var products = {
     delumie: {
         title: "Delumie",
         desc: "Delumie is a local-first AI healthcare companion engineered for uncompromising privacy. Unlike conventional cloud-based health assistants that externalize sensitive data, Delumie guarantees 100% data sovereignty by running its inference engine entirely on-device. It provides personalized health insights, dietary recommendations, and symptom analysis without a single byte of medical history leaving the user's local environment, ensuring HIPAA-grade privacy by design.",
-        liveLink: "#",
+        liveLink: "https://delumie.vercel.app/",
         repoLink: "",
         statusBadge: "beta",
         statusLabel: "Public Beta",
@@ -176,6 +176,41 @@ var products = {
             { q: "Is my document data stored?", a: "Documents are processed in-memory and automatically deleted after download. We do not retain any uploaded content." },
             { q: "What file size limits exist?", a: "Free tier supports files up to 10MB. Pro tier increases this to 50MB with priority processing." },
             { q: "Can it handle scanned PDFs?", a: "Yes. FixMyDocs includes OCR capabilities for scanned documents, extracting text and restructuring it into clean, editable formats." }
+        ]
+    },
+    recurrpay: {
+        title: "RecurrPay",
+        desc: "RecurrPay is an automated recurring payment platform built for Indian SMBs. It eliminates manual payment chasing by letting businesses set payment schedules once and automate collections via UPI and WhatsApp reminders. Purpose-built for gyms, tiffin services, tuitions, and any subscription-based local business — with zero credit card required and setup in under 2 minutes.",
+        liveLink: "https://recurrpay-one.vercel.app/",
+        repoLink: "",
+        statusBadge: "live",
+        statusLabel: "Live Product",
+        stack: ["UPI", "WhatsApp API", "React", "Node.js", "SaaS"],
+        gallery: ["images/RecurrPay_image1.png", "images/background2.png"],
+        stats: [
+            { label: "Setup Time", value: "< 2 min", icon: "fa-clock" },
+            { label: "Free Tier", value: "10 customers", icon: "fa-users" },
+            { label: "Payment Methods", value: "UPI + WhatsApp", icon: "fa-mobile-alt" }
+        ],
+        chartImg: "images/users-chart.png",
+        features: [
+            { icon: "fa-sync-alt", title: "Automated Recurring Billing", desc: "Set it once and forget the chase. Payments are automatically collected on schedule with zero manual follow-up." },
+            { icon: "fa-mobile-alt", title: "UPI + WhatsApp Integration", desc: "Collect payments via UPI and send automatic WhatsApp reminders to customers before and after due dates." },
+            { icon: "fa-users", title: "Customer Management", desc: "Manage all your customers, their plans, and payment history from a single clean dashboard." },
+            { icon: "fa-bell", title: "Smart Auto-Reminders", desc: "Automated reminders are sent to customers before due dates, reducing payment delays and manual follow-ups." }
+        ],
+        tools: [
+            { name: "React", icon: "fab fa-react", category: "framework" },
+            { name: "Node.js", icon: "fab fa-node-js", category: "framework" },
+            { name: "UPI API", icon: "fas fa-rupee-sign", category: "infra" },
+            { name: "WhatsApp API", icon: "fab fa-whatsapp", category: "infra" },
+            { name: "MongoDB", icon: "fas fa-database", category: "database" },
+            { name: "Vercel", icon: "fas fa-cloud", category: "infra" }
+        ],
+        faq: [
+            { q: "Is there a free plan?", a: "Yes. RecurrPay is free for up to 10 customers with no credit card required, and takes less than 2 minutes to set up." },
+            { q: "Which payment methods are supported?", a: "RecurrPay supports UPI payments with automatic WhatsApp reminders, covering the most-used payment methods across Indian SMBs." },
+            { q: "Who is RecurrPay built for?", a: "Any Indian SMB with recurring collections — gyms, tiffin services, tuitions, rental businesses, and subscription services." }
         ]
     },
     superforms: {
