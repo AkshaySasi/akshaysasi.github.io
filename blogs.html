@@ -85,17 +85,12 @@
                 <ul id="sidemenu" class="menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/product-studio.html">Products</a></li>
+                    <li><a href="/product-studio.html">My Works</a></li>
                     <li><a href="/blogs.html">Blogs</a></li>
                     <li><a href="/research.html">Research</a></li>
                     <li><button class="contact-btn"
                             onclick="window.location.href='/#contact'">Contact</button></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
-                    <div class="theme-slider">
-                        <input type="checkbox" id="theme-toggle" class="theme-toggle"
-                            aria-label="Toggle light/dark theme">
-                        <label for="theme-toggle" class="slider"></label>
-                    </div>
                 </ul>
                 <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
                 <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
@@ -183,7 +178,7 @@
     </footer>
 
     <!-- CDN: Supabase JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
     <!-- CDN: marked.js for Markdown rendering -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>

@@ -44,16 +44,11 @@
                 <ul id="sidemenu" class="menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/product-studio.html">Products</a></li>
+                    <li><a href="/product-studio.html">My Works</a></li>
                     <li><a href="/blogs.html">Blogs</a></li>
                     <li><a href="/research.html">Research</a></li>
                     <li><button class="contact-btn" onclick="window.location.href='/#contact'">Contact</button></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
-                    <!-- Theme Toggle -->
-                    <div class="theme-slider">
-                        <input type="checkbox" id="theme-toggle" class="theme-toggle">
-                        <label for="theme-toggle" class="slider"></label>
-                    </div>
                 </ul>
                 <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -248,7 +243,7 @@
     <script src="js/shared.js"></script>
 
     <!-- Supabase + Analytics -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="/js/supabase-client.js"></script>
     <script src="/js/analytics.js" defer></script>
 
@@ -256,7 +251,7 @@
     <script src="js/research-interactions.js"></script>
 
     <!-- EmailJS SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     <script src="/js/contact.js" defer></script>
 
     <!-- Command Palette -->

@@ -91,43 +91,6 @@
 }
 
 /* ==========================================
-   LIGHT THEME
-   ========================================== */
-body.light-theme {
-    --bg-body: #f5f7fa;
-    --bg-section: #e8ecf1;
-    --bg-section-alt: #e0e7ef;
-    --bg-card: rgba(255, 255, 255, 0.85);
-    --bg-card-hover: rgba(255, 255, 255, 0.95);
-    --bg-elevated: rgba(255, 255, 255, 0.9);
-    --bg-input: rgba(255, 255, 255, 0.9);
-
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-bg-heavy: rgba(255, 255, 255, 0.85);
-    --glass-border: rgba(0, 93, 216, 0.2);
-    --glass-shadow: 0 8px 32px rgba(0, 93, 216, 0.15);
-    --glass-inset: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-
-    --text-primary: #1a1a1a;
-    --text-secondary: #444444;
-    --text-muted: #4a5568;
-    --text-dim: #6b7280;
-    --text-faint: #888888;
-    --text-placeholder: #6b7280;
-
-    --border-subtle: rgba(0, 93, 216, 0.08);
-    --border-light: rgba(0, 93, 216, 0.15);
-    --border-medium: rgba(0, 93, 216, 0.2);
-
-    --shadow-sm: 0 5px 15px rgba(0, 93, 216, 0.08);
-    --shadow-md: 0 8px 32px rgba(0, 93, 216, 0.12);
-    --shadow-lg: 0 10px 30px rgba(0, 93, 216, 0.15);
-
-    --header-bg: url(/images/Light_bg1.png);
-    --header-bg-mobile: url(/images/phone-background1_light.png);
-}
-
-/* ==========================================
    RESET & BASE
    ========================================== */
 *, *::before, *::after {
@@ -148,7 +111,6 @@ body {
     background: var(--bg-body);
     color: var(--text-primary);
     line-height: 1.6;
-    transition: background var(--ease-smooth), color var(--ease-smooth);
     overflow-x: hidden;
 }
 

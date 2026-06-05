@@ -32,23 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
 })();
 
-// --- Theme Toggle ---
-(function initTheme() {
-    var themeToggle = document.getElementById('theme-toggle');
-    if (!themeToggle) return;
-
-    var savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme');
-        themeToggle.checked = true;
-    }
-
-    themeToggle.addEventListener('change', function() {
-        document.body.classList.toggle('light-theme');
-        localStorage.setItem('theme', this.checked ? 'light' : 'dark');
-    });
-})();
-
 // --- Splash Screen ---
 window.addEventListener("load", function() {
     var splash = document.getElementById("splash");
@@ -111,11 +94,10 @@ var cmdPaletteItems = [
     { label: 'Experience', icon: 'fas fa-briefcase', url: '/#experience' },
     { label: 'Skills', icon: 'fas fa-code', url: '/#skills' },
     { label: 'Projects', icon: 'fas fa-project-diagram', url: '/projects.html' },
-    { label: 'Product Studio', icon: 'fas fa-rocket', url: '/product-studio.html' },
+    { label: 'My Works', icon: 'fas fa-rocket', url: '/product-studio.html' },
     { label: 'Blogs', icon: 'fas fa-pen-fancy', url: '/blogs.html' },
     { label: 'Research', icon: 'fas fa-flask', url: '/research.html' },
     { label: 'Contact', icon: 'fas fa-envelope', url: '/#contact' },
-    { label: 'Toggle Theme', icon: 'fas fa-moon', action: 'toggleTheme' },
     { label: 'Download Resume', icon: 'fas fa-download', url: '/images/resume.pdf' }
 ];
 
@@ -160,10 +142,7 @@ function renderCmdResults(query) {
 
 function executeCmdItem(item) {
     closeCmdPalette();
-    if (item.action === 'toggleTheme') {
-        var toggle = document.getElementById('theme-toggle');
-        if (toggle) { toggle.checked = !toggle.checked; toggle.dispatchEvent(new Event('change')); }
-    } else if (item.url) {
+    if (item.url) {
         window.location.href = item.url;
     }
 }

@@ -377,9 +377,6 @@
     background: rgba(255, 255, 255, 0.15);
 }
 
-body.light-theme .status-bar {
-    background: #68217a;
-}
 
 .about-header {
     text-align: center;

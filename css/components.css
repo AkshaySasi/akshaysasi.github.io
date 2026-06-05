@@ -23,15 +23,7 @@ nav {
     cursor: pointer;
 }
 
-body.light-theme .logo {
-    filter: brightness(0);
-}
-
 @media screen and (min-width: 769px) {
-    .theme-slider {
-        display: inline-block;
-        vertical-align: middle;
-    }
 }
 
 nav ul.menu {
@@ -328,10 +320,6 @@ nav ul li button.contact-btn::after {
     transition: opacity 0.3s ease;
 }
 
-body.light-theme #splash {
-    background-color: #f0f0f0;
-}
-
 .splash-logo {
     width: 200px;
     margin-bottom: 20px;
@@ -344,96 +332,6 @@ body.light-theme #splash {
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
-}
-
-body.light-theme .spinner {
-    border-color: rgba(0, 93, 216, 0.1);
-    border-top-color: var(--primary);
-}
-
-/* --- THEME TOGGLE --- */
-.theme-slider {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    width: 52px;
-    height: 28px;
-    margin-left: 15px;
-}
-
-.theme-toggle {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    position: absolute;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    width: 52px;
-    height: 28px;
-    background: rgba(30, 30, 40, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    transition: all var(--ease-normal);
-    border-radius: 28px;
-    border: 1px solid var(--primary-border);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.slider::after {
-    content: "\2600\FE0F";
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    transition: opacity var(--ease-normal);
-    opacity: 0.5;
-}
-
-.slider::before {
-    content: "";
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    transition: all var(--ease-smooth);
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0, 170, 255, 0.5);
-    z-index: 2;
-}
-
-.theme-toggle:checked + .slider {
-    background: rgba(220, 230, 255, 0.9);
-    border-color: rgba(0, 93, 216, 0.4);
-}
-
-.theme-toggle:checked + .slider::after {
-    content: "\1F319";
-    left: 6px;
-    right: auto;
-}
-
-.theme-toggle:checked + .slider::before {
-    transform: translateY(-50%) translateX(24px);
-    background: linear-gradient(135deg, var(--primary-light), #60d5ff);
-}
-
-.slider:hover {
-    border-color: rgba(0, 170, 255, 0.6);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 170, 255, 0.3);
-}
-
-body.light-theme .slider {
-    background: rgba(200, 220, 255, 0.8);
-    border-color: rgba(0, 93, 216, 0.3);
 }
 
 /* --- MODAL --- */
@@ -772,9 +670,6 @@ body.light-theme .slider {
     box-shadow: 0 5px 15px var(--primary-glow);
 }
 
-body.light-theme .social-icon {
-    background: rgba(0, 0, 0, 0.05);
-}
 
 .contact-form {
     background: var(--bg-card);
@@ -968,11 +863,6 @@ body.light-theme .social-icon {
         box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
     }
 
-    body.light-theme nav ul.menu {
-        background: rgba(250, 250, 252, 0.95);
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
-    }
-
     nav ul.menu li {
         display: block;
         margin: 15px 0;
@@ -1001,13 +891,6 @@ body.light-theme .social-icon {
         font-size: 24px;
         cursor: pointer;
         color: var(--text-primary);
-    }
-
-    .theme-slider {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        z-index: 100000;
     }
 
     .logo {
