@@ -73,41 +73,6 @@ var products = {
             { q: "Is there a free tier?", a: "Yes. The free tier includes 1 portfolio with the chatbot, basic themes, and a botfolio.dev subdomain." }
         ]
     },
-    fixmydocs: {
-        title: "FixMyDocs",
-        desc: "FixMyDocs is an intelligent document processing tool designed to instantly restructure and clean messy files. It accepts PDF, DOCX, and TXT formats, using advanced AI to automatically align text, fix formatting errors, and produce professional-quality documents in seconds. Trusted by thousands of users for its speed and accuracy.",
-        liveLink: "https://fixmydocs.space/",
-        repoLink: "",
-        statusBadge: "live",
-        statusLabel: "Freelance",
-        stack: ["React", "AI Parsing", "Node.js", "Document Processing"],
-        gallery: ["images/fixmydocs-real.png", "images/background2.png", "images/project_bg.png"],
-        stats: [
-            { label: "Speed", value: "< 10s", icon: "fa-bolt" },
-            { label: "Formats", value: "PDF/Doc/Txt", icon: "fa-file-alt" },
-            { label: "Cleanup", value: "Automated", icon: "fa-magic" }
-        ],
-        chartImg: "images/users-chart.png",
-        features: [
-            { icon: "fa-file-pdf", title: "Multi-Format Support", desc: "Upload PDF, DOCX, or TXT files. FixMyDocs intelligently parses and restructures regardless of the source format." },
-            { icon: "fa-magic", title: "AI-Powered Auto-Fix", desc: "Automatically corrects alignment issues, broken paragraphs, inconsistent headers, and formatting artifacts." },
-            { icon: "fa-download", title: "Clean Export", desc: "Download your restructured document as a polished PDF or DOCX ready for professional use." },
-            { icon: "fa-bolt", title: "Under 5 Second Processing", desc: "Most documents are processed in under 5 seconds, even complex multi-page PDFs with mixed content." }
-        ],
-        tools: [
-            { name: "React", icon: "fab fa-react", category: "framework" },
-            { name: "Node.js", icon: "fab fa-node-js", category: "framework" },
-            { name: "AI Parsing", icon: "fas fa-brain", category: "ai" },
-            { name: "PDF.js", icon: "fas fa-file-pdf", category: "framework" },
-            { name: "MongoDB", icon: "fas fa-database", category: "database" },
-            { name: "AWS S3", icon: "fab fa-aws", category: "infra" }
-        ],
-        faq: [
-            { q: "Is my document data stored?", a: "Documents are processed in-memory and automatically deleted after download. We do not retain any uploaded content." },
-            { q: "What file size limits exist?", a: "Free tier supports files up to 10MB. Pro tier increases this to 50MB with priority processing." },
-            { q: "Can it handle scanned PDFs?", a: "Yes. FixMyDocs includes OCR capabilities for scanned documents, extracting text and restructuring it into clean, editable formats." }
-        ]
-    }
 };
 
 /* ==========================================
