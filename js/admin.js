@@ -12,7 +12,16 @@
     var logoutBtn = document.getElementById('logoutBtn');
 
     // --- Auth ---
+    var loginAttempts = 0;
+    var lockoutUntil = 0;
+
     async function handleLogin(email, password) {
+        var now = Date.now();
+        if (now < lockoutUntil) {
+            var secs = Math.ceil((lockoutUntil - now) / 1000);
+            showLoginError('Too many attempts. Try again in ' + secs + 's.');
+            return;
+        }
         if (!supabaseClient) {
             showLoginError('Supabase not configured.');
             return;
@@ -20,9 +29,17 @@
         try {
             var result = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
             if (result.error) throw result.error;
+            loginAttempts = 0;
             showDashboard();
         } catch (err) {
-            showLoginError(err.message || 'Login failed.');
+            loginAttempts++;
+            if (loginAttempts >= 5) {
+                lockoutUntil = Date.now() + 60000;
+                loginAttempts = 0;
+                showLoginError('Too many failed attempts. Locked for 60 seconds.');
+            } else {
+                showLoginError(err.message || 'Login failed. (' + loginAttempts + '/5)');
+            }
         }
     }
 

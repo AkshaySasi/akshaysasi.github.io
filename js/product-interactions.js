@@ -9,7 +9,7 @@ var products = {
         liveLink: "https://glasslm.space/",
         repoLink: "",
         statusBadge: "live",
-        statusLabel: "Live Service",
+        statusLabel: "Personal Project",
         stack: ["Python", "FastAPI", "Docker", "Redis", "Local NLP"],
         gallery: ["images/glasslm-real.png", "images/glasslm.png", "images/background2.png"],
         stats: [
@@ -38,48 +38,13 @@ var products = {
             { q: "What is the latency overhead?", a: "Typical overhead is under 50ms per request. The sanitization pipeline runs in-memory with pre-loaded models." }
         ]
     },
-    hoomify: {
-        title: "Hoomify",
-        desc: "Hoomify is a SaaS platform targeting the content creation market. It addresses the issue of AI content detection false positives. Using a fine-tuned transformer model, Hoomify analyzes AI-generated text for statistical watermarks (low perplexity and burstiness) and rewrites it to mimic human drafting patterns. The result is high-quality, undetectable content that retains original meaning but passes all major AI identifiers.",
-        liveLink: "#",
-        repoLink: "",
-        statusBadge: "live",
-        statusLabel: "SaaS Product",
-        stack: ["Next.js", "PyTorch", "HuggingFace", "TailwindCSS"],
-        gallery: ["images/hoomify-real.png", "images/hoomify.png", "images/background2.png"],
-        stats: [
-            { label: "Perplexity Adjustment", value: "+22%", icon: "fa-chart-line" },
-            { label: "Burstiness Score Gain", value: "+18%", icon: "fa-wave-square" },
-            { label: "Batch Size", value: "10k words", icon: "fa-file-alt" }
-        ],
-        chartImg: "images/users-chart.png",
-        features: [
-            { icon: "fa-magic", title: "AI-to-Human Rewrite Engine", desc: "Rewrites AI text to match human burstiness and perplexity patterns, passing GPTZero, Turnitin, and Originality.ai." },
-            { icon: "fa-sliders-h", title: "Adjustable Humanization Levels", desc: "Choose between Light, Medium, and Aggressive rewrite modes based on your content sensitivity needs." },
-            { icon: "fa-tachometer-alt", title: "Bulk Processing", desc: "Process up to 10,000 words in a single batch with parallel inference for enterprise-scale content pipelines." },
-            { icon: "fa-language", title: "Multi-Language Support", desc: "Supports English, Spanish, French, German, and more with language-specific humanization models." }
-        ],
-        tools: [
-            { name: "Next.js", icon: "fab fa-react", category: "framework" },
-            { name: "PyTorch", icon: "fas fa-fire", category: "ai" },
-            { name: "HuggingFace", icon: "fas fa-brain", category: "ai" },
-            { name: "TailwindCSS", icon: "fas fa-palette", category: "framework" },
-            { name: "PostgreSQL", icon: "fas fa-database", category: "database" },
-            { name: "Vercel", icon: "fas fa-cloud", category: "infra" }
-        ],
-        faq: [
-            { q: "Is Hoomify detectable by AI checkers?", a: "No. Our fine-tuned transformer rewrites text patterns to match human writing distributions. Tests consistently show <2% detection rate across all major checkers." },
-            { q: "Does it change the meaning of my content?", a: "No. Hoomify preserves semantic meaning while adjusting stylistic patterns. The core message, facts, and arguments remain intact." },
-            { q: "Can I use it for academic writing?", a: "Hoomify is designed for content creators, marketers, and professionals. We encourage ethical use and compliance with your institution's policies." }
-        ]
-    },
     botfolio: {
         title: "Botfolio",
         desc: "Botfolio is an AI-first website builder for developers. It automates the portfolio creation process by ingesting a standard JSON resume or LinkedIn profile, vectorizing the experience data, and deploying a personalized portfolio site with an embedded RAG agent. Recruiters can chat with the portfolio to ask specific questions like 'Do you have experience with Kubernetes in production?', receiving accurate context-aware answers instantly.",
         liveLink: "https://botfolio.space/",
         repoLink: "",
         statusBadge: "beta",
-        statusLabel: "Public Beta",
+        statusLabel: "Open Source",
         stack: ["React", "LangChain", "OpenAI", "Pinecone"],
         gallery: ["images/botfolio-real.png", "images/Botfolio.png", "images/background2.png"],
         stats: [
@@ -108,48 +73,13 @@ var products = {
             { q: "Is there a free tier?", a: "Yes. The free tier includes 1 portfolio with the chatbot, basic themes, and a botfolio.dev subdomain." }
         ]
     },
-    delumie: {
-        title: "Delumie",
-        desc: "Delumie is a local-first AI healthcare companion engineered for uncompromising privacy. Unlike conventional cloud-based health assistants that externalize sensitive data, Delumie guarantees 100% data sovereignty by running its inference engine entirely on-device. It provides personalized health insights, dietary recommendations, and symptom analysis without a single byte of medical history leaving the user's local environment, ensuring HIPAA-grade privacy by design.",
-        liveLink: "https://delumie.vercel.app/",
-        repoLink: "",
-        statusBadge: "beta",
-        statusLabel: "Public Beta",
-        stack: ["React Native", "TensorFlow Lite", "Local LLM", "On-Device"],
-        gallery: ["images/delumie-real.png", "images/background2.png", "images/project_bg.png"],
-        stats: [
-            { label: "Model Size", value: "3B Parameters", icon: "fa-microchip" },
-            { label: "On-Device RAM Usage", value: "<1.5GB", icon: "fa-memory" },
-            { label: "Inference Latency", value: "<80ms", icon: "fa-bolt" }
-        ],
-        chartImg: "images/users-chart.png",
-        features: [
-            { icon: "fa-mobile-alt", title: "100% On-Device Inference", desc: "All AI processing runs locally on the device. No cloud calls, no data leaks, no internet required for core functionality." },
-            { icon: "fa-heartbeat", title: "Symptom Analysis Engine", desc: "Describe symptoms naturally and receive differential analysis based on medical literature, all processed on-device." },
-            { icon: "fa-apple-alt", title: "Personalized Diet Plans", desc: "AI-generated meal plans based on your health profile, allergies, and nutritional goals — updated in real-time." },
-            { icon: "fa-chart-line", title: "Health Trend Tracking", desc: "Visualize your health metrics over time with intelligent trend analysis and anomaly alerts." }
-        ],
-        tools: [
-            { name: "React Native", icon: "fab fa-react", category: "framework" },
-            { name: "TensorFlow Lite", icon: "fas fa-brain", category: "ai" },
-            { name: "ONNX Runtime", icon: "fas fa-microchip", category: "ai" },
-            { name: "SQLite", icon: "fas fa-database", category: "database" },
-            { name: "Kotlin", icon: "fas fa-code", category: "language" },
-            { name: "Swift", icon: "fab fa-swift", category: "language" }
-        ],
-        faq: [
-            { q: "Does Delumie replace my doctor?", a: "No. Delumie is a health companion for tracking and insights, not a diagnostic tool. Always consult healthcare professionals for medical decisions." },
-            { q: "How accurate is the symptom analysis?", a: "Our models are trained on peer-reviewed medical literature and achieve 99.2% accuracy on common symptom-condition mappings. Complex cases always recommend professional consultation." },
-            { q: "Does any data leave my device?", a: "Never. All processing, storage, and inference happen entirely on-device. There are no analytics, no telemetry, and no cloud dependencies." }
-        ]
-    },
     fixmydocs: {
         title: "FixMyDocs",
         desc: "FixMyDocs is an intelligent document processing tool designed to instantly restructure and clean messy files. It accepts PDF, DOCX, and TXT formats, using advanced AI to automatically align text, fix formatting errors, and produce professional-quality documents in seconds. Trusted by thousands of users for its speed and accuracy.",
         liveLink: "https://fixmydocs.space/",
         repoLink: "",
         statusBadge: "live",
-        statusLabel: "Live Product",
+        statusLabel: "Freelance",
         stack: ["React", "AI Parsing", "Node.js", "Document Processing"],
         gallery: ["images/fixmydocs-real.png", "images/background2.png", "images/project_bg.png"],
         stats: [
@@ -176,76 +106,6 @@ var products = {
             { q: "Is my document data stored?", a: "Documents are processed in-memory and automatically deleted after download. We do not retain any uploaded content." },
             { q: "What file size limits exist?", a: "Free tier supports files up to 10MB. Pro tier increases this to 50MB with priority processing." },
             { q: "Can it handle scanned PDFs?", a: "Yes. FixMyDocs includes OCR capabilities for scanned documents, extracting text and restructuring it into clean, editable formats." }
-        ]
-    },
-    recurrpay: {
-        title: "RecurrPay",
-        desc: "RecurrPay is an automated recurring payment platform built for Indian SMBs. It eliminates manual payment chasing by letting businesses set payment schedules once and automate collections via UPI and WhatsApp reminders. Purpose-built for gyms, tiffin services, tuitions, and any subscription-based local business — with zero credit card required and setup in under 2 minutes.",
-        liveLink: "https://recurrpay-one.vercel.app/",
-        repoLink: "",
-        statusBadge: "live",
-        statusLabel: "Live Product",
-        stack: ["UPI", "WhatsApp API", "React", "Node.js", "SaaS"],
-        gallery: ["images/RecurrPay_image1.png", "images/background2.png"],
-        stats: [
-            { label: "Setup Time", value: "< 2 min", icon: "fa-clock" },
-            { label: "Free Tier", value: "10 customers", icon: "fa-users" },
-            { label: "Payment Methods", value: "UPI + WhatsApp", icon: "fa-mobile-alt" }
-        ],
-        chartImg: "images/users-chart.png",
-        features: [
-            { icon: "fa-sync-alt", title: "Automated Recurring Billing", desc: "Set it once and forget the chase. Payments are automatically collected on schedule with zero manual follow-up." },
-            { icon: "fa-mobile-alt", title: "UPI + WhatsApp Integration", desc: "Collect payments via UPI and send automatic WhatsApp reminders to customers before and after due dates." },
-            { icon: "fa-users", title: "Customer Management", desc: "Manage all your customers, their plans, and payment history from a single clean dashboard." },
-            { icon: "fa-bell", title: "Smart Auto-Reminders", desc: "Automated reminders are sent to customers before due dates, reducing payment delays and manual follow-ups." }
-        ],
-        tools: [
-            { name: "React", icon: "fab fa-react", category: "framework" },
-            { name: "Node.js", icon: "fab fa-node-js", category: "framework" },
-            { name: "UPI API", icon: "fas fa-rupee-sign", category: "infra" },
-            { name: "WhatsApp API", icon: "fab fa-whatsapp", category: "infra" },
-            { name: "MongoDB", icon: "fas fa-database", category: "database" },
-            { name: "Vercel", icon: "fas fa-cloud", category: "infra" }
-        ],
-        faq: [
-            { q: "Is there a free plan?", a: "Yes. RecurrPay is free for up to 10 customers with no credit card required, and takes less than 2 minutes to set up." },
-            { q: "Which payment methods are supported?", a: "RecurrPay supports UPI payments with automatic WhatsApp reminders, covering the most-used payment methods across Indian SMBs." },
-            { q: "Who is RecurrPay built for?", a: "Any Indian SMB with recurring collections — gyms, tiffin services, tuitions, rental businesses, and subscription services." }
-        ]
-    },
-    superforms: {
-        title: "Superforms",
-        desc: "Superforms leverages Generative UI to revolutionize data collection. Instead of static wizard steps, it uses a conversational intent engine. Users describe what they need in natural language, and the system dynamically generates the appropriate form fields in real-time. This reduces friction significantly, leading to a measured 40% increase in form completion rates for complex onboarding flows.",
-        liveLink: "#",
-        repoLink: "",
-        statusBadge: "dev",
-        statusLabel: "In Development",
-        stack: ["Vue.js", "GPT-3.5-Turbo", "Firebase", "GenUI"],
-        gallery: ["images/superforms-real.png", "images/superforms.png", "images/background2.png"],
-        stats: [
-            { label: "Forms Generated", value: "85k", icon: "fa-list-alt" },
-            { label: "Conversion Lift", value: "+40%", icon: "fa-chart-line" },
-            { label: "Enterprises", value: "12", icon: "fa-building" }
-        ],
-        chartImg: "images/users-chart.png",
-        features: [
-            { icon: "fa-comments", title: "Conversational Form Builder", desc: "Describe your form needs in plain English. The AI generates a complete, optimized form layout in seconds." },
-            { icon: "fa-random", title: "Dynamic Field Generation", desc: "Forms adapt in real-time based on user responses, showing only relevant fields to minimize friction." },
-            { icon: "fa-chart-line", title: "Conversion Analytics", desc: "Built-in analytics track completion rates, drop-off points, and A/B test different form variants automatically." },
-            { icon: "fa-code", title: "Embed Anywhere", desc: "Export as React, Vue, or vanilla HTML component. Works with any website or app with a simple embed code." }
-        ],
-        tools: [
-            { name: "Vue.js", icon: "fab fa-vuejs", category: "framework" },
-            { name: "GPT-3.5 Turbo", icon: "fas fa-brain", category: "ai" },
-            { name: "Firebase", icon: "fas fa-fire", category: "infra" },
-            { name: "TypeScript", icon: "fas fa-code", category: "language" },
-            { name: "Firestore", icon: "fas fa-database", category: "database" },
-            { name: "Figma API", icon: "fab fa-figma", category: "framework" }
-        ],
-        faq: [
-            { q: "How does the AI know what fields to generate?", a: "The intent engine parses your natural language description, identifies required data points, and maps them to appropriate form field types (text, select, date, file upload, etc.)." },
-            { q: "Can I customize the generated forms?", a: "Absolutely. After generation, you get a full visual editor to reorder fields, change labels, add validation rules, and customize styling." },
-            { q: "What about form submissions — where does data go?", a: "Superforms integrates with webhooks, email, Google Sheets, Airtable, and any REST API. You control where submissions are routed." }
         ]
     }
 };
@@ -381,3 +241,47 @@ if (modalOverlay) {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeProductModal();
 });
+
+/* ==========================================
+   WORKS FILTER
+   ========================================== */
+(function initWorksFilter() {
+    var activeType = 'all';
+    var activeTech = null;
+
+    function applyFilters() {
+        var cards = document.querySelectorAll('#worksGrid .pro-card');
+        cards.forEach(function(card) {
+            var type = card.getAttribute('data-type') || '';
+            var tech = card.getAttribute('data-tech') || '';
+            var typeMatch = (activeType === 'all') || (type === activeType);
+            var techMatch = !activeTech || (tech.indexOf(activeTech) !== -1);
+            card.classList.toggle('hidden', !(typeMatch && techMatch));
+        });
+    }
+
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.works-filter-btn');
+        if (!btn) return;
+
+        if (btn.hasAttribute('data-filter')) {
+            activeType = btn.getAttribute('data-filter');
+            document.querySelectorAll('.works-filter-btn[data-filter]').forEach(function(b) {
+                b.classList.toggle('active', b === btn);
+            });
+        } else if (btn.hasAttribute('data-tech')) {
+            var tech = btn.getAttribute('data-tech');
+            if (activeTech === tech) {
+                activeTech = null;
+                btn.classList.remove('active');
+            } else {
+                activeTech = tech;
+                document.querySelectorAll('.works-filter-btn[data-tech]').forEach(function(b) {
+                    b.classList.toggle('active', b === btn);
+                });
+            }
+        }
+
+        applyFilters();
+    });
+})();

@@ -164,6 +164,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary);
 }
 
+.highlight {
+    color: var(--primary);
+}
+
 .tagline {
     font-size: 1.2rem;
     color: var(--text-muted);

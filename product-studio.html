@@ -84,9 +84,26 @@
         <div class="container">
             <h2 class="sub-title">The Works<span style="color: var(--primary);">.</span></h2>
 
-            <div class="pro-grid">
+            <!-- Works Filter Bar -->
+            <div class="works-filter-bar">
+                <div class="works-filter-group">
+                    <span class="filter-label">Type</span>
+                    <button class="works-filter-btn active" data-filter="all">All</button>
+                    <button class="works-filter-btn" data-filter="freelance">Freelance</button>
+                    <button class="works-filter-btn" data-filter="personal">Personal</button>
+                    <button class="works-filter-btn" data-filter="open-source">Open Source</button>
+                </div>
+                <div class="works-filter-group">
+                    <span class="filter-label">Stack</span>
+                    <button class="works-filter-btn" data-tech="ai">AI / ML</button>
+                    <button class="works-filter-btn" data-tech="react">React</button>
+                    <button class="works-filter-btn" data-tech="python">Python</button>
+                </div>
+            </div>
+
+            <div class="pro-grid" id="worksGrid">
                 <!-- Glass LM -->
-                <div class="pro-card" onclick="openProductModal('glasslm')">
+                <div class="pro-card" data-type="personal" data-tech="ai python" onclick="openProductModal('glasslm')">
                     <div class="pro-visual">
                         <img src="images/glasslm-real.png" alt="Glass LM"
                             onerror="this.src='images/placeholder-glass.png'">
@@ -113,7 +130,7 @@
                 </div>
 
                 <!-- Botfolio -->
-                <div class="pro-card" onclick="openProductModal('botfolio')">
+                <div class="pro-card" data-type="open-source" data-tech="ai react" onclick="openProductModal('botfolio')">
                     <div class="pro-visual">
                         <img src="images/botfolio-real.png" alt="Botfolio"
                             onerror="this.src='images/placeholder-botfolio.png'">
@@ -139,35 +156,8 @@
                     </div>
                 </div>
 
-                <!-- Delumie -->
-                <div class="pro-card" onclick="openProductModal('delumie')">
-                    <div class="pro-visual">
-                        <img src="images/delumie-real.png" alt="Delumie"
-                            onerror="this.src='images/placeholder-delumie.png'">
-                        <div class="overlay">
-                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="pro-info">
-                        <div class="pro-header">
-                            <h3>Delumie</h3>
-                            <span class="status-badge beta">Personal Project</span>
-                        </div>
-                        <p class="pro-desc">Local-first AI healthcare companion giving personalized insights while
-                            keeping data 100% offline.</p>
-                        <div class="tech-stack-mini">
-                            <span>Local AI</span>
-                            <span>Privacy</span>
-                            <span>Mobile</span>
-                        </div>
-                        <div class="pro-card-footer" onclick="event.stopPropagation()">
-                            <a href="https://delumie.vercel.app/" target="_blank" rel="noopener noreferrer" class="pro-btn-live"><i class="fas fa-external-link-alt"></i> View Live</a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- FixMyDocs -->
-                <div class="pro-card" onclick="openProductModal('fixmydocs')">
+                <div class="pro-card" data-type="freelance" data-tech="react ai" onclick="openProductModal('fixmydocs')">
                     <div class="pro-visual">
                         <img src="images/fixmydocs-real.png" alt="FixMyDocs"
                             onerror="this.src='images/glass-lm.png'">
@@ -193,85 +183,6 @@
                     </div>
                 </div>
 
-                <!-- RecurrPay -->
-                <div class="pro-card" onclick="openProductModal('recurrpay')">
-                    <div class="pro-visual">
-                        <img src="images/RecurrPay_image1.png" alt="RecurrPay"
-                            onerror="this.src='images/background2.png'">
-                        <div class="overlay">
-                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="pro-info">
-                        <div class="pro-header">
-                            <h3>RecurrPay</h3>
-                            <span class="status-badge live">Freelance</span>
-                        </div>
-                        <p class="pro-desc">Automate recurring payments with UPI + WhatsApp. Built for gyms, tiffin services, tuitions, and every Indian SMB.</p>
-                        <div class="tech-stack-mini">
-                            <span>UPI</span>
-                            <span>WhatsApp API</span>
-                            <span>SaaS</span>
-                        </div>
-                        <div class="pro-card-footer" onclick="event.stopPropagation()">
-                            <a href="https://recurrpay-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="pro-btn-live"><i class="fas fa-external-link-alt"></i> View Live</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Superforms -->
-                <div class="pro-card" onclick="openProductModal('superforms')">
-                    <div class="pro-visual">
-                        <img src="images/superforms-real.png" alt="Superforms"
-                            onerror="this.src='images/placeholder-superforms.png'">
-                        <div class="overlay">
-                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="pro-info">
-                        <div class="pro-header">
-                            <h3>Superforms</h3>
-                            <span class="status-badge dev">In Development</span>
-                        </div>
-                        <p class="pro-desc">Generative UI system converting raw intent into high-conversion, dynamic
-                            forms.</p>
-                        <div class="tech-stack-mini">
-                            <span>GenUI</span>
-                            <span>Vue.js</span>
-                            <span>Growth</span>
-                        </div>
-                        <div class="pro-card-footer" onclick="event.stopPropagation()">
-                            <span class="pro-btn-live disabled"><i class="fas fa-tools"></i> Under Development</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hoomify -->
-                <div class="pro-card" onclick="openProductModal('hoomify')">
-                    <div class="pro-visual">
-                        <img src="images/hoomify-real.png" alt="Hoomify"
-                            onerror="this.src='images/placeholder-hoomify.png'">
-                        <div class="overlay">
-                            <span class="view-text">View Details <i class="fas fa-arrow-right"></i></span>
-                        </div>
-                    </div>
-                    <div class="pro-info">
-                        <div class="pro-header">
-                            <h3>Hoomify</h3>
-                            <span class="status-badge dev">In Development</span>
-                        </div>
-                        <p class="pro-desc">Advanced NLP tool for humanizing AI-generated content, bypassing detection
-                            algorithms.</p>
-                        <div class="tech-stack-mini">
-                            <span>Transformers</span>
-                            <span>Next.js</span>
-                            <span>SaaS</span>
-                        </div>
-                        <div class="pro-card-footer" onclick="event.stopPropagation()">
-                            <span class="pro-btn-live disabled"><i class="fas fa-tools"></i> Under Development</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

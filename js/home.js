@@ -174,13 +174,18 @@ async function sendChatMessage() {
     input.value = '';
     showTyping(true);
 
+    var controller = new AbortController();
+    var timeoutId = setTimeout(function() { controller.abort(); }, 10000);
+
     try {
         var response = await fetch(BACKEND_URL + '/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: message })
+            body: JSON.stringify({ message: message }),
+            signal: controller.signal
         });
 
+        clearTimeout(timeoutId);
         if (!response.ok) throw new Error('HTTP error: ' + response.status);
 
         var data = await response.json();
@@ -190,9 +195,13 @@ async function sendChatMessage() {
             addMessage(data.response || "Sorry, I couldn't process that.");
         }, 800);
     } catch (error) {
-        console.error('Chat error:', error);
+        clearTimeout(timeoutId);
         showTyping(false);
-        addMessage("Sorry, I'm having trouble connecting. Please try again!");
+        if (error.name === 'AbortError') {
+            addMessage("Botiee is waking up — give it a moment and try again!");
+        } else {
+            addMessage("Sorry, I'm having trouble connecting right now. Please try again!");
+        }
     }
 }
 
