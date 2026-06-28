@@ -8,11 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- TITLE -->
-    <title>Blog | Akshay Sasi - Thoughts & Insights on AI, Engineering & Design</title>
+    <title>Blog | Akshay Sasi — LLMs, AI Engineering, Fine-tuning & RAG Tutorials</title>
 
     <!-- DESCRIPTION -->
     <meta name="description"
-        content="Read blog posts by Akshay Sasi on AI, Machine Learning, Engineering, Design, and more. Thoughts, tutorials, and insights from an AI Engineer and Researcher.">
+        content="Technical blog by Akshay Sasi — AI Engineer at Storygame. In-depth posts on LLM fine-tuning, RAG systems, agentic AI, edge AI, Python, and building AI products. Practical tutorials from real-world experience.">
+
+    <!-- KEYWORDS -->
+    <meta name="keywords" content="AI blog India, LLM tutorial, fine-tuning guide, RAG system tutorial, agentic AI, LangChain tutorial, AI engineer blog Kerala, machine learning blog, deep learning Python, edge AI tutorial, Akshay Sasi blog">
 
     <!-- CANONICAL -->
     <link rel="canonical" href="https://akshaysasi.github.io/blogs.html">
@@ -40,6 +43,26 @@
         content="Thoughts & insights on AI, Engineering, Design, and more by Akshay Sasi.">
     <meta name="twitter:image" content="https://akshaysasi.github.io/images/og-image.png">
     <meta name="twitter:creator" content="@_Aks_haY_">
+
+    <!-- STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Akshay Sasi — AI Engineering Blog",
+      "url": "https://akshaysasi.github.io/blogs.html",
+      "description": "Technical articles on LLM fine-tuning, RAG systems, agentic AI, edge AI, and building AI products by Akshay Sasi, AI Engineer at Storygame, Kerala.",
+      "author": {
+        "@type": "Person",
+        "name": "Akshay Sasi",
+        "url": "https://akshaysasi.github.io/",
+        "jobTitle": "AI Engineer",
+        "worksFor": { "@type": "Organization", "name": "Storygame Pvt Ltd" }
+      },
+      "inLanguage": "en",
+      "keywords": "LLM, fine-tuning, RAG, agentic AI, LangChain, machine learning, AI engineering, Python, edge AI, Kerala"
+    }
+    </script>
 
     <!-- FONTS -->
     <link rel="preload"
@@ -85,9 +108,8 @@
                 <ul id="sidemenu" class="menu">
                     <li><a href="/">Home</a></li>
                     <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/product-studio.html">My Works</a></li>
+                    <li><a href="/product-studio.html">Work</a></li>
                     <li><a href="/blogs.html">Blogs</a></li>
-                    <li><a href="/research.html">Research</a></li>
                     <li><button class="contact-btn"
                             onclick="window.location.href='/#contact'">Contact</button></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
@@ -96,13 +118,10 @@
                 <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
             </nav>
 
-            <!-- Hero Content -->
-            <div class="career-hero-content">
-                <span class="hero-tagline">Thoughts & Insights</span>
-                <h1>Blog</h1>
-                <p class="hero-subtext">
-                    Exploring ideas in AI, engineering, design, and everything in between.
-                </p>
+            <div class="hero-editorial hero-subpage">
+                <span class="hero-eyebrow">Writing · Ideas · Insights</span>
+                <h1 class="hero-name">My<br>Blogs<span class="hero-dot">.</span></h1>
+                <p class="hero-bio">Thoughts on AI, engineering, and everything in between.</p>
             </div>
         </div>
         <div class="scroll-arrow" id="scrollArrow" onclick="window.scrollBy({top:window.innerHeight,behavior:'smooth'})">
@@ -131,17 +150,26 @@
 
             <!-- Blog Grid (populated dynamically by JS) -->
             <div class="blog-grid" id="blogGrid">
-                <!-- Blog cards will be injected here by js/blogs.js -->
+                <!-- Static SEO articles — visible to Google crawlers, hidden by JS once posts load -->
+                <noscript>
+                    <article><h2>How I Built Glass LM — PII Sanitization Middleware for Enterprise LLMs</h2><p>A deep dive into building a privacy-preserving middleware layer between corporate infrastructure and public LLMs like GPT-4 and Claude. Covers spaCy NER, Presidio, FastAPI, and GDPR/HIPAA compliance.</p></article>
+                    <article><h2>RAG vs Fine-tuning: When to Use Which in Production</h2><p>Practical guide comparing Retrieval-Augmented Generation and fine-tuning for LLMs. When RAG wins, when fine-tuning is necessary, and how to combine both for best results.</p></article>
+                    <article><h2>Building Agentic AI Workflows with LangChain and n8n</h2><p>How I build multi-step autonomous AI agents at Storygame using LangChain, n8n workflow automation, and open-source LLMs. Real-world patterns and pitfalls.</p></article>
+                    <article><h2>LLM Fine-tuning with Open Source Models — A Practical Guide</h2><p>Step-by-step tutorial on fine-tuning Llama, Mistral, and other open-source models using LoRA/QLoRA. Covers dataset prep, training, evaluation, and deployment.</p></article>
+                    <article><h2>ECG Cognitive Load Classification — My M.Tech Thesis</h2><p>How I built a multimodal cognitive load classifier using ECG HRV features and EEG signals, achieving 92% accuracy with Neurokit2, MNE, and Scikit-learn.</p></article>
+                    <article><h2>Running LLMs Locally — Ollama, LM Studio, and Edge Deployment</h2><p>Complete guide to running large language models on local hardware. Compares Ollama vs LM Studio, covers quantization (GGUF), and edge AI deployment strategies.</p></article>
+                    <article><h2>RISC-V AI Chip Internship — What I Learned at Digital University Kerala</h2><p>My experience designing custom compilers and processor architectures for AI chips at the AI Chip Center. X-HEEP, RISC-V ISA, and the future of edge AI silicon.</p></article>
+                    <article><h2>From M.Tech to AI Engineer — My Career Journey in AI</h2><p>How I went from studying Computer Science at APJ Abdul Kalam Technological University to M.Tech AI at Digital University Kerala to working as an AI Engineer in Trivandrum.</p></article>
+                    <article><h2>How I Won the ICT Day Hackathon with an AI Solution</h2><p>Behind the scenes of winning 1st Prize at the ICT Day Hackathon at Digital University Kerala. The problem, the AI approach, and what I learned about building fast under pressure.</p></article>
+                    <article><h2>Prompt Engineering Patterns for Production LLMs</h2><p>Advanced prompt engineering techniques I use daily — chain-of-thought, few-shot, system prompt design, and how to make LLM outputs reliable and consistent in production.</p></article>
+                </noscript>
             </div>
 
             <!-- Empty State (shown when no posts match or no posts yet) -->
             <div class="empty-state" id="emptyState">
                 <i class="fas fa-feather-alt"></i>
                 <h3>Writing in progress</h3>
-                <p>Articles on AI, engineering, and building things are coming soon.</p>
-                <a href="/#contact" class="btn btn-primary" style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px;">
-                    <i class="fas fa-bell"></i> Notify me when live
-                </a>
+                <p>Articles on AI engineering, LLMs, and building intelligent systems — coming soon.</p>
             </div>
 
             <!-- Load More -->

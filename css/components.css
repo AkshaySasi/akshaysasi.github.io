@@ -824,79 +824,105 @@ nav ul li button.contact-btn::after {
 /* --- RESPONSIVE MOBILE MENU --- */
 @media only screen and (max-width: 768px) {
     nav {
-        justify-content: flex-start;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        background: transparent;
+        position: relative;
+        z-index: 9999;
     }
 
     .logo {
         position: static;
         transform: none;
+        width: 72px;
+        margin: 0;
+        flex-shrink: 0;
     }
 
-    nav .fa-solid {
+    .nav-shortcut-badge {
+        display: none;
+    }
+
+    /* Hamburger icon */
+    nav .fa-bars {
         display: block;
-        font-size: 25px;
+        font-size: 22px;
         color: var(--text-primary);
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        position: static;
+        transform: none;
+        cursor: pointer;
+        padding: 8px;
+        -webkit-tap-highlight-color: transparent;
+        flex-shrink: 0;
     }
 
     nav ul.menu {
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-heavy) var(--glass-saturate);
-        -webkit-backdrop-filter: var(--glass-blur-heavy) var(--glass-saturate);
+        background: rgba(10, 10, 14, 0.96);
+        backdrop-filter: blur(40px) saturate(160%);
+        -webkit-backdrop-filter: blur(40px) saturate(160%);
         border: none;
-        border-left: 1px solid var(--glass-border);
-        border-radius: 30px 0 0 30px;
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px 0 0 24px;
         position: fixed;
         top: 0;
-        right: -250px;
-        width: 250px;
+        right: -280px;
+        width: 280px;
         height: 100vh;
-        padding: 60px 30px;
+        padding: 80px 20px 40px;
         z-index: 99999;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        transition: right var(--ease-smooth);
-        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: -12px 0 48px rgba(0, 0, 0, 0.6);
+        overflow-y: auto;
     }
 
     nav ul.menu li {
         display: block;
-        margin: 15px 0;
+        margin: 6px 0;
         width: 100%;
-        padding: 0 20px;
+        padding: 0;
     }
 
     nav ul.menu li a {
         display: block;
-        padding: 6px 0;
+        padding: 14px 20px;
+        font-size: 17px;
+        border-radius: 10px;
+        transition: background var(--ease-fast), color var(--ease-fast);
+    }
+
+    nav ul.menu li a:hover {
+        background: rgba(0, 93, 216, 0.12);
+        color: var(--primary-light);
+    }
+
+    nav ul.menu li a::after {
+        display: none;
     }
 
     nav ul.menu li .contact-btn {
-        width: 100%;
+        width: calc(100% - 40px);
         display: block;
         text-align: center;
-        padding: 10px 15px;
-        margin-top: 8px;
+        padding: 12px 20px;
+        margin: 16px 20px 0;
         font-size: 16px;
     }
 
     .menu .fa-circle-xmark {
+        display: block !important;
         position: absolute;
-        top: 25px;
-        left: 25px;
-        font-size: 24px;
+        top: 24px;
+        right: 24px;
+        left: auto;
+        font-size: 26px;
         cursor: pointer;
         color: var(--text-primary);
-    }
-
-    .logo {
-        margin-top: 0;
-        margin-left: 0;
-        width: 80px;
+        -webkit-tap-highlight-color: transparent;
+        z-index: 10;
     }
 
     .contact-container {

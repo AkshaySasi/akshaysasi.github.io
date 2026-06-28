@@ -8,7 +8,7 @@ function openmenu() {
     if (sidemenu) sidemenu.style.right = "0";
 }
 function closemenu() {
-    if (sidemenu) sidemenu.style.right = "-250px";
+    if (sidemenu) sidemenu.style.right = "-300px";
 }
 
 // Close menu on link click (mobile)
