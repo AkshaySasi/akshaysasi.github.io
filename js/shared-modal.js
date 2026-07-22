@@ -14,7 +14,7 @@ var textInterval;
 
 function buildCarouselHTML(id, p) {
     var slides = p.gallery.map(function(img) {
-        return '<div class="carousel-slide"><img src="' + img + '" alt="' + p.title + ' Screenshot" onerror="this.src=\'images/background2.png\'"></div>';
+        return '<div class="carousel-slide"><img src="' + img + '" alt="' + p.title + ' Screenshot" onerror="this.src=\'images/background2.webp\'"></div>';
     }).join('');
 
     var arrows = p.gallery.length > 1 ?

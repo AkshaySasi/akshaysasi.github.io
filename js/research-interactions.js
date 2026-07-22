@@ -10,7 +10,7 @@ var researchItems = {
         repoLink: "https://github.com/AkshaySasi/cognitive-load-analysis",
         paperLink: "",
         stack: ["Python", "Muse EEG", "WebBluetooth", "React"],
-        gallery: ["images/background2.png", "images/project_bg.png", "images/users-chart.png"],
+        gallery: ["images/background2.webp", "images/project_bg.webp", "images/users-chart.webp"],
         status: "Research",
         icon: "fas fa-brain",
         stats: [
@@ -18,7 +18,7 @@ var researchItems = {
             { label: "Accuracy", value: "85%", icon: "fa-brain" },
             { label: "Subjects", value: "20+", icon: "fa-user-friends" }
         ],
-        chartImg: "images/users-chart.png",
+        chartImg: "images/users-chart.webp",
         methodology: "This study employs a Muse 2 EEG headband connected via WebBluetooth to stream real-time brainwave data. Alpha/Beta wave ratios are computed using a sliding window FFT pipeline, and the resulting cognitive load index is mapped to UX adaptation rules that dynamically simplify or emphasize interface elements.",
         results: [
             { metric: "Cognitive Load Detection", value: "85%", baseline: "62%", improvement: "+23%" },
@@ -30,7 +30,7 @@ var researchItems = {
             "Dynamic UI simplification reduced task abandonment by 34%",
             "Real-time EEG processing at 50ms latency is achievable with WebBluetooth on modern browsers"
         ],
-        graphImages: ["images/users-chart.png", "images/background2.png"]
+        graphImages: ["images/users-chart.webp", "images/background2.webp"]
     },
     voice_agent: {
         title: "Edge AI Voice Agent",
@@ -39,7 +39,7 @@ var researchItems = {
         repoLink: "https://github.com/AkshaySasi/edge-voice-agent",
         paperLink: "",
         stack: ["C++", "Whisper.cpp", "Llama.cpp", "Edge Impulse"],
-        gallery: ["images/background2.png", "images/project_bg.png", "images/users-chart.png"],
+        gallery: ["images/background2.webp", "images/project_bg.webp", "images/users-chart.webp"],
         status: "Prototype",
         icon: "fas fa-microchip",
         stats: [
@@ -47,7 +47,7 @@ var researchItems = {
             { label: "RAM Usage", value: "4GB", icon: "fa-memory" },
             { label: "Model Size", value: "3.8GB", icon: "fa-save" }
         ],
-        chartImg: "images/users-chart.png",
+        chartImg: "images/users-chart.webp",
         methodology: "The system runs quantized Whisper (tiny.en) for ASR and a 4-bit GPTQ-quantized Llama 3 (3.8B) for reasoning, both compiled with ONNX Runtime on Raspberry Pi 5. Audio capture, VAD, and TTS are handled in a C++ pipeline with Edge Impulse for wake-word detection.",
         results: [
             { metric: "End-to-End Latency", value: "480ms", baseline: "1200ms", improvement: "-60%" },
@@ -59,7 +59,7 @@ var researchItems = {
             "4-bit quantization of Llama 3 preserves 94% of reasoning quality on conversational benchmarks",
             "Wake-word detection via Edge Impulse achieves 97% accuracy with <10ms trigger latency"
         ],
-        graphImages: ["images/users-chart.png", "images/background2.png"]
+        graphImages: ["images/users-chart.webp", "images/background2.webp"]
     },
     brainrot: {
         title: "Alignment Stability Under Progressive Data Corruption",
@@ -68,7 +68,7 @@ var researchItems = {
         repoLink: "https://github.com/AkshaySasi/llm-alignment-corruption",
         paperLink: "",
         stack: ["PyTorch", "HuggingFace", "LoRA", "KL Divergence", "CKA Analysis"],
-        gallery: ["images/background2.png", "images/project_bg.png", "images/users-chart.png"],
+        gallery: ["images/background2.webp", "images/project_bg.webp", "images/users-chart.webp"],
         status: "Research",
         icon: "fas fa-shield-alt",
 
@@ -78,7 +78,7 @@ var researchItems = {
             { label: "Corruption Types", value: "4", icon: "fa-random" }
         ],
 
-        chartImg: "images/users-chart.png",
+        chartImg: "images/users-chart.webp",
 
         methodology: "Using GPT-2 Medium (355M) with LoRA fine-tuning, we progressively replaced 0% to 100% of clean instruction-following data with structured corruption (toxic, misinformation, semantic noise, slang). We evaluated 18 model variants across four dimensions: alignment score (toxicity, refusal rate, adherence), language modeling capability (perplexity, coherence, accuracy), distributional drift via KL divergence between logits, and representation geometry using CKA similarity across layers.",
 
@@ -111,7 +111,7 @@ var researchItems = {
             "Representation geometry (CKA) provides continuous early warning even when safety scores appear stable"
         ],
 
-        graphImages: ["images/users-chart.png", "images/background2.png"]
+        graphImages: ["images/users-chart.webp", "images/background2.webp"]
     }
 };
 

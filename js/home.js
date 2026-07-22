@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     rollToNumber('xp-counter', 2);
     rollToNumber('project-counter', 10);
+    rollToNumber('works-counter', 2);
+    rollToNumber('pub-counter', 3);
 });
 
 // --- Experience Tab Switching ---
@@ -138,7 +140,7 @@ function addMessage(text, isUser) {
 
     var avatarContent = isUser
         ? '<i class="fas fa-user"></i>'
-        : '<img src="/images/Botiy.png" alt="Botiee" class="message-avatar-image">';
+        : '<img src="/images/Botiy.webp" alt="Botiee" class="message-avatar-image">';
 
     messageDiv.innerHTML =
         '<div class="message-avatar ' + (isUser ? 'user-avatar' : '') + '">' +
@@ -256,6 +258,250 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(gridContainer);
     });
 });
+
+// --- GitHub Live Activity ---
+document.addEventListener('DOMContentLoaded', function() {
+    var commitsEl = document.getElementById('github-commits');
+    if (!commitsEl) return;
+
+    function timeAgo(dateStr) {
+        var diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
+        if (diff < 60)    return Math.floor(diff) + 's ago';
+        if (diff < 3600)  return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
+        return Math.floor(diff / 604800) + 'w ago';
+    }
+
+    function escapeHtml(str) {
+        var d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    fetch('https://api.github.com/users/AkshaySasi/events/public')
+        .then(function(res) {
+            if (!res.ok) throw new Error('API error');
+            return res.json();
+        })
+        .then(function(events) {
+            var items = [];
+            events.forEach(function(e) {
+                if (e.type === 'PushEvent' && e.payload.commits) {
+                    e.payload.commits.forEach(function(c) {
+                        items.push({
+                            repo: e.repo.name.replace('AkshaySasi/', ''),
+                            msg: c.message.split('\n')[0],
+                            time: e.created_at,
+                            sha: c.sha ? c.sha.substring(0, 7) : ''
+                        });
+                    });
+                }
+            });
+
+            items = items.slice(0, 5);
+
+            if (items.length === 0) {
+                commitsEl.innerHTML = '<div class="github-loading">No recent push activity found.</div>';
+                return;
+            }
+
+            commitsEl.innerHTML = items.map(function(item) {
+                return '<div class="github-commit-item">' +
+                    '<span class="commit-dot"></span>' +
+                    '<div class="commit-info">' +
+                        '<div class="commit-repo">' + escapeHtml(item.repo) +
+                            (item.sha ? ' <span style="opacity:0.4">·</span> <span style="opacity:0.5;font-size:0.7rem">' + item.sha + '</span>' : '') +
+                        '</div>' +
+                        '<div class="commit-msg">' + escapeHtml(item.msg) + '</div>' +
+                    '</div>' +
+                    '<span class="commit-time">' + timeAgo(item.time) + '</span>' +
+                '</div>';
+            }).join('');
+        })
+        .catch(function() {
+            commitsEl.innerHTML = '<div class="github-loading">Could not load activity — <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer" style="color:var(--primary-light)">view on GitHub</a></div>';
+        });
+});
+
+// --- 4D Tesseract Animation (HyperShadow Paper) ---
+document.addEventListener('DOMContentLoaded', function() {
+    var canvas = document.getElementById('tesseract-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+    var cx = W / 2, cy = H / 2;
+    var a1 = 0, a2 = 0;
+
+    // 16 vertices of a 4D hypercube (all ±1 combinations)
+    var verts = [];
+    for (var i = 0; i < 16; i++) {
+        verts.push([(i&1)?1:-1, (i&2)?1:-1, (i&4)?1:-1, (i&8)?1:-1]);
+    }
+    // 32 edges: pairs differing in exactly 1 coordinate
+    var edges = [];
+    for (var i = 0; i < 16; i++) {
+        for (var j = i + 1; j < 16; j++) {
+            var d = i ^ j;
+            if (d && !(d & (d - 1))) edges.push([i, j]);
+        }
+    }
+
+    function rotate4D(v) {
+        var x = v[0], y = v[1], z = v[2], w = v[3];
+        // XW plane rotation
+        var nx = x * Math.cos(a1) - w * Math.sin(a1);
+        var nw = x * Math.sin(a1) + w * Math.cos(a1);
+        // YZ plane rotation
+        var ny = y * Math.cos(a2) - z * Math.sin(a2);
+        var nz = y * Math.sin(a2) + z * Math.cos(a2);
+        return [nx, ny, nz, nw];
+    }
+
+    function project4Dto2D(v) {
+        // 4D → 3D (perspective on w)
+        var d1 = 2.8 / (2.8 - v[3]);
+        var x3 = v[0] * d1, y3 = v[1] * d1, z3 = v[2] * d1;
+        // 3D → 2D (perspective on z)
+        var d2 = 2.8 / (2.8 - z3);
+        return [cx + x3 * d2 * 50, cy + y3 * d2 * 50, v[3]];
+    }
+
+    function drawTesseract() {
+        ctx.clearRect(0, 0, W, H);
+        var pts = verts.map(function(v) { return project4Dto2D(rotate4D(v)); });
+
+        edges.forEach(function(e) {
+            var p = pts[e[0]], q = pts[e[1]];
+            var depth = ((p[2] + q[2]) / 2 + 1) / 2; // 0–1
+            ctx.beginPath();
+            ctx.moveTo(p[0], p[1]);
+            ctx.lineTo(q[0], q[1]);
+            ctx.strokeStyle = 'rgba(0,170,255,' + (0.15 + depth * 0.75) + ')';
+            ctx.lineWidth = depth > 0.65 ? 1.5 : 0.7;
+            ctx.stroke();
+        });
+
+        pts.forEach(function(p, i) {
+            var depth = (verts[i][3] + 1) / 2;
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], 1.8, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0,170,255,' + (0.35 + depth * 0.55) + ')';
+            ctx.fill();
+        });
+
+        a1 += 0.007;
+        a2 += 0.011;
+        requestAnimationFrame(drawTesseract);
+    }
+
+    drawTesseract();
+});
+
+// --- ECG Waveform Animation (Heart-Brain Paper) ---
+document.addEventListener('DOMContentLoaded', function() {
+    var canvas = document.getElementById('ecg-canvas');
+    if (!canvas) return;
+
+    // Set canvas pixel buffer to match rendered size
+    var rect = canvas.getBoundingClientRect();
+    if (rect.width > 0) canvas.width = rect.width;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+    var offset = 0;
+
+    function ecgY(t) {
+        var x = ((t % 1) + 1) % 1;
+        if (x < 0.08) return 0;
+        if (x < 0.18) return 0.13 * Math.sin((x - 0.08) / 0.1 * Math.PI);
+        if (x < 0.29) return 0;
+        if (x < 0.31) return -0.07 * ((x - 0.29) / 0.02);
+        if (x < 0.33) return -0.07 + (x - 0.31) / 0.02 * 1.07;
+        if (x < 0.36) return 1.0 - (x - 0.33) / 0.03 * 1.12;
+        if (x < 0.38) return -0.12 + (x - 0.36) / 0.02 * 0.12;
+        if (x < 0.5) return 0;
+        if (x < 0.68) return 0.2 * Math.sin((x - 0.5) / 0.18 * Math.PI);
+        return 0;
+    }
+
+    function drawECG() {
+        ctx.clearRect(0, 0, W, H);
+
+        // Subtle grid
+        ctx.strokeStyle = 'rgba(0,93,216,0.08)';
+        ctx.lineWidth = 0.5;
+        for (var gx = 0; gx < W; gx += 20) {
+            ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+        }
+        for (var gy = 0; gy < H; gy += 15) {
+            ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+        }
+
+        var cycleLen = 100;
+        var amp = H * 0.33;
+        var mid = H * 0.62;
+
+        // Glowing waveform
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(0,170,255,0.85)';
+        ctx.lineWidth = 1.5;
+        ctx.shadowColor = 'rgba(0,170,255,0.4)';
+        ctx.shadowBlur = 6;
+
+        for (var px = 0; px < W; px++) {
+            var y = mid - ecgY((px + offset) / cycleLen) * amp;
+            if (px === 0) ctx.moveTo(px, y);
+            else ctx.lineTo(px, y);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Glowing dot at right edge (latest sample)
+        var rT = (W - 1 + offset) / cycleLen;
+        var rY = mid - ecgY(rT) * amp;
+        ctx.beginPath();
+        ctx.arc(W - 1, rY, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#00aaff';
+        ctx.shadowColor = 'rgba(0,170,255,0.9)';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        offset += 1.2;
+        requestAnimationFrame(drawECG);
+    }
+
+    drawECG();
+});
+
+// --- Scroll Reveal (IntersectionObserver) ---
+document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var delay = entry.target.dataset.delay || 0;
+                setTimeout(function() {
+                    entry.target.classList.add('visible');
+                }, parseInt(delay));
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+});
+
+// --- Abstract Toggle ---
+function toggleAbstract(btn) {
+    var card = btn.closest('.publication-card');
+    var abstract = card.querySelector('.pub-abstract');
+    var isOpen = abstract.classList.contains('open');
+    abstract.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+    btn.querySelector('.toggle-text').textContent = isOpen ? 'Read abstract' : 'Collapse abstract';
+}
 
 // --- Terminal Card Typing Animation ---
 document.addEventListener('DOMContentLoaded', function() {

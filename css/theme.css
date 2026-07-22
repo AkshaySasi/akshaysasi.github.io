@@ -2,6 +2,16 @@
    THEME - CSS Variables, Resets, Typography
    ========================================== */
 
+/* SEO entity paragraph — visible to crawlers, invisible to users */
+.seo-entity-description {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+}
+
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -86,8 +96,8 @@
     --font-mono: 'JetBrains Mono', monospace;
 
     /* Header BG */
-    --header-bg: url(/images/background2.png);
-    --header-bg-mobile: url(/images/phone-background1.png);
+    --header-bg: url(/images/background2.webp);
+    --header-bg-mobile: url(/images/phone-background1.webp);
 }
 
 /* ==========================================

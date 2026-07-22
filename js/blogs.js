@@ -13,6 +13,43 @@
     var loadMoreBtn = document.getElementById('loadMoreBtn');
     var emptyState = document.getElementById('emptyState');
 
+    // Medium articles — always shown, open in new tab
+    var mediumPosts = [
+        {
+            slug: 'hypershadow-4d-ai',
+            title: 'I Taught an AI to Recognize the Shadows of Four-Dimensional Objects',
+            excerpt: 'A 190k-parameter PointNet achieves 96.6% accuracy distinguishing native 3D point clouds from projections of 4D–6D objects. A novel "rigidity witness" statistic reaches AUROC 0.982.',
+            cover_image: 'images/hypershadow-medium-article-image.webp',
+            published_at: '2026-07-17',
+            reading_time: '8',
+            tags: ['AI', 'Research', 'Mathematics'],
+            category: 'Research',
+            external_url: 'https://medium.com/@akshaysasi12.knr/i-taught-an-ai-to-recognize-the-shadows-of-four-dimensional-objects-28fa7076c9bf'
+        },
+        {
+            slug: 'heart-brain-thinking',
+            title: 'Your Heart Knows How Hard You\'re Thinking!',
+            excerpt: 'How ECG signals reveal cognitive load — the research behind my M.Tech thesis on using heart rate variability to classify mental effort with 92% accuracy.',
+            cover_image: 'images/heartbrain-medium_image.webp',
+            published_at: '2025-07-05',
+            reading_time: '6',
+            tags: ['AI', 'Research', 'Neuroscience'],
+            category: 'Research',
+            external_url: 'https://medium.com/@akshaysasi12.knr/your-heart-knows-how-hard-youre-thinking-2bd30cce1fa9'
+        },
+        {
+            slug: 'clique-subspace-clustering',
+            title: 'Clique: A Novel Framework for Subspace Clustering of High Dimensional Data',
+            excerpt: 'An exploration of the CLIQUE algorithm for density-based subspace clustering — how it finds clusters in high-dimensional spaces where traditional methods fail.',
+            cover_image: 'images/cliq.webp',
+            published_at: '2023-12-22',
+            reading_time: '7',
+            tags: ['AI', 'Engineering', 'Machine Learning'],
+            category: 'Engineering',
+            external_url: 'https://medium.com/@akshaysasi12.knr/clique-a-novel-framework-for-subspace-clustering-of-high-dimensional-data-fac971c5096b'
+        }
+    ];
+
     var allPosts = [];
     var filteredPosts = [];
     var currentTag = 'all';
@@ -23,7 +60,11 @@
     // Fetch blog posts from Supabase
     async function fetchPosts() {
         if (!supabaseClient) {
-            showEmptyState();
+            // No Supabase — show Medium posts only
+            allPosts = mediumPosts.slice();
+            filteredPosts = allPosts.slice();
+            hideEmptyState();
+            renderPosts();
             return;
         }
 
@@ -36,18 +77,19 @@
 
             if (result.error) throw result.error;
 
-            allPosts = result.data || [];
+            var supabasePosts = result.data || [];
+            // Merge: Supabase posts first (newest), then Medium articles
+            allPosts = supabasePosts.concat(mediumPosts);
             filteredPosts = allPosts.slice();
-
-            if (allPosts.length === 0) {
-                showEmptyState();
-            } else {
-                hideEmptyState();
-                renderPosts();
-            }
+            hideEmptyState();
+            renderPosts();
         } catch (err) {
             console.warn('Blog fetch error:', err);
-            showEmptyState();
+            // Still show Medium posts even if Supabase fails
+            allPosts = mediumPosts.slice();
+            filteredPosts = allPosts.slice();
+            hideEmptyState();
+            renderPosts();
         }
     }
 
@@ -74,9 +116,13 @@
                 year: 'numeric', month: 'short', day: 'numeric'
             }) : '';
 
+            var isExternal = !!post.external_url;
+            var externalBadge = isExternal ? '<span class="blog-card-external"><i class="fab fa-medium"></i> Medium</span>' : '';
+
             card.innerHTML =
                 '<div class="blog-card-image">' +
-                    '<img src="' + (post.cover_image || '/images/blog-placeholder.png') + '" alt="' + escapeHtml(post.title) + '" onerror="this.src=\'/images/background2.png\'">' +
+                    '<img src="' + (post.cover_image || '/images/blog-placeholder.webp') + '" alt="' + escapeHtml(post.title) + '" onerror="this.src=\'/images/background2.webp\'">' +
+                    externalBadge +
                 '</div>' +
                 '<div class="blog-card-body">' +
                     '<div class="blog-card-tags">' + tagsHTML + '</div>' +
@@ -88,9 +134,16 @@
                     '</div>' +
                 '</div>';
 
-            card.addEventListener('click', function() {
-                openBlogDetail(post);
-            });
+            if (isExternal) {
+                card.addEventListener('click', function() {
+                    window.open(post.external_url, '_blank', 'noopener noreferrer');
+                });
+                card.style.cursor = 'pointer';
+            } else {
+                card.addEventListener('click', function() {
+                    openBlogDetail(post);
+                });
+            }
 
             blogGrid.appendChild(card);
         });

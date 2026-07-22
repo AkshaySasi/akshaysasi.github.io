@@ -9,7 +9,7 @@ var projectsData = {
         repoLink: "https://github.com/AkshaySasi/Baymax-AI",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/baymax.png", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/baymax.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Reinforcement Learning", "Google Gemini", "Text Embedding", "ReactJS"],
         status: "Featured",
         features: [
@@ -28,7 +28,7 @@ var projectsData = {
             "Multi-turn context retention increases user engagement by 34%",
             "Sentiment-aware tone adaptation reduces negative user feedback by 45%"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Training a sentiment-aware model required handling imbalanced datasets. Solved by using data augmentation and fine-tuning with a balanced loss function."
     },
     groove: {
@@ -37,7 +37,7 @@ var projectsData = {
         repoLink: "https://github.com/AkshaySasi/GROOVE",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/groove.webp", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/groove.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Transformers", "Google Gemini", "Diffusion models"],
         status: "Featured",
         features: [
@@ -56,7 +56,7 @@ var projectsData = {
             "CLIP similarity scores improve by 24% compared to single-pass generation",
             "Agentic prompt refinement outperforms manual prompt engineering in blind tests"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Ensuring high relevance in search results was challenging. Addressed by implementing a hybrid retrieval system with semantic search."
     },
     heartbrain: {
@@ -65,7 +65,7 @@ var projectsData = {
         repoLink: "https://github.com/AkshaySasi/Unveiling-the-Heart-Brain-Connection-An-Analysis-of-ECG-in-Cognitive-Performanc",
         paperLink: "https://example.com/heart-brain-paper",
         demoLink: "",
-        gallery: ["images/Heart_brain.jpg", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/Heart_brain.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["PyTorch", "Neurokit2", "MNE", "Scikit-learn"],
         status: "Published",
         features: [
@@ -84,7 +84,7 @@ var projectsData = {
             "Multimodal fusion outperforms single-modality approaches by 17% in accuracy",
             "Catch22 feature set reduces dimensionality while preserving discriminative power"
         ],
-        graphImages: ["images/users-chart.png", "images/Heart_brain.jpg"],
+        graphImages: ["images/users-chart.webp", "images/Heart_brain.webp"],
         challenges: "Synchronizing ECG and EEG data posed timing issues. Resolved with a time-alignment algorithm and cross-validation."
     },
     texture: {
@@ -93,7 +93,7 @@ var projectsData = {
         repoLink: "",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/texture_analysis.jpg", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/texture_analysis.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["MCA", "Image Segmentation", "Computer Vision"],
         status: "Research",
         features: [
@@ -112,7 +112,7 @@ var projectsData = {
             "Adaptive thresholding compensates for lighting variations in agricultural imaging",
             "The framework generalizes across multiple product categories with minimal retraining"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Lighting variations affected detection. Mitigated with adaptive thresholding and image preprocessing."
     },
     genscraper: {
@@ -121,7 +121,7 @@ var projectsData = {
         repoLink: "https://github.com/AkshaySasi/GEN-SCRAPER",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/amazon-web-scraping.png", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/amazon-web-scraping.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Python", "Selenium", "Hugging Face"],
         status: "Complete",
         features: [
@@ -140,7 +140,7 @@ var projectsData = {
             "Headless browser with retry logic handles 92% of CAPTCHA challenges",
             "AI-generated reviews exhibit statistically lower lexical diversity than human reviews"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Handling CAPTCHA was difficult. Overcame by integrating a headless browser with retry logic."
     },
     pryme: {
@@ -149,7 +149,7 @@ var projectsData = {
         repoLink: "",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/work-2.png", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/work-2.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Java", "XML", "Face Recognition"],
         status: "Featured",
         features: [
@@ -168,7 +168,7 @@ var projectsData = {
             "On-device face recognition provides strong authentication without cloud dependency",
             "Anonymous posting mode increases user engagement by 28% in privacy-sensitive communities"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Ensuring end-to-end encryption performance was a challenge. Optimized with lightweight cryptographic libraries."
     },
     mcgt: {
@@ -177,7 +177,7 @@ var projectsData = {
         repoLink: "https://github.com/AkshaySasi/MCGT-Morse-Code-Gesture-Translator",
         paperLink: "",
         demoLink: "",
-        gallery: ["images/work-1.png", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/work-1.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Python", "OpenCV", "Machine Learning"],
         status: "Featured",
         features: [
@@ -196,7 +196,7 @@ var projectsData = {
             "Skin-color segmentation works reliably across diverse skin tones with calibration",
             "Morse code timing thresholds require adaptive adjustment based on user speed"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Developing robust gesture recognition required extensive testing with different lighting conditions and hand sizes. Solved by implementing a dual-validation system that cross-checks gestures with temporal patterns."
     },
     sapience: {
@@ -205,7 +205,7 @@ var projectsData = {
         repoLink: "",
         paperLink: "",
         demoLink: "https://www.sapienceconnect.com/",
-        gallery: ["images/Sap_jpg.jpg", "images/background2.png", "images/project_bg.png"],
+        gallery: ["images/Sap_jpg.webp", "images/background2.webp", "images/project_bg.webp"],
         stack: ["Canva", "Inshot", "Branding"],
         status: "Complete",
         features: [
@@ -224,7 +224,7 @@ var projectsData = {
             "Consistent brand identity across channels increases social media engagement",
             "Video-first promotional content outperforms static imagery for educational brands"
         ],
-        graphImages: ["images/users-chart.png"],
+        graphImages: ["images/users-chart.webp"],
         challenges: "Balancing creativity with client feedback was challenging. Managed through iterative design reviews and mockups."
     }
 };

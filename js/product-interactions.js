@@ -11,13 +11,13 @@ var products = {
         statusBadge: "live",
         statusLabel: "Personal Project",
         stack: ["Python", "FastAPI", "Docker", "Redis", "Local NLP"],
-        gallery: ["images/glasslm-real.png", "images/glasslm.png", "images/background2.png"],
+        gallery: ["images/glasslm-real.webp", "images/glasslm.webp", "images/background2.webp"],
         stats: [
             { label: "PII Entities Supported", value: "40+", icon: "fa-shield-alt" },
             { label: "Avg Sanitization Latency", value: "<45ms", icon: "fa-bolt" },
             { label: "LLM Providers Compatible", value: "5+", icon: "fa-plug" }
         ],
-        chartImg: "images/users-chart.png",
+        chartImg: "images/users-chart.webp",
         features: [
             { icon: "fa-shield-alt", title: "PII Sanitization Pipeline", desc: "Automatically detects and redacts 40+ entity types including names, banking info, and addresses before data leaves the premise." },
             { icon: "fa-lock", title: "Data Sovereignty Guarantee", desc: "All processing happens on-premise. Zero sensitive data transmitted to external LLM providers." },
@@ -46,13 +46,13 @@ var products = {
         statusBadge: "beta",
         statusLabel: "Open Source",
         stack: ["React", "LangChain", "OpenAI", "Pinecone"],
-        gallery: ["images/botfolio-real.png", "images/Botfolio.png", "images/background2.png"],
+        gallery: ["images/botfolio-real.webp", "images/Botfolio.webp", "images/background2.webp"],
         stats: [
             { label: "Embedding Dimensions", value: "1536", icon: "fa-database" },
             { label: "Avg Query Response", value: "<1.2s", icon: "fa-clock" },
             { label: "Context Window Used", value: "8k tokens", icon: "fa-brain" }
         ],
-        chartImg: "images/users-chart.png",
+        chartImg: "images/users-chart.webp",
         features: [
             { icon: "fa-robot", title: "Embedded RAG Chatbot", desc: "Every portfolio comes with an AI agent that accurately answers recruiter questions using your actual experience data." },
             { icon: "fa-file-import", title: "JSON Resume / LinkedIn Import", desc: "Import your professional data in seconds. Supports JSON Resume standard and LinkedIn profile exports." },
