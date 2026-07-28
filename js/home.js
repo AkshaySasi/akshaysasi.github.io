@@ -259,69 +259,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// --- GitHub Live Activity ---
+// --- GitHub Stats ---
 document.addEventListener('DOMContentLoaded', function() {
-    var commitsEl = document.getElementById('github-commits');
-    if (!commitsEl) return;
+    var reposEl    = document.getElementById('gh-repos');
+    var starsEl    = document.getElementById('gh-stars');
+    var followersEl = document.getElementById('gh-followers');
+    if (!reposEl) return;
 
-    function timeAgo(dateStr) {
-        var diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
-        if (diff < 60)    return Math.floor(diff) + 's ago';
-        if (diff < 3600)  return Math.floor(diff / 60) + 'm ago';
-        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
-        if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
-        return Math.floor(diff / 604800) + 'w ago';
-    }
+    // Fetch user profile + all repos in parallel
+    Promise.all([
+        fetch('https://api.github.com/users/AkshaySasi').then(function(r) { return r.json(); }),
+        fetch('https://api.github.com/users/AkshaySasi/repos?per_page=100').then(function(r) { return r.json(); })
+    ]).then(function(results) {
+        var user  = results[0];
+        var repos = results[1];
 
-    function escapeHtml(str) {
-        var d = document.createElement('div');
-        d.textContent = str;
-        return d.innerHTML;
-    }
+        var totalStars = 0;
+        if (Array.isArray(repos)) {
+            repos.forEach(function(r) { totalStars += r.stargazers_count || 0; });
+        }
 
-    fetch('https://api.github.com/users/AkshaySasi/events/public')
-        .then(function(res) {
-            if (!res.ok) throw new Error('API error');
-            return res.json();
-        })
-        .then(function(events) {
-            var items = [];
-            events.forEach(function(e) {
-                if (e.type === 'PushEvent' && e.payload.commits) {
-                    e.payload.commits.forEach(function(c) {
-                        items.push({
-                            repo: e.repo.name.replace('AkshaySasi/', ''),
-                            msg: c.message.split('\n')[0],
-                            time: e.created_at,
-                            sha: c.sha ? c.sha.substring(0, 7) : ''
-                        });
-                    });
-                }
-            });
-
-            items = items.slice(0, 5);
-
-            if (items.length === 0) {
-                commitsEl.innerHTML = '<div class="github-loading">No recent push activity found.</div>';
-                return;
-            }
-
-            commitsEl.innerHTML = items.map(function(item) {
-                return '<div class="github-commit-item">' +
-                    '<span class="commit-dot"></span>' +
-                    '<div class="commit-info">' +
-                        '<div class="commit-repo">' + escapeHtml(item.repo) +
-                            (item.sha ? ' <span style="opacity:0.4">·</span> <span style="opacity:0.5;font-size:0.7rem">' + item.sha + '</span>' : '') +
-                        '</div>' +
-                        '<div class="commit-msg">' + escapeHtml(item.msg) + '</div>' +
-                    '</div>' +
-                    '<span class="commit-time">' + timeAgo(item.time) + '</span>' +
-                '</div>';
-            }).join('');
-        })
-        .catch(function() {
-            commitsEl.innerHTML = '<div class="github-loading">Could not load activity — <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer" style="color:var(--primary-light)">view on GitHub</a></div>';
-        });
+        if (reposEl)     reposEl.textContent     = user.public_repos  || '—';
+        if (starsEl)     starsEl.textContent      = totalStars         || '—';
+        if (followersEl) followersEl.textContent  = user.followers     || '—';
+    }).catch(function() {
+        // Leave dashes on error — looks intentional, not broken
+    });
 });
 
 // --- 4D Tesseract Animation (HyperShadow Paper) ---
@@ -503,35 +466,3 @@ function toggleAbstract(btn) {
     btn.querySelector('.toggle-text').textContent = isOpen ? 'Read abstract' : 'Collapse abstract';
 }
 
-// --- Terminal Card Typing Animation ---
-document.addEventListener('DOMContentLoaded', function() {
-    var terminalBody = document.getElementById('terminal-body');
-    if (!terminalBody) return;
-
-    var lines = terminalBody.children;
-    // Hide all lines initially
-    for (var i = 0; i < lines.length; i++) {
-        lines[i].style.opacity = '0';
-        lines[i].style.transform = 'translateY(8px)';
-        lines[i].style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    }
-
-    var terminalObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                // Reveal lines one by one
-                for (var j = 0; j < lines.length; j++) {
-                    (function(index) {
-                        setTimeout(function() {
-                            lines[index].style.opacity = '1';
-                            lines[index].style.transform = 'translateY(0)';
-                        }, index * 200);
-                    })(j);
-                }
-                terminalObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    terminalObserver.observe(terminalBody);
-});
