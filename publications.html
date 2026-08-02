@@ -20,6 +20,89 @@
     <meta property="og:url" content="https://akshaysasi.github.io/publications.html">
     <meta property="og:type" content="website">
 
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Publications | Akshay Sasi">
+    <meta name="twitter:description" content="Papers and preprints on LLM privacy, higher-dimensional geometry, and cognitive computing.">
+    <meta name="twitter:image" content="https://akshaysasi.github.io/images/og-image.webp">
+    <meta name="twitter:creator" content="@_Aks_haY_">
+
+    <!-- STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Publications — Akshay Sasi",
+      "url": "https://akshaysasi.github.io/publications.html",
+      "description": "Peer-reviewed papers and arXiv preprints by Akshay Sasi on LLM privacy and quantization, higher-dimensional geometry benchmarks, and ECG-based cognitive load analysis.",
+      "author": {
+        "@type": "Person",
+        "name": "Akshay Sasi",
+        "url": "https://akshaysasi.github.io/",
+        "jobTitle": "AI Engineer",
+        "sameAs": [
+          "https://arxiv.org/search/?searchtype=author&query=Akshay+Sasi",
+          "https://huggingface.co/AkshaySasi",
+          "https://github.com/AkshaySasi"
+        ]
+      },
+      "inLanguage": "en",
+      "hasPart": [
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Bits and Memories: Measuring Verbatim Extraction Across LLM Quantization",
+          "name": "Bits and Memories: Measuring Verbatim Extraction Across LLM Quantization",
+          "url": "https://arxiv.org/abs/2607.25451",
+          "identifier": "arXiv:2607.25451",
+          "datePublished": "2026-07-28",
+          "inLanguage": "en",
+          "author": { "@type": "Person", "name": "Akshay Sasi" },
+          "publisher": { "@type": "Organization", "name": "arXiv" },
+          "about": ["Large Language Models", "Quantization", "Privacy", "Memorization"],
+          "keywords": "LLM quantization, verbatim extraction, memorization, privacy, Pythia, cs.LG, cs.CR",
+          "abstract": "Quantization is a selective forgetter: verbatim memorization falls off faster than general capability at every precision and model size tested, across two quantization algorithms and two evaluation corpora. However, at the largest model studied, four-bit quantization still reproduces most memorized sequences while giving up only a few percent of capability — so compression should not be treated as a way to remove memorized training data.",
+          "codeRepository": "https://github.com/AkshaySasi/bits-and-memories"
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "HyperShadow: A Benchmark for Detecting 3D Projections of Higher-Dimensional Spatial Objects",
+          "name": "HyperShadow: A Benchmark for Detecting 3D Projections of Higher-Dimensional Spatial Objects",
+          "url": "https://arxiv.org/abs/2607.14419",
+          "identifier": "arXiv:2607.14419",
+          "datePublished": "2026-07-15",
+          "inLanguage": "en",
+          "author": { "@type": "Person", "name": "Akshay Sasi" },
+          "publisher": { "@type": "Organization", "name": "arXiv" },
+          "about": ["Point Clouds", "Higher-Dimensional Geometry", "PointNet", "Benchmarks"],
+          "keywords": "HyperShadow, point cloud classification, 4D geometry, PointNet, rigidity witness, cs.LG, cs.CG",
+          "abstract": "A benchmark and lightweight model suite for classifying whether a 3D point cloud is a native 3D object or the orthographic projection of a higher-dimensional (4D–6D) object. A 190,000-parameter PointNet baseline achieves 96.6% accuracy, and a parameter-free 'rigidity witness' statistic reaches AUROC 0.982.",
+          "codeRepository": "https://github.com/AkshaySasi/hypershadow"
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "Unveiling the Heart-Brain Connection: An Analysis of ECG in Cognitive Performance",
+          "name": "Unveiling the Heart-Brain Connection: An Analysis of ECG in Cognitive Performance",
+          "url": "https://arxiv.org/abs/2601.01424",
+          "identifier": "arXiv:2601.01424",
+          "datePublished": "2026-01-01",
+          "inLanguage": "en",
+          "author": [
+            { "@type": "Person", "name": "Akshay Sasi" },
+            { "@type": "Person", "name": "Malavika Pradeep" },
+            { "@type": "Person", "name": "Nusaibah Farrukh" },
+            { "@type": "Person", "name": "Rahul Venugopal" },
+            { "@type": "Person", "name": "Elizabeth Sherly" }
+          ],
+          "publisher": { "@type": "Organization", "name": "arXiv" },
+          "about": ["ECG", "Heart Rate Variability", "Cognitive Load", "Multimodal Classification"],
+          "keywords": "ECG, HRV, cognitive load, Neurokit2, EEG, multimodal classification",
+          "abstract": "Electrocardiogram signals as non-invasive indicators of cognitive load. Heart rate variability features combined with EEG features yield a multimodal classifier achieving 92% accuracy in predicting cognitive load levels across subjects.",
+          "codeRepository": "https://github.com/AkshaySasi/Unveiling-the-Heart-Brain-Connection-An-Analysis-of-ECG-in-Cognitive-Performance"
+        }
+      ]
+    }
+    </script>
+
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -221,7 +304,6 @@
             <div class="footer-section">
                 <h3>More</h3>
                 <ul class="footer-links">
-                    <li><a href="/research.html"><i class="fas fa-arrow-right"></i> Research</a></li>
                     <li><a href="/#about"><i class="fas fa-arrow-right"></i> About</a></li>
                     <li><a href="/#experience"><i class="fas fa-arrow-right"></i> Experience</a></li>
                     <li><a href="/#skills"><i class="fas fa-arrow-right"></i> Skills</a></li>

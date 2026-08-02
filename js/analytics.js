@@ -51,7 +51,7 @@
 
     // Track clicks on interactive elements
     document.addEventListener('click', function(e) {
-        var target = e.target.closest('a, button, .project-card, .pro-card, .research-card, .blog-card');
+        var target = e.target.closest('a, button, .project-card, .pro-card, .blog-card');
         if (target) trackClick(target);
     });
 })();

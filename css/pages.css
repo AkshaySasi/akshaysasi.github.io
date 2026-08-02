@@ -1997,47 +1997,6 @@
     transform: translateY(-2px);
 }
 
-/* ==========================================
-   PRODUCT STUDIO PAGE
-   ========================================== */
-.career-hero-content {
-    margin-top: 15%;
-    max-width: 800px;
-}
-
-.hero-tagline {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: var(--primary);
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.career-hero-content h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.career-hero-content h1 .highlight {
-    color: var(--primary);
-}
-
-.hero-subtext {
-    font-size: 18px;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    line-height: 1.6;
-    max-width: 600px;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 20px;
-}
-
 /* Product Grid */
 #live-products {
     padding: 80px 0;
@@ -2639,89 +2598,6 @@
 }
 
 /* ==========================================
-   RESEARCH PAGE
-   ========================================== */
-#research-section {
-    padding: 80px 0;
-}
-
-.research-filter-bar {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.research-card {
-    background: var(--bg-card);
-    padding: 30px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
-    transition: all var(--ease-normal);
-    cursor: pointer;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.research-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--primary-border);
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-accent);
-}
-
-.research-icon {
-    font-size: 24px;
-    color: var(--primary);
-    background: var(--primary-subtle);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.research-details h4 {
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: var(--text-primary);
-}
-
-.research-details p {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-    line-height: 1.5;
-}
-
-.research-tag {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    border: 1px solid var(--border-medium);
-    padding: 2px 8px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-right: 8px;
-}
-
-.research-tag.active { color: var(--success); border-color: var(--success); }
-.research-tag.prototype { color: var(--warning); border-color: var(--warning); }
-.research-tag.published { color: var(--primary-light); border-color: var(--primary-light); }
-
-/* ==========================================
    RESEARCH / PROJECT DETAIL (rd-* prefix)
    Results tables, findings, graph grids
    ========================================== */
@@ -3248,27 +3124,29 @@
            Sections use z-index 1, which already paints them over this. */
     }
 
-    /* Whatever follows the hero on any page: clears it and covers it. */
+    /* Whatever follows the hero on any page clears its full height. */
     #header + * {
-        position: relative;
-        z-index: 1;
         margin-top: 100svh;
     }
 
-    /* Sections that ship no background of their own would let the pinned
-       hero show through, so give those (and only those) an opaque one. */
-    #header + #live-products,
-    #header + #blog-section,
-    #header + #publications {
-        background: var(--bg-body);
-    }
-
-    /* Everything after that sits above the pinned hero too */
-    footer.premium-footer,
-    #contact {
+    /* Every content section must paint ABOVE the pinned hero. Miss one and
+       the hero shows through it while scrolling. */
+    #about, #experience, #skills, #achievements, #publications,
+    #services, #projects, #contact, #responsibilities,
+    #blog-section, #blog-detail, #live-products,
+    #footer, footer.premium-footer {
         position: relative;
         z-index: 1;
-        background: var(--bg-body);
+    }
+
+    /* ...and must be opaque. :where() has zero specificity, so any section
+       that defines its own background (e.g. #projects, #achievements) still
+       wins — this only fills in the ones that would otherwise be see-through. */
+    :where(#about, #experience, #skills, #achievements, #publications,
+           #services, #projects, #contact, #responsibilities,
+           #blog-section, #blog-detail, #live-products,
+           #footer, footer.premium-footer) {
+        background-color: var(--bg-body);
     }
 
     /* Scroll perf: a blur() behind every card forces the compositor to
@@ -3617,15 +3495,6 @@
     .blog-search { width: 100%; }
     .blog-detail-title { font-size: 1.5rem; }
 
-    /* -- Research -- */
-    .research-grid { grid-template-columns: 1fr; gap: 14px; }
-    .career-hero-content { margin-top: 40%; }
-    .career-hero-content h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
-    .hero-subtext { font-size: 14px; }
-    .hero-actions { flex-direction: column; gap: 10px; }
-    .hero-actions .btn-primary,
-    .hero-actions .btn-secondary { width: 100%; text-align: center; }
-
     /* -- Research modal -- */
     .rd-results-table th, .rd-results-table td { padding: 10px 10px; font-size: 12px; }
     .rd-findings-list li { padding: 10px 12px; font-size: 13px; }
@@ -3665,19 +3534,6 @@
 
     .rd-graph-grid {
         grid-template-columns: 1fr;
-    }
-
-    /* -- Research -- */
-    .research-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .career-hero-content {
-        margin-top: 45vh;
-    }
-
-    .career-hero-content h1 {
-        font-size: 36px;
     }
 
     /* -- Counter -- */
@@ -4145,18 +4001,7 @@
 }
 
 /* Hero actions — mobile full width */
-@media (max-width: 600px) {
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .hero-actions .btn-primary,
-    .hero-actions .btn-secondary {
-        width: 100%;
-        text-align: center;
-    }
-}
+@media (max-width: 600px) {}
 
 /* Pro-card full width on mobile */
 @media (max-width: 600px) {
@@ -4183,24 +4028,7 @@
 }
 
 /* Career hero (other pages) mobile */
-@media (max-width: 600px) {
-    .career-hero-content {
-        margin-top: 35%;
-    }
-
-    .career-hero-content h1 {
-        font-size: clamp(2rem, 10vw, 2.8rem);
-    }
-
-    .hero-subtext {
-        font-size: 15px;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
+@media (max-width: 600px) {}
 
 /* ==========================================
    GITHUB STATS BAR

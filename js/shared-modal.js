@@ -2,7 +2,7 @@
    SHARED MODAL UTILITIES
    Carousel, Results Table, Methodology,
    Key Findings, Graph Grid — used by
-   product-studio, research, and projects pages
+   product-studio and projects pages
    ========================================== */
 
 var carouselState = {};
