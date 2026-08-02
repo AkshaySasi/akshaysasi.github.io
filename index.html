@@ -67,7 +67,7 @@
           "name": "Digital University Kerala",
           "url": "https://duk.ac.in"
         },
-        "description": "Akshay Sasi is an AI Engineer, researcher, and technologist from Kerala, India. Currently engineering at Storygame, Trivandrum, specializing in LLM fine-tuning, RAG systems, agentic AI workflows, and edge AI. M.Tech AI (Second Rank) from Digital University Kerala. Published researcher on arXiv with work spanning cognitive computing and higher-dimensional geometry.",
+        "description": "Akshay Sasi is an AI Engineer, researcher, and technologist from Kerala, India. Currently engineering at Storygame, Trivandrum, specializing in LLM fine-tuning, RAG systems, agentic AI workflows, and edge AI. M.Tech AI (Second Rank) from Digital University Kerala. Published researcher on arXiv with work spanning LLM privacy, cognitive computing, and higher-dimensional geometry.",
         "knowsAbout": ["Large Language Models", "Fine-tuning", "RAG", "Agentic AI", "Machine Learning", "Deep Learning", "LangChain", "Python", "Edge AI", "Computer Vision"],
         "nationality": "Indian",
         "address": { "@type": "PostalAddress", "addressLocality": "Kannur", "addressRegion": "Kerala", "addressCountry": "IN" },
@@ -93,6 +93,14 @@
           "1st Prize — Business Model Competition, Digital University Kerala, 2024"
         ],
         "workExample": [
+          {
+            "@type": "ScholarlyArticle",
+            "name": "Bits and Memories: Measuring Verbatim Extraction Across LLM Quantization",
+            "url": "https://arxiv.org/abs/2607.25451",
+            "author": { "@type": "Person", "name": "Akshay Sasi" },
+            "datePublished": "2026-07-28",
+            "publisher": { "@type": "Organization", "name": "arXiv" }
+          },
           {
             "@type": "ScholarlyArticle",
             "name": "HyperShadow: A Benchmark for Detecting 3D Projections of Higher-Dimensional Spatial Objects",
@@ -149,7 +157,7 @@
 <body>
     <!-- SEO entity paragraph — crawled by Google for featured snippet -->
     <p class="seo-entity-description">
-        Akshay Sasi is an AI Engineer, researcher, and technologist from Kerala, India. He currently works at Storygame Pvt Ltd, Technopark, Trivandrum, where he specializes in LLM fine-tuning, RAG systems, agentic AI workflows, and open-source model inferencing. He holds an M.Tech in Computer Science & Engineering with AI specialization from Digital University Kerala, graduating Second Rank. Akshay is an active researcher on arXiv with published work in cognitive computing (ECG-based cognitive load classification) and higher-dimensional geometry (HyperShadow benchmark). He has built open-source AI products including Glass LM, an enterprise LLM privacy middleware, and Botfolio, a RAG-powered portfolio builder.
+        Akshay Sasi is an AI Engineer, researcher, and technologist from Kerala, India. He currently works at Storygame Pvt Ltd, Technopark, Trivandrum, where he specializes in LLM fine-tuning, RAG systems, agentic AI workflows, and open-source model inferencing. He holds an M.Tech in Computer Science & Engineering with AI specialization from Digital University Kerala, graduating Second Rank. Akshay is an active researcher on arXiv with published work in LLM privacy and quantization (Bits and Memories), cognitive computing (ECG-based cognitive load classification), and higher-dimensional geometry (HyperShadow benchmark). He has built open-source AI products including Glass LM, an enterprise LLM privacy middleware, and Botfolio, a RAG-powered portfolio builder.
     </p>
 
     <!-- Splash Screen -->
@@ -167,6 +175,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/projects.html">Projects</a></li>
                     <li><a href="/product-studio.html">Work</a></li>
+                    <li><a href="/publications.html">Publications</a></li>
                     <li><a href="/blogs.html">Blogs</a></li>
                     <li><button class="contact-btn" onclick="window.location.href='/#contact'">Contact</button></li>
                     <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
@@ -176,9 +185,8 @@
             </nav>
 
             <div class="hero-editorial">
-                <span class="hero-eyebrow">AI Engineer · Researcher · Builder</span>
                 <h1 class="hero-name">Akshay<br>Sasi<span class="hero-dot">.</span></h1>
-                <p class="hero-bio">I build intelligent AI systems.</p>
+                <p class="hero-bio">I build and deploy intelligent AI systems.</p>
             </div>
         </div>
     </div>
@@ -192,8 +200,7 @@
                 <!-- Left Column: Profile -->
                 <div class="about-profile-col">
                     <div class="profile-image">
-                        <img src="images/user-nobg.png" alt="Akshay Sasi" loading="lazy">
-                        <img src="images/user-nobg.png" alt="" aria-hidden="true" class="profile-head-pop">
+                        <img src="images/user-nobg.webp" alt="Akshay Sasi" loading="lazy">
                     </div>
                     <h3 class="profile-name">Akshay Sasi</h3>
                     <p class="profile-role">AI Engineer</p>
@@ -224,7 +231,7 @@
                         </div>
                         <div class="bio-fact">
                             <span class="bio-label">Research <span class="bio-arrow">→</span></span>
-                            <span class="bio-value">2 papers on arXiv — cognitive AI and higher-dimensional geometry.</span>
+                            <span class="bio-value">3 papers on arXiv — LLM privacy, cognitive AI, and higher-dimensional geometry.</span>
                         </div>
                         <div class="bio-fact">
                             <span class="bio-label">Education <span class="bio-arrow">→</span></span>
@@ -670,42 +677,36 @@
 
             <div class="publications-container">
 
-                <!-- Paper 1 — HyperShadow (newest first) -->
-                <div class="publication-card pub-card-tesseract reveal">
-                    <canvas id="tesseract-canvas" width="130" height="130"></canvas>
+                <!-- Paper 1 — Bits and Memories (newest first) -->
+                <div class="publication-card pub-card-quant reveal">
+                    <canvas id="quant-canvas" width="130" height="130"></canvas>
                     <h3 class="pub-title">
-                        HyperShadow: A Benchmark for Detecting 3D Projections of Higher-Dimensional Spatial Objects
+                        Bits and Memories: Measuring Verbatim Extraction Across LLM Quantization
                     </h3>
                     <p class="pub-authors">
                         <strong class="pub-label">Author:</strong> Akshay Sasi
                     </p>
-                    <p class="pub-venue"><em>arXiv preprint</em> · cs.LG, cs.CG · July 2026</p>
+                    <p class="pub-venue"><em>arXiv preprint</em> · cs.LG, cs.CR · July 2026</p>
                     <div class="publication-links">
-                        <a href="https://arxiv.org/abs/2607.14419" target="_blank" rel="noopener noreferrer" class="pub-link">
+                        <a href="https://arxiv.org/abs/2607.25451" target="_blank" rel="noopener noreferrer" class="pub-link">
                             <i class="fas fa-file-alt"></i> arXiv
                         </a>
-                        <a href="https://github.com/AkshaySasi/hypershadow" target="_blank" rel="noopener noreferrer" class="pub-link">
+                        <a href="https://github.com/AkshaySasi/bits-and-memories" target="_blank" rel="noopener noreferrer" class="pub-link">
                             <i class="fab fa-github"></i> Code
                         </a>
-                        <a href="https://huggingface.co/datasets/AkshaySasi/hypershadow" target="_blank" rel="noopener noreferrer" class="pub-link">
+                        <a href="https://huggingface.co/datasets/AkshaySasi/bits-and-memories" target="_blank" rel="noopener noreferrer" class="pub-link">
                             <i class="fas fa-database"></i> Dataset
-                        </a>
-                        <a href="https://huggingface.co/AkshaySasi/hypershadow-models" target="_blank" rel="noopener noreferrer" class="pub-link">
-                            <i class="fas fa-brain"></i> Models
-                        </a>
-                        <a href="https://medium.com/@akshaysasi12.knr/i-taught-an-ai-to-recognize-the-shadows-of-four-dimensional-objects-28fa7076c9bf" target="_blank" rel="noopener noreferrer" class="pub-link">
-                            <i class="fab fa-medium"></i> Article
                         </a>
                     </div>
                     <p class="pub-conference">
                         <i class="fas fa-flask"></i>
-                        A 190k-parameter PointNet achieves <strong>96.6% accuracy</strong> distinguishing native 3D point clouds from projections of 4D–6D objects. Novel "rigidity witness" statistic reaches <strong>AUROC 0.982</strong>. Dataset: 10,800 point clouds + 1,800 rotating sequences.
+                        Quantization selectively erases verbatim memorization faster than general capability across Pythia models and five precision levels — but at the largest scale, <strong>4-bit models still reproduce most memorized sequences</strong> while sacrificing only a few percent of perplexity. Validated under two quantization algorithms and two evaluation corpora.
                     </p>
                     <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
                         <span class="toggle-text">Read abstract</span> <span class="toggle-arrow">↓</span>
                     </button>
                     <div class="pub-abstract">
-                        We introduce HyperShadow, a benchmark and lightweight model suite for the task of classifying whether a 3D point cloud is a native 3D object or the orthographic projection ("shadow") of a higher-dimensional spatial object (4D–6D). A 190,000-parameter PointNet baseline achieves 96.6% accuracy on this novel task. We also propose the <em>rigidity witness</em> — a parameter-free geometric statistic that achieves AUROC 0.982, providing an interpretable counterpart to the learned classifier. The dataset contains 10,800 static point clouds and 1,800 rotating projection sequences generated from synthetic 4D–6D convex polytopes, released under CC BY 4.0. Code, model weights, and the full dataset are open-sourced.
+                        Language models are almost always quantized before they are deployed, and a growing line of work asks whether quantization also lowers their privacy risk. That work measures privacy almost entirely with membership inference. We think this is the wrong thing to measure for the risk that most people actually worry about, namely a model reproducing its training data word for word, and we measure that directly. Using the Pythia models and the public set of sequences each of them is known to have memorized, we track verbatim extraction across five precision levels, from full precision down to four bits, and across three model sizes, while measuring general capability (perplexity) at every point. We find two things. Quantization is a selective forgetter: verbatim memorization falls off faster than capability at every precision and every model size we tried, and this holds under two unrelated quantization algorithms and two evaluation corpora. But the selectivity is not enough to make quantization a privacy defense, which cuts against the optimistic reading of earlier membership-inference results. At the largest model we study, four-bit quantization still reproduces most of the memorized sequences while giving up only a few percent of capability, and the fraction of memorized data that survives quantization grows with model size. We conclude that compression should not be treated as a way to remove memorized training data, and that extraction, not membership inference, is the number practitioners should be watching.
                     </div>
                 </div>
 
@@ -746,6 +747,12 @@
                     </div>
                     <canvas id="ecg-canvas" width="800" height="65"></canvas>
                 </div>
+            </div>
+
+            <div class="view-more reveal" data-delay="150">
+                <a href="/publications.html" class="view-more-btn">
+                    View All Publications <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -1014,6 +1021,7 @@
     <!-- JavaScript -->
     <script src="/js/shared.js" defer></script>
     <script src="/js/home.js" defer></script>
+    <script src="/js/publications.js" defer></script>
 
     <!-- Supabase + Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>

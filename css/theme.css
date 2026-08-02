@@ -121,7 +121,10 @@ body {
     background: var(--bg-body);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
+    /* `clip` prevents sideways overflow without turning <body> into a second
+       scroll container nested inside <html>'s — that nesting is what makes
+       mobile scrolling feel like it catches between sections. */
+    overflow-x: clip;
 }
 
 code, pre {
@@ -241,7 +244,9 @@ h1, h2, h3, h4, h5, h6 {
     .container,
     .container-a {
         padding: 20px 5%;
-        overflow-x: hidden;
+        /* No overflow-x here: `hidden` on a box makes it a scroll container
+           in BOTH axes, so every section got its own scrollbar and stole the
+           page's vertical scroll gesture. <html> already clips horizontally. */
     }
 
     .section-title {

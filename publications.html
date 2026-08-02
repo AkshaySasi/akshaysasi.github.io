@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Akshay Sasi</title>
+    <meta name="description" content="Peer-reviewed papers and arXiv preprints by Akshay Sasi on LLM privacy and quantization, higher-dimensional geometry benchmarks, and ECG-based cognitive load analysis.">
+    <link rel="canonical" href="https://akshaysasi.github.io/publications.html">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#000000">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Publications | Akshay Sasi">
+    <meta property="og:description" content="Papers and preprints on LLM privacy, higher-dimensional geometry, and cognitive computing.">
+    <meta property="og:image" content="https://akshaysasi.github.io/images/og-image.webp">
+    <meta property="og:url" content="https://akshaysasi.github.io/publications.html">
+    <meta property="og:type" content="website">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/pages.css">
+
+    <!-- ICONS -->
+    <script src="https://kit.fontawesome.com/380e254419.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body>
+    <div id="splash">
+        <img src="images/logo.webp" alt="Logo" class="splash-logo" loading="lazy">
+        <div class="spinner"></div>
+    </div>
+
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="/images/logo.webp" class="logo" alt="Akshay Sasi Logo" onclick="window.location.href='/'" style="cursor:pointer;">
+                <ul id="sidemenu" class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/projects.html">Projects</a></li>
+                    <li><a href="/product-studio.html">Work</a></li>
+                    <li><a href="/publications.html">Publications</a></li>
+                    <li><a href="/blogs.html">Blogs</a></li>
+                    <li><button class="contact-btn" onclick="window.location.href='/#contact'">Contact</button></li>
+                    <i class="fa-solid fa-circle-xmark" onclick="closemenu()" aria-label="Close menu"></i>
+                </ul>
+                <span class="nav-shortcut-badge" onclick="openCmdPalette()"><i class="fas fa-search"></i> Ctrl+K</span>
+                <i class="fa-solid fa-bars" onclick="openmenu()" aria-label="Open menu"></i>
+            </nav>
+
+            <div class="hero-editorial hero-subpage">
+                <h1 class="hero-name">My<br>Publications<span class="hero-dot">.</span></h1>
+                <p class="hero-bio">Papers, preprints, and the datasets behind them.</p>
+            </div>
+        </div>
+        <div class="scroll-arrow" id="scrollArrow" onclick="window.scrollBy({top:window.innerHeight,behavior:'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+
+    <div id="publications" class="section">
+        <div class="container">
+            <h1 class="section-title">All Publications<span class="highlight">.</span></h1>
+
+            <div class="publications-container">
+
+                <!-- Paper 1 — Bits and Memories (newest first) -->
+                <div class="publication-card pub-card-quant reveal">
+                    <canvas id="quant-canvas" width="130" height="130"></canvas>
+                    <h3 class="pub-title">
+                        Bits and Memories: Measuring Verbatim Extraction Across LLM Quantization
+                    </h3>
+                    <p class="pub-authors">
+                        <strong class="pub-label">Author:</strong> Akshay Sasi
+                    </p>
+                    <p class="pub-venue"><em>arXiv preprint</em> · cs.LG, cs.CR · July 2026</p>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2607.25451" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-file-alt"></i> arXiv
+                        </a>
+                        <a href="https://github.com/AkshaySasi/bits-and-memories" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/datasets/AkshaySasi/bits-and-memories" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-database"></i> Dataset
+                        </a>
+                    </div>
+                    <p class="pub-conference">
+                        <i class="fas fa-flask"></i>
+                        Quantization selectively erases verbatim memorization faster than general capability across Pythia models and five precision levels — but at the largest scale, <strong>4-bit models still reproduce most memorized sequences</strong> while sacrificing only a few percent of perplexity. Validated under two quantization algorithms and two evaluation corpora.
+                    </p>
+                    <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+                        <span class="toggle-text">Read abstract</span> <span class="toggle-arrow">↓</span>
+                    </button>
+                    <div class="pub-abstract">
+                        Language models are almost always quantized before they are deployed, and a growing line of work asks whether quantization also lowers their privacy risk. That work measures privacy almost entirely with membership inference. We think this is the wrong thing to measure for the risk that most people actually worry about, namely a model reproducing its training data word for word, and we measure that directly. Using the Pythia models and the public set of sequences each of them is known to have memorized, we track verbatim extraction across five precision levels, from full precision down to four bits, and across three model sizes, while measuring general capability (perplexity) at every point. We find two things. Quantization is a selective forgetter: verbatim memorization falls off faster than capability at every precision and every model size we tried, and this holds under two unrelated quantization algorithms and two evaluation corpora. But the selectivity is not enough to make quantization a privacy defense, which cuts against the optimistic reading of earlier membership-inference results. At the largest model we study, four-bit quantization still reproduces most of the memorized sequences while giving up only a few percent of capability, and the fraction of memorized data that survives quantization grows with model size. We conclude that compression should not be treated as a way to remove memorized training data, and that extraction, not membership inference, is the number practitioners should be watching.
+                    </div>
+                </div>
+
+                <!-- Paper 2 — HyperShadow -->
+                <div class="publication-card pub-card-tesseract reveal" data-delay="150">
+                    <canvas id="tesseract-canvas" width="130" height="130"></canvas>
+                    <h3 class="pub-title">
+                        HyperShadow: A Benchmark for Detecting 3D Projections of Higher-Dimensional Spatial Objects
+                    </h3>
+                    <p class="pub-authors">
+                        <strong class="pub-label">Author:</strong> Akshay Sasi
+                    </p>
+                    <p class="pub-venue"><em>arXiv preprint</em> · cs.LG, cs.CG · July 2026</p>
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2607.14419" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-file-alt"></i> arXiv
+                        </a>
+                        <a href="https://github.com/AkshaySasi/hypershadow" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        <a href="https://huggingface.co/datasets/AkshaySasi/hypershadow" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-database"></i> Dataset
+                        </a>
+                        <a href="https://huggingface.co/AkshaySasi/hypershadow-models" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-brain"></i> Models
+                        </a>
+                        <a href="https://medium.com/@akshaysasi12.knr/i-taught-an-ai-to-recognize-the-shadows-of-four-dimensional-objects-28fa7076c9bf" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fab fa-medium"></i> Article
+                        </a>
+                    </div>
+                    <p class="pub-conference">
+                        <i class="fas fa-flask"></i>
+                        A 190k-parameter PointNet achieves <strong>96.6% accuracy</strong> distinguishing native 3D point clouds from projections of 4D–6D objects. Novel "rigidity witness" statistic reaches <strong>AUROC 0.982</strong>. Dataset: 10,800 point clouds + 1,800 rotating sequences.
+                    </p>
+                    <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+                        <span class="toggle-text">Read abstract</span> <span class="toggle-arrow">↓</span>
+                    </button>
+                    <div class="pub-abstract">
+                        We introduce HyperShadow, a benchmark and lightweight model suite for the task of classifying whether a 3D point cloud is a native 3D object or the orthographic projection ("shadow") of a higher-dimensional spatial object (4D–6D). A 190,000-parameter PointNet baseline achieves 96.6% accuracy on this novel task. We also propose the <em>rigidity witness</em> — a parameter-free geometric statistic that achieves AUROC 0.982, providing an interpretable counterpart to the learned classifier. The dataset contains 10,800 static point clouds and 1,800 rotating projection sequences generated from synthetic 4D–6D convex polytopes, released under CC BY 4.0. Code, model weights, and the full dataset are open-sourced.
+                    </div>
+                </div>
+
+                <!-- Paper 3 — Heart-Brain -->
+                <div class="publication-card reveal" data-delay="300">
+                    <h3 class="pub-title">
+                        Unveiling the Heart-Brain Connection: An Analysis of ECG in Cognitive Performance
+                    </h3>
+
+                    <p class="pub-authors">
+                        <strong class="pub-label">Authors:</strong> Akshay Sasi, Malavika Pradeep, Nusaibah
+                        Farrukh, Rahul Venugopal, Elizabeth Sherly
+                    </p>
+
+                    <p class="pub-venue"><em>arXiv preprint</em> · 2026</p>
+
+                    <div class="publication-links">
+                        <a href="https://arxiv.org/abs/2601.01424" target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fas fa-file-alt"></i> arXiv
+                        </a>
+                        <a href="https://github.com/AkshaySasi/Unveiling-the-Heart-Brain-Connection-An-Analysis-of-ECG-in-Cognitive-Performance"
+                            target="_blank" rel="noopener noreferrer" class="pub-link">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+
+                    <p class="pub-conference">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        Presented at the <em>International Conference on Artificial Intelligence for Healthcare (AIHC
+                            2025)</em>,
+                        National Institute of Technology Calicut, December 2025.
+                    </p>
+                    <button class="pub-abstract-toggle" onclick="toggleAbstract(this)">
+                        <span class="toggle-text">Read abstract</span> <span class="toggle-arrow">↓</span>
+                    </button>
+                    <div class="pub-abstract">
+                        This study investigates electrocardiogram (ECG) signals as non-invasive indicators of cognitive load. Heart rate variability (HRV) features — time-domain, frequency-domain, and nonlinear measures (Catch22 feature set) — are extracted via Neurokit2 and combined with EEG features processed with MNE. A multimodal classifier trained on these features achieves <strong>92% accuracy</strong> in predicting cognitive load levels across subjects. Key predictors include SDNN, RMSSD, and the LF/HF ratio. Our findings establish a reliable, non-invasive pathway toward cognitive state monitoring, with applications in adaptive learning systems and human–computer interaction.
+                    </div>
+                    <canvas id="ecg-canvas" width="800" height="65"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/shared.js" defer></script>
+    <script src="/js/publications.js" defer></script>
+
+    <!-- Supabase + Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="/js/supabase-client.js"></script>
+    <script src="/js/analytics.js" defer></script>
+
+    <!-- Premium Footer -->
+    <footer class="premium-footer">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-section footer-brand">
+                <img src="images/logo.webp" alt="Logo" class="footer-logo">
+                <p>AI Engineer & Researcher crafting intelligent solutions with machine learning and creative
+                    design.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/"><i class="fas fa-arrow-right"></i> Home</a></li>
+                    <li><a href="/projects.html"><i class="fas fa-arrow-right"></i> Projects</a></li>
+                    <li><a href="/product-studio.html"><i class="fas fa-arrow-right"></i> Work</a></li>
+                    <li><a href="/publications.html"><i class="fas fa-arrow-right"></i> Publications</a></li>
+                    <li><a href="/blogs.html"><i class="fas fa-arrow-right"></i> Blogs</a></li>
+                </ul>
+            </div>
+
+            <!-- More -->
+            <div class="footer-section">
+                <h3>More</h3>
+                <ul class="footer-links">
+                    <li><a href="/research.html"><i class="fas fa-arrow-right"></i> Research</a></li>
+                    <li><a href="/#about"><i class="fas fa-arrow-right"></i> About</a></li>
+                    <li><a href="/#experience"><i class="fas fa-arrow-right"></i> Experience</a></li>
+                    <li><a href="/#skills"><i class="fas fa-arrow-right"></i> Skills</a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p style="color: #888; font-size: 0.9rem; margin-bottom: 15px;">Let's build something amazing
+                    together</p>
+                <div class="footer-social-links">
+                    <a href="https://linkedin.com/in/akshay-sasi" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/AkshaySasi" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://twitter.com/_Aks_haY_" target="_blank" rel="noopener noreferrer"
+                        aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/akshaysasi_" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <p>Copyright © <span id="currentYear">2026</span> Akshay Sasi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Command Palette -->
+    <div class="cmd-palette-overlay" id="cmdPalette">
+        <div class="cmd-palette">
+            <div class="cmd-palette-input-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmdPaletteInput" placeholder="Type a command or search..." autocomplete="off">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="cmd-palette-results" id="cmdPaletteResults"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

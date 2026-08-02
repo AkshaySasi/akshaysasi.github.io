@@ -857,72 +857,195 @@ nav ul li button.contact-btn::after {
         flex-shrink: 0;
     }
 
+    /* ==========================================
+       MOBILE MENU — full-screen circular reveal
+       The panel is always full-bleed; it opens by growing a clip-path
+       circle out of the hamburger, so the menu appears to unfold from
+       the button you pressed rather than sliding in from nowhere.
+       ========================================== */
     nav ul.menu {
-        background: rgba(10, 10, 14, 0.96);
-        backdrop-filter: blur(40px) saturate(160%);
-        -webkit-backdrop-filter: blur(40px) saturate(160%);
-        border: none;
-        border-left: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 24px 0 0 24px;
         position: fixed;
-        top: 0;
-        right: -280px;
-        width: 280px;
-        height: 100vh;
-        padding: 80px 20px 40px;
+        inset: 0;
+        width: 100%;
+        height: 100dvh;
+        border: none;
+        border-radius: 0;
+        background: #0a0a0e;
+        padding: 0 32px;
         z-index: 99999;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: flex-start;
-        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -12px 0 48px rgba(0, 0, 0, 0.6);
-        overflow-y: auto;
+        gap: 0;
+        overflow: hidden;
+        counter-reset: navitem;
+
+        /* Collapsed into a dot behind the hamburger (top-right) */
+        clip-path: circle(0px at calc(100% - 34px) 38px);
+        visibility: hidden;
+        transition: clip-path 0.65s cubic-bezier(0.76, 0, 0.24, 1),
+                    visibility 0s linear 0.65s;
+    }
+
+    nav ul.menu.open {
+        clip-path: circle(150% at calc(100% - 34px) 38px);
+        visibility: visible;
+        transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    visibility 0s linear 0s;
+    }
+
+    /* Faint grid so the empty space reads as designed, not blank */
+    nav ul.menu::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 34px 34px;
+        pointer-events: none;
+    }
+
+    /* Accent wash bleeding in from the corner the menu grew out of */
+    nav ul.menu::after {
+        content: '';
+        position: absolute;
+        top: -30%;
+        right: -30%;
+        width: 90%;
+        height: 60%;
+        background: radial-gradient(circle, rgba(0, 93, 216, 0.20), transparent 70%);
+        pointer-events: none;
     }
 
     nav ul.menu li {
         display: block;
-        margin: 6px 0;
         width: 100%;
+        margin: 0;
         padding: 0;
+        position: relative;
+        z-index: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+        /* Each row lifts in behind the expanding circle */
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
+
+    nav ul.menu.open li {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Staggered entrance — reversed on close so it collapses top-down */
+    nav ul.menu.open li:nth-child(1) { transition-delay: 0.16s; }
+    nav ul.menu.open li:nth-child(2) { transition-delay: 0.22s; }
+    nav ul.menu.open li:nth-child(3) { transition-delay: 0.28s; }
+    nav ul.menu.open li:nth-child(4) { transition-delay: 0.34s; }
+    nav ul.menu.open li:nth-child(5) { transition-delay: 0.40s; }
+    nav ul.menu.open li:nth-child(6) { transition-delay: 0.46s; }
 
     nav ul.menu li a {
-        display: block;
-        padding: 14px 20px;
-        font-size: 17px;
-        border-radius: 10px;
-        transition: background var(--ease-fast), color var(--ease-fast);
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        padding: 20px 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.7rem, 8vw, 2.4rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        border-radius: 0;
+        transition: color var(--ease-fast), transform var(--ease-fast);
     }
 
-    nav ul.menu li a:hover {
-        background: rgba(0, 93, 216, 0.12);
-        color: var(--primary-light);
+    /* Mono index numbers, generated so the markup stays clean */
+    nav ul.menu li a::before {
+        counter-increment: navitem;
+        content: counter(navitem, decimal-leading-zero);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        color: var(--primary);
+        opacity: 0.55;
     }
 
     nav ul.menu li a::after {
         display: none;
     }
 
+    nav ul.menu li a:hover,
+    nav ul.menu li a:active,
+    nav ul.menu li a.active {
+        color: var(--primary-light);
+        background: none;
+        transform: translateX(6px);
+    }
+
+    /* Contact sits apart from the list — it's an action, not a destination */
+    nav ul.menu li:last-of-type {
+        border-bottom: none;
+        margin-top: 28px;
+    }
+
     nav ul.menu li .contact-btn {
-        width: calc(100% - 40px);
+        width: 100%;
         display: block;
         text-align: center;
-        padding: 12px 20px;
-        margin: 16px 20px 0;
-        font-size: 16px;
+        padding: 16px 20px;
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: 0.04em;
     }
 
     .menu .fa-circle-xmark {
         display: block !important;
         position: absolute;
-        top: 24px;
-        right: 24px;
+        top: 26px;
+        right: 26px;
         left: auto;
-        font-size: 26px;
+        font-size: 28px;
         cursor: pointer;
         color: var(--text-primary);
         -webkit-tap-highlight-color: transparent;
         z-index: 10;
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.6);
+        transition: opacity 0.4s ease 0.1s,
+                    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+                    color var(--ease-fast);
+    }
+
+    .menu.open .fa-circle-xmark {
+        opacity: 0.85;
+        transform: none;
+    }
+
+    .menu .fa-circle-xmark:active {
+        color: var(--primary-light);
+    }
+
+    /* Wordmark in the dead space at the bottom of the panel */
+    nav ul.menu li:last-of-type::after {
+        content: 'akshaysasi.github.io';
+        display: block;
+        margin-top: 26px;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        nav ul.menu,
+        nav ul.menu li,
+        .menu .fa-circle-xmark {
+            transition-duration: 0.01s !important;
+            transition-delay: 0s !important;
+        }
     }
 
     .contact-container {

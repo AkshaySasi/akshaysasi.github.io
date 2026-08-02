@@ -4,12 +4,26 @@
 
 // --- Mobile Menu ---
 var sidemenu = document.getElementById("sidemenu");
+
 function openmenu() {
-    if (sidemenu) sidemenu.style.right = "0";
+    if (!sidemenu) return;
+    sidemenu.classList.add("open");
+    // Freeze the page behind the overlay so scrolling can't bleed through
+    document.body.style.overflow = "hidden";
 }
+
 function closemenu() {
-    if (sidemenu) sidemenu.style.right = "-300px";
+    if (!sidemenu) return;
+    sidemenu.classList.remove("open");
+    document.body.style.overflow = "";
 }
+
+// Escape closes the menu, same as the × button
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape" && sidemenu && sidemenu.classList.contains("open")) {
+        closemenu();
+    }
+});
 
 // Close menu on link click (mobile)
 document.addEventListener('DOMContentLoaded', function() {
@@ -95,6 +109,7 @@ var cmdPaletteItems = [
     { label: 'Skills', icon: 'fas fa-code', url: '/#skills' },
     { label: 'Projects', icon: 'fas fa-project-diagram', url: '/projects.html' },
     { label: 'My Works', icon: 'fas fa-rocket', url: '/product-studio.html' },
+    { label: 'Publications', icon: 'fas fa-file-alt', url: '/publications.html' },
     { label: 'Blogs', icon: 'fas fa-pen-fancy', url: '/blogs.html' },
     { label: 'Research', icon: 'fas fa-flask', url: '/research.html' },
     { label: 'Contact', icon: 'fas fa-envelope', url: '/#contact' },
@@ -205,4 +220,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === overlay) closeCmdPalette();
         });
     }
+});
+
+// --- Scroll Reveal (IntersectionObserver) ---
+document.addEventListener('DOMContentLoaded', function() {
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var delay = entry.target.dataset.delay || 0;
+                setTimeout(function() {
+                    entry.target.classList.add('visible');
+                }, parseInt(delay));
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
 });

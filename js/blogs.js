@@ -16,6 +16,17 @@
     // Medium articles — always shown, open in new tab
     var mediumPosts = [
         {
+            slug: 'quantization-memorization',
+            title: 'Does Shrinking a Language Model Erase the Private Data It Memorized? I Tested It',
+            excerpt: 'Quantization forgets memorized training data faster than it loses capability — but not fast enough to count as a privacy defense. At 4 bits, the largest model still reproduces most of what it memorized.',
+            cover_image: 'images/medium-memories-image.webp',
+            published_at: '2026-07-28',
+            reading_time: '9',
+            tags: ['AI', 'Research', 'Privacy'],
+            category: 'Research',
+            external_url: 'https://medium.com/@akshaysasi12.knr/does-shrinking-a-language-model-erase-the-private-data-it-memorized-i-tested-it-20a48d061566'
+        },
+        {
             slug: 'hypershadow-4d-ai',
             title: 'I Taught an AI to Recognize the Shadows of Four-Dimensional Objects',
             excerpt: 'A 190k-parameter PointNet achieves 96.6% accuracy distinguishing native 3D point clouds from projections of 4D–6D objects. A novel "rigidity witness" statistic reaches AUROC 0.982.',

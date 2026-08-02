@@ -28,32 +28,8 @@
     max-width: 680px;
 }
 
-/* Sub-pages (Projects, Blogs, Works) — smaller name, sane margin */
-.hero-subpage {
-    margin-top: 12% !important;
-}
-
-.hero-subpage .hero-name {
-    font-size: clamp(2.2rem, 6vw, 4.2rem);
-    margin-bottom: 12px;
-}
-
-.hero-subpage .hero-bio {
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    margin-bottom: 0;
-}
-
-.hero-eyebrow {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: clamp(0.65rem, 1.5vw, 0.82rem);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--primary-light);
-    margin-bottom: 28px;
-    opacity: 0.75;
-    animation: fadeInUp 0.7s ease forwards;
-}
+/* Sub-pages (Projects, Blogs, Works, Publications) inherit the home hero
+   exactly — same size, same position. No overrides on purpose. */
 
 .hero-name {
     font-family: var(--font-display);
@@ -141,76 +117,67 @@
     padding: 32px 24px;
 }
 
+/* Portrait — arch frame.
+   Replaces the old circle + "head pops over the ring" composition, which
+   needed the head to clear the ring and produced a blue line across the
+   hair whenever it didn't. This is a plain object-fit crop, so it cannot
+   fall out of register at any size. */
 .about-profile-col .profile-image {
-    width: 140px;
-    height: 185px;
-    margin: 0 auto 16px;
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 3 / 4;
+    height: auto;
+    margin: 0 auto 20px;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    overflow: visible;
+    border-radius: 999px 999px 20px 20px;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(0, 93, 216, 0.22), rgba(0, 0, 0, 0.5));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.10),
+                0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-/* Top half of ring — behind the image so head bursts through */
+/* Hairline accent tracing the arch */
 .about-profile-col .profile-image::before {
     content: '';
     position: absolute;
-    width: 130px;
-    height: 130px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    border: 3px solid var(--primary);
-    clip-path: inset(0 0 50% 0);
-    z-index: 1;
-    box-sizing: border-box;
+    inset: 0;
+    border-radius: inherit;
+    border: 1.5px solid var(--primary);
+    opacity: 0.55;
+    z-index: 3;
     pointer-events: none;
 }
 
-/* Bottom half of ring — in front of the image, frames the body */
+/* Scrim at the base so the portrait sinks into the card
+   instead of ending on a hard edge */
 .about-profile-col .profile-image::after {
     content: '';
     position: absolute;
-    width: 130px;
-    height: 130px;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50%;
-    border: 3px solid var(--primary);
-    clip-path: inset(50% 0 0 0);
-    z-index: 4;
-    box-sizing: border-box;
+    height: 38%;
+    background: linear-gradient(to top, var(--bg-card), transparent);
+    z-index: 2;
     pointer-events: none;
 }
 
-/* Both images share the same position */
-.about-profile-col .profile-image img:first-child,
-.about-profile-col .profile-image .profile-head-pop {
+.about-profile-col .profile-image img {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: auto;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     border: none !important;
     border-radius: 0;
     display: block;
-    object-fit: contain;
+    z-index: 1;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Body layer — clipped to the circle (matches ring) */
-.about-profile-col .profile-image img:first-child {
-    clip-path: circle(65px at 60px calc(100% - 65px));
-    z-index: 2;
-}
-
-/* Head layer — shows only the portion above the circle top */
-.about-profile-col .profile-image .profile-head-pop {
-    clip-path: inset(0 0 130px 0);
-    z-index: 4;
+.about-profile-col .profile-image:hover img {
+    transform: scale(1.04);
 }
 
 .profile-name {
@@ -3264,10 +3231,59 @@
    ========================================== */
 @media (max-width: 768px) {
 
-    /* Fix zoom + scroll jank — background-attachment:fixed is broken on mobile */
+    /* Parallax reveal — background-attachment:fixed does nothing on mobile,
+       so pin the hero itself and let the next section scroll up over it.
+       The hero stays put; content slides over it like on desktop. */
     #header {
         background-attachment: scroll;
         will-change: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100svh;
+        min-height: 100svh;
+        /* Deliberately no z-index: it would create a stacking context and
+           trap the slide-out menu (z-index 99999) behind the page content.
+           Sections use z-index 1, which already paints them over this. */
+    }
+
+    /* Whatever follows the hero on any page: clears it and covers it. */
+    #header + * {
+        position: relative;
+        z-index: 1;
+        margin-top: 100svh;
+    }
+
+    /* Sections that ship no background of their own would let the pinned
+       hero show through, so give those (and only those) an opaque one. */
+    #header + #live-products,
+    #header + #blog-section,
+    #header + #publications {
+        background: var(--bg-body);
+    }
+
+    /* Everything after that sits above the pinned hero too */
+    footer.premium-footer,
+    #contact {
+        position: relative;
+        z-index: 1;
+        background: var(--bg-body);
+    }
+
+    /* Scroll perf: a blur() behind every card forces the compositor to
+       re-rasterize the whole stack on each frame. Cards are opaque enough
+       without it, and dropping it is the single biggest mobile scroll win. */
+    .profile-card,
+    .timeline-card,
+    .project-card,
+    .achievement,
+    .role,
+    .expertise-item,
+    .service-item,
+    .publication-card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 
     /* -- Global: tighter section padding, consistent horizontal rhythm -- */
@@ -3309,18 +3325,8 @@
         max-width: 100%;
     }
 
-    .hero-subpage .hero-name {
-        font-size: clamp(2.2rem, 11vw, 3.4rem);
-    }
-
     .hero-subpage .hero-bio {
         max-width: 30ch;
-    }
-
-    .hero-eyebrow {
-        font-size: 0.65rem;
-        letter-spacing: 0.1em;
-        margin-bottom: 16px;
     }
 
     .hero-name {
@@ -3362,8 +3368,8 @@
     }
 
     .about-profile-col .profile-image {
-        width: 100px;
-        height: 100px;
+        max-width: 150px;
+        margin-bottom: 16px;
     }
 
     .profile-name { font-size: 1.1rem; }
@@ -3557,6 +3563,8 @@
 
     .works-filter-bar {
         overflow-x: auto;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
         flex-wrap: nowrap;
         gap: 8px;
         padding-bottom: 4px;
@@ -3697,8 +3705,8 @@
 @media (max-width: 600px) {
     #header {
         background-image: var(--header-bg-mobile);
-        height: 100vh;
-        min-height: 100vh;
+        height: 100svh;
+        min-height: 100svh;
     }
 
     #header > .container { padding-bottom: 12svh; }
@@ -3715,7 +3723,6 @@
         transform: none;
     }
 
-    .hero-eyebrow,
     .hero-bio,
     .hero-cta {
         animation: none;
@@ -3808,8 +3815,8 @@
     }
 
     .about-profile-col .profile-image {
-        width: 100px;
-        height: 100px;
+        max-width: 150px;
+        margin-bottom: 16px;
     }
 
     .about-stat-card {
@@ -4087,6 +4094,10 @@
         padding-bottom: 8px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        /* Horizontal strip: only claim horizontal drags, so a vertical
+           swipe starting on the tabs still scrolls the page. */
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
     }
 
     .journey-tabs::-webkit-scrollbar { display: none; }
@@ -4116,6 +4127,8 @@
 @media (max-width: 600px) {
     .works-filter-bar {
         overflow-x: auto;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
         flex-wrap: nowrap;
         gap: 8px;
         padding-bottom: 4px;
@@ -4288,9 +4301,20 @@
 /* ==========================================
    PUBLICATION ANIMATIONS
    ========================================== */
-.pub-card-tesseract {
+.pub-card-tesseract,
+.pub-card-quant {
     position: relative;
     padding-right: 165px;
+}
+
+#quant-canvas {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 130px;
+    height: 130px;
+    opacity: 0.65;
+    pointer-events: none;
 }
 
 #tesseract-canvas {
@@ -4452,8 +4476,10 @@
    MOBILE OVERRIDES FOR NEW COMPONENTS
    ========================================== */
 @media (max-width: 720px) {
-    .pub-card-tesseract { padding-right: 30px; }
-    #tesseract-canvas { display: none; }
+    .pub-card-tesseract,
+    .pub-card-quant { padding-right: 30px; }
+    #tesseract-canvas,
+    #quant-canvas { display: none; }
     .service-bold-item { gap: 16px; padding: 28px 0; }
     .service-bold-content h3 { font-size: 1.05rem; }
     .service-bold-item > i.service-icon { font-size: 1.1rem; }
