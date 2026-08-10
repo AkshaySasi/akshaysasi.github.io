@@ -108,7 +108,7 @@ var cmdPaletteItems = [
     { label: 'Experience', icon: 'fas fa-briefcase', url: '/#experience' },
     { label: 'Skills', icon: 'fas fa-code', url: '/#skills' },
     { label: 'Projects', icon: 'fas fa-project-diagram', url: '/projects.html' },
-    { label: 'My Works', icon: 'fas fa-rocket', url: '/product-studio.html' },
+    { label: 'Products', icon: 'fas fa-rocket', url: '/product-studio.html' },
     { label: 'Publications', icon: 'fas fa-file-alt', url: '/publications.html' },
     { label: 'Blogs', icon: 'fas fa-pen-fancy', url: '/blogs.html' },
     { label: 'Contact', icon: 'fas fa-envelope', url: '/#contact' },

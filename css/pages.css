@@ -3132,7 +3132,7 @@
     /* Every content section must paint ABOVE the pinned hero. Miss one and
        the hero shows through it while scrolling. */
     #about, #experience, #skills, #achievements, #publications,
-    #services, #projects, #contact, #responsibilities,
+    #latest-blogs, #services, #projects, #contact, #responsibilities,
     #blog-section, #blog-detail, #live-products,
     #footer, footer.premium-footer {
         position: relative;
@@ -3143,7 +3143,7 @@
        that defines its own background (e.g. #projects, #achievements) still
        wins — this only fills in the ones that would otherwise be see-through. */
     :where(#about, #experience, #skills, #achievements, #publications,
-           #services, #projects, #contact, #responsibilities,
+           #latest-blogs, #services, #projects, #contact, #responsibilities,
            #blog-section, #blog-detail, #live-products,
            #footer, footer.premium-footer) {
         background-color: var(--bg-body);
@@ -3167,7 +3167,7 @@
     /* -- Global: tighter section padding, consistent horizontal rhythm -- */
     #about, #experience, #skills, #achievements,
     #responsibilities, #services, #projects,
-    #publications, #contact {
+    #publications, #latest-blogs, #contact {
         padding: 60px 0;
     }
 
@@ -3892,6 +3892,123 @@
 #projects,
 #publications {
     position: relative;
+}
+
+/* ==========================================
+   LATEST WRITING — home page blog strip
+   A 3-up grid rather than a carousel: every post is visible at once,
+   no JS, and nothing important hides on "slide 3".
+   ========================================== */
+#latest-blogs {
+    padding: 100px 0;
+    background: var(--bg-section-alt);
+}
+
+.blog-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.blog-mini {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+    text-decoration: none;
+    transition: border-color var(--ease-normal),
+                transform var(--ease-normal),
+                box-shadow var(--ease-normal);
+}
+
+.blog-mini:hover {
+    border-color: var(--primary-border);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-accent);
+}
+
+.blog-mini-img {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg-body);
+}
+
+.blog-mini-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blog-mini:hover .blog-mini-img img {
+    transform: scale(1.05);
+}
+
+.blog-mini-body {
+    padding: 18px 20px 22px;
+}
+
+.blog-mini-meta {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-faint);
+    margin-bottom: 10px;
+}
+
+.blog-mini-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin: 0;
+    transition: color var(--ease-fast);
+}
+
+.blog-mini:hover .blog-mini-title {
+    color: var(--primary-light);
+}
+
+/* Tablet — two across, third wraps */
+@media (max-width: 900px) {
+    .blog-strip { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+/* Mobile — one swipeable row instead of a tall stack */
+@media (max-width: 600px) {
+    #latest-blogs { padding: 60px 0; }
+
+    .blog-strip {
+        display: flex;
+        gap: 14px;
+        margin-top: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        /* Bleed to the screen edges so the next card peeks in */
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 0 20px;
+    }
+
+    .blog-strip::-webkit-scrollbar { display: none; }
+
+    .blog-mini {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .blog-mini:hover { transform: none; }
+    .blog-mini-body { padding: 14px 16px 18px; }
+    .blog-mini-title { font-size: 0.95rem; }
 }
 
 /* Services list — better mobile grid */
