@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var reposEl = document.getElementById('gh-repos');
     var starsEl = document.getElementById('gh-stars');
     var followersEl = document.getElementById('gh-followers');
-    var forksEl = document.getElementById('gh-forks');
+    var prsEl = document.getElementById('gh-prs');
     if (!reposEl) return;
 
     async function fetchJSON(url) {
@@ -286,6 +286,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Fetch contribution evidence independently so a search rate limit does
+    // not prevent repository, star, and follower totals from loading.
+    if (prsEl) {
+        var query = 'author:AkshaySasi is:pr is:merged -user:AkshaySasi';
+        fetchJSON('https://api.github.com/search/issues?q=' + encodeURIComponent(query) + '&per_page=1')
+            .then(function(result) {
+                if (Number.isInteger(result.total_count) && !result.incomplete_results) {
+                    prsEl.textContent = result.total_count;
+                    prsEl.title = 'Live count of merged pull requests to other accounts';
+                }
+            }).catch(function() {
+                prsEl.title = 'Last verified count: 15 on 2026-10-03; live update unavailable';
+            });
+    }
+
     Promise.all([
         fetchJSON('https://api.github.com/users/AkshaySasi'),
         fetchRepositories()
@@ -293,15 +308,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var user = results[0];
         var repos = results[1];
         var totalStars = 0;
-        var totalForks = 0;
         repos.forEach(function(repo) {
             totalStars += repo.stargazers_count || 0;
-            totalForks += repo.forks_count || 0;
         });
         reposEl.textContent = user.public_repos ?? '\u2014';
         if (starsEl) starsEl.textContent = totalStars;
         if (followersEl) followersEl.textContent = user.followers ?? '\u2014';
-        if (forksEl) forksEl.textContent = totalForks;
     }).catch(function() {
         // Keep unavailable values as dashes; a genuine zero displays as zero.
     });

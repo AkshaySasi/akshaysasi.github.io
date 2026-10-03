@@ -857,12 +857,7 @@ nav ul li button.contact-btn::after {
         flex-shrink: 0;
     }
 
-    /* ==========================================
-       MOBILE MENU — full-screen circular reveal
-       The panel is always full-bleed; it opens by growing a clip-path
-       circle out of the hamburger, so the menu appears to unfold from
-       the button you pressed rather than sliding in from nowhere.
-       ========================================== */
+    /* Full-screen mobile panel: brief fade, without clip-path/blur compositing. */
     nav ul.menu {
         position: fixed;
         inset: 0;
@@ -871,28 +866,31 @@ nav ul li button.contact-btn::after {
         border: none;
         border-radius: 0;
         background: #0a0a0e;
-        padding: 0 32px;
+        padding: max(76px, env(safe-area-inset-top)) 28px max(32px, env(safe-area-inset-bottom));
         z-index: 99999;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: safe center;
         align-items: flex-start;
         gap: 0;
-        overflow: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
         counter-reset: navitem;
 
-        /* Collapsed into a dot behind the hamburger (top-right) */
-        clip-path: circle(0px at calc(100% - 34px) 38px);
+        opacity: 0;
+        pointer-events: none;
         visibility: hidden;
-        transition: clip-path 0.65s cubic-bezier(0.76, 0, 0.24, 1),
-                    visibility 0s linear 0.65s;
+        transition: opacity 180ms ease, visibility 0s linear 180ms;
     }
 
     nav ul.menu.open {
-        clip-path: circle(150% at calc(100% - 34px) 38px);
+        opacity: 1;
+        pointer-events: auto;
         visibility: visible;
-        transition: clip-path 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                    visibility 0s linear 0s;
+        transition: opacity 180ms ease, visibility 0s;
     }
 
     /* Faint grid so the empty space reads as designed, not blank */
@@ -926,24 +924,16 @@ nav ul li button.contact-btn::after {
         z-index: 1;
         border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 
-        /* Each row lifts in behind the expanding circle */
+        /* Short travel keeps the links responsive. */
         opacity: 0;
-        transform: translateY(22px);
-        transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translateY(8px);
+        transition: opacity 180ms ease, transform 220ms ease;
     }
 
     nav ul.menu.open li {
         opacity: 1;
         transform: none;
     }
-
-    /* Staggered entrance — reversed on close so it collapses top-down */
-    nav ul.menu.open li:nth-child(1) { transition-delay: 0.16s; }
-    nav ul.menu.open li:nth-child(2) { transition-delay: 0.22s; }
-    nav ul.menu.open li:nth-child(3) { transition-delay: 0.28s; }
-    nav ul.menu.open li:nth-child(4) { transition-delay: 0.34s; }
-    nav ul.menu.open li:nth-child(5) { transition-delay: 0.40s; }
-    nav ul.menu.open li:nth-child(6) { transition-delay: 0.46s; }
 
     nav ul.menu li a {
         display: flex;

@@ -4,18 +4,72 @@
 
 // --- Mobile Menu ---
 var sidemenu = document.getElementById("sidemenu");
+var menuTrigger = document.querySelector('nav .fa-bars');
+var menuPreviousOverflow = '';
+var menuPreviousRootOverflow = '';
+var menuPreviousFocus = null;
+var mobileMenuQuery = window.matchMedia('(max-width: 768px)');
 
 function openmenu() {
-    if (!sidemenu) return;
+    if (!sidemenu || !mobileMenuQuery.matches || sidemenu.classList.contains('open')) return;
+    menuPreviousOverflow = document.body.style.overflow;
+    menuPreviousRootOverflow = document.documentElement.style.overflow;
+    menuPreviousFocus = document.activeElement;
     sidemenu.classList.add("open");
+    sidemenu.setAttribute('aria-hidden', 'false');
+    if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'true');
     // Freeze the page behind the overlay so scrolling can't bleed through
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    var firstLink = sidemenu.querySelector('a');
+    requestAnimationFrame(function() {
+        if (firstLink && sidemenu.classList.contains('open')) firstLink.focus({ preventScroll: true });
+    });
 }
 
 function closemenu() {
-    if (!sidemenu) return;
+    if (!sidemenu || !sidemenu.classList.contains('open')) return;
     sidemenu.classList.remove("open");
-    document.body.style.overflow = "";
+    document.body.style.overflow = menuPreviousOverflow;
+    document.documentElement.style.overflow = menuPreviousRootOverflow;
+    if (mobileMenuQuery.matches) sidemenu.setAttribute('aria-hidden', 'true');
+    if (menuTrigger) menuTrigger.setAttribute('aria-expanded', 'false');
+    if (menuPreviousFocus) menuPreviousFocus.focus({ preventScroll: true });
+}
+
+if (sidemenu) {
+    function syncMenuViewport() {
+        closemenu();
+        sidemenu.setAttribute('aria-hidden', String(mobileMenuQuery.matches));
+    }
+    mobileMenuQuery.addEventListener('change', syncMenuViewport);
+    syncMenuViewport();
+    var dismiss = sidemenu.querySelector('.fa-circle-xmark');
+    [menuTrigger, dismiss].forEach(function(control) {
+        if (!control) return;
+        control.setAttribute('role', 'button');
+        control.tabIndex = 0;
+        control.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                control.click();
+            }
+        });
+    });
+    if (menuTrigger) {
+        menuTrigger.setAttribute('aria-controls', 'sidemenu');
+        menuTrigger.setAttribute('aria-expanded', 'false');
+    }
+    sidemenu.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab' || !sidemenu.classList.contains('open')) return;
+        var controls = sidemenu.querySelectorAll('a, button, [tabindex="0"]');
+        var first = controls[0], last = controls[controls.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    });
 }
 
 // Escape closes the menu, same as the × button
@@ -27,7 +81,7 @@ document.addEventListener("keydown", function(e) {
 
 // Close menu on link click (mobile)
 document.addEventListener('DOMContentLoaded', function() {
-    var menuLinks = document.querySelectorAll('#sidemenu a');
+    var menuLinks = document.querySelectorAll('#sidemenu a, #sidemenu .contact-btn');
     menuLinks.forEach(function(link) {
         link.addEventListener('click', closemenu);
     });
