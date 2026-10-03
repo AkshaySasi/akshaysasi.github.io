@@ -262,28 +262,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // --- GitHub Stats ---
 document.addEventListener('DOMContentLoaded', function() {
-    var reposEl    = document.getElementById('gh-repos');
-    var starsEl    = document.getElementById('gh-stars');
+    var reposEl = document.getElementById('gh-repos');
+    var starsEl = document.getElementById('gh-stars');
     var followersEl = document.getElementById('gh-followers');
+    var forksEl = document.getElementById('gh-forks');
     if (!reposEl) return;
 
-    // Fetch user profile + all repos in parallel
-    Promise.all([
-        fetch('https://api.github.com/users/AkshaySasi').then(function(r) { return r.json(); }),
-        fetch('https://api.github.com/users/AkshaySasi/repos?per_page=100').then(function(r) { return r.json(); })
-    ]).then(function(results) {
-        var user  = results[0];
-        var repos = results[1];
+    async function fetchJSON(url) {
+        var response = await fetch(url);
+        if (!response.ok) throw new Error('GitHub HTTP ' + response.status);
+        return response.json();
+    }
 
-        var totalStars = 0;
-        if (Array.isArray(repos)) {
-            repos.forEach(function(r) { totalStars += r.stargazers_count || 0; });
+    async function fetchRepositories() {
+        var repos = [];
+        var page = 1;
+        while (true) {
+            var batch = await fetchJSON('https://api.github.com/users/AkshaySasi/repos?type=owner&per_page=100&page=' + page);
+            if (!Array.isArray(batch)) throw new Error('Invalid repository response');
+            repos = repos.concat(batch);
+            if (batch.length < 100) return repos;
+            page++;
         }
+    }
 
-        if (reposEl)     reposEl.textContent     = user.public_repos  || '—';
-        if (starsEl)     starsEl.textContent      = totalStars         || '—';
-        if (followersEl) followersEl.textContent  = user.followers     || '—';
+    Promise.all([
+        fetchJSON('https://api.github.com/users/AkshaySasi'),
+        fetchRepositories()
+    ]).then(function(results) {
+        var user = results[0];
+        var repos = results[1];
+        var totalStars = 0;
+        var totalForks = 0;
+        repos.forEach(function(repo) {
+            totalStars += repo.stargazers_count || 0;
+            totalForks += repo.forks_count || 0;
+        });
+        reposEl.textContent = user.public_repos ?? '\u2014';
+        if (starsEl) starsEl.textContent = totalStars;
+        if (followersEl) followersEl.textContent = user.followers ?? '\u2014';
+        if (forksEl) forksEl.textContent = totalForks;
     }).catch(function() {
-        // Leave dashes on error — looks intentional, not broken
+        // Keep unavailable values as dashes; a genuine zero displays as zero.
     });
 });
