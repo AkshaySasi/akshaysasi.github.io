@@ -132,7 +132,7 @@
 
             card.innerHTML =
                 '<div class="blog-card-image">' +
-                    '<img src="' + (post.cover_image || '/images/blog-placeholder.webp') + '" alt="' + escapeHtml(post.title) + '" onerror="this.src=\'/images/background2.webp\'">' +
+                    '<img src="' + escapeHtml(safeURL(post.cover_image, '/images/background2.webp')) + '" alt="' + escapeHtml(post.title) + '" onerror="this.src=\'/images/background2.webp\'">' +
                     externalBadge +
                 '</div>' +
                 '<div class="blog-card-body">' +
@@ -141,13 +141,13 @@
                     '<p class="blog-card-excerpt">' + escapeHtml(post.excerpt || '') + '</p>' +
                     '<div class="blog-card-meta">' +
                         '<span><i class="fas fa-calendar-alt"></i> ' + publishedDate + '</span>' +
-                        '<span><i class="fas fa-clock"></i> ' + (post.reading_time || '5') + ' min read</span>' +
+                        '<span><i class="fas fa-clock"></i> ' + escapeHtml(String(post.reading_time || '5')) + ' min read</span>' +
                     '</div>' +
                 '</div>';
 
             if (isExternal) {
                 card.addEventListener('click', function() {
-                    window.open(post.external_url, '_blank', 'noopener noreferrer');
+                    window.open(safeURL(post.external_url, '#'), '_blank', 'noopener noreferrer');
                 });
                 card.style.cursor = 'pointer';
             } else {
@@ -186,8 +186,8 @@
         }
 
         var contentHTML = '';
-        if (typeof marked !== 'undefined' && marked.parse) {
-            contentHTML = marked.parse(post.content || '');
+        if (typeof marked !== 'undefined' && marked.parse && typeof DOMPurify !== 'undefined') {
+            contentHTML = DOMPurify.sanitize(marked.parse(post.content || ''), { USE_PROFILES: { html: true } });
         } else {
             contentHTML = '<p>' + escapeHtml(post.content || '') + '</p>';
         }
@@ -195,13 +195,13 @@
         blogDetail.innerHTML =
             '<button class="blog-back-btn" onclick="closeBlogDetail()"><i class="fas fa-arrow-left"></i> Back to Blogs</button>' +
             '<article class="blog-article">' +
-                (post.cover_image ? '<img src="' + post.cover_image + '" alt="' + escapeHtml(post.title) + '" class="blog-detail-cover">' : '') +
+                (post.cover_image ? '<img src="' + escapeHtml(safeURL(post.cover_image, '/images/background2.webp')) + '" alt="' + escapeHtml(post.title) + '" class="blog-detail-cover">' : '') +
                 '<div class="blog-article-header">' +
                     '<h1>' + escapeHtml(post.title) + '</h1>' +
                     '<div class="blog-article-meta">' +
                         '<span><i class="fas fa-calendar-alt"></i> ' + publishedDate + '</span>' +
-                        '<span><i class="fas fa-clock"></i> ' + (post.reading_time || '5') + ' min read</span>' +
-                        '<span><i class="fas fa-tag"></i> ' + (post.category || 'General') + '</span>' +
+                        '<span><i class="fas fa-clock"></i> ' + escapeHtml(String(post.reading_time || '5')) + ' min read</span>' +
+                        '<span><i class="fas fa-tag"></i> ' + escapeHtml(post.category || 'General') + '</span>' +
                     '</div>' +
                     '<div class="blog-detail-tags">' + tagsHTML + '</div>' +
                 '</div>' +
@@ -248,10 +248,17 @@
         if (emptyState) emptyState.style.display = 'none';
     }
 
+    function safeURL(value, fallback) {
+        try {
+            var url = new URL(value, document.baseURI);
+            return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : fallback;
+        } catch (e) { return fallback; }
+    }
+
     function escapeHtml(text) {
         var div = document.createElement('div');
         div.textContent = text;
-        return div.innerHTML;
+        return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
     // Tag filter click

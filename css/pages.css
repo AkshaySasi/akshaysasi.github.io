@@ -3806,7 +3806,8 @@
 
 .footer-links {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 12px 20px;
 }
 
 .footer-links a {
@@ -4439,3 +4440,14 @@
     .institute-logo { width: 54px; height: 54px; }
     .timeline-card { background-color: var(--bg-card); }
 }
+
+/* Keep the shared footer readable between phone and desktop breakpoints. */
+.premium-footer .footer-content > * { min-width: 0; }
+.premium-footer .footer-links a { padding: 6px 0; }
+.premium-footer .haptics-toggle { display: block; margin: 20px auto 0; }
+@media (min-width: 769px) and (max-width: 1100px) {
+    .premium-footer .footer-content { justify-content: center; }
+    .premium-footer .footer-links { justify-content: center; }
+}
+
+.project-card[hidden] { display: none !important; }

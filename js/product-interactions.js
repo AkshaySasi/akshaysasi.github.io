@@ -164,7 +164,7 @@ function openProductModal(id) {
 
     modalContent.innerHTML = html;
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockDialogScroll(modalOverlay);
 
     var modalEl = document.querySelector('.modal-content-pro');
     if (modalEl) modalEl.scrollTop = 0;
@@ -175,8 +175,9 @@ function openProductModal(id) {
 }
 
 function closeProductModal() {
-    if (modalOverlay) modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    if (!modalOverlay || !modalOverlay.classList.contains('active')) return;
+    modalOverlay.classList.remove('active');
+    unlockDialogScroll();
     if (textInterval) clearInterval(textInterval);
     carouselState = {};
 }

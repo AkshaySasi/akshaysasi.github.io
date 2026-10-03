@@ -166,7 +166,7 @@ var cmdPaletteItems = [
     { label: 'Publications', icon: 'fas fa-file-alt', url: '/publications.html' },
     { label: 'Blogs', icon: 'fas fa-pen-fancy', url: '/blogs.html' },
     { label: 'Contact', icon: 'fas fa-envelope', url: '/#contact' },
-    { label: 'Download Resume', icon: 'fas fa-download', url: '/images/resume.pdf' }
+    { label: 'Download Resume', icon: 'fas fa-download', url: '/images/AKSHAY%20SASI%20RESUME.pdf' }
 ];
 
 var cmdPaletteSelectedIndex = 0;

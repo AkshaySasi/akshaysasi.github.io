@@ -7,6 +7,38 @@
 
 var carouselState = {};
 var textInterval;
+var dialogScrollState = null;
+
+function lockDialogScroll(dialog) {
+    dialogScrollState = {
+        body: document.body.style.overflow,
+        root: document.documentElement.style.overflow,
+        focus: document.activeElement
+    };
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    var closeButton = dialog.querySelector('button');
+    if (closeButton) closeButton.focus({ preventScroll: true });
+}
+
+function unlockDialogScroll() {
+    if (!dialogScrollState) return;
+    document.body.style.overflow = dialogScrollState.body;
+    document.documentElement.style.overflow = dialogScrollState.root;
+    if (dialogScrollState.focus) dialogScrollState.focus.focus({ preventScroll: true });
+    dialogScrollState = null;
+}
+
+document.addEventListener('keydown', function(e) {
+    var dialog = document.querySelector('.modal-overlay.active');
+    if (!dialog || e.key !== 'Tab') return;
+    var controls = Array.from(dialog.querySelectorAll('a[href], button, input, [tabindex="0"]'))
+        .filter(function(control) { return !control.disabled && control.getClientRects().length; });
+    var first = controls[0], last = controls[controls.length - 1];
+    if (!first) return;
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
 
 /* ==========================================
    CAROUSEL
@@ -48,7 +80,8 @@ function initCarousel(id, count) {
     carouselState[id].update = updateSlide;
 
     if (textInterval) clearInterval(textInterval);
-    textInterval = setInterval(function() {
+    textInterval = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? null : setInterval(function() {
+        if (document.hidden) return;
         carouselState[id].current = (carouselState[id].current + 1) % count;
         updateSlide();
     }, 4000);
@@ -80,9 +113,11 @@ function carouselNext(id) {
 
 function resetAutoplay(id) {
     if (textInterval) clearInterval(textInterval);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var s = carouselState[id];
     if (!s) return;
     textInterval = setInterval(function() {
+        if (document.hidden) return;
         s.current = (s.current + 1) % s.total;
         s.update();
     }, 4000);
