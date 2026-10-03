@@ -96,7 +96,7 @@ document.addEventListener('click', function(e) {
     var el = document.querySelector(id);
     if (el) {
         e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         closemenu();
     }
 });
@@ -221,20 +221,84 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// --- Scroll Reveal (IntersectionObserver) ---
+// Reveal once, with no persistent animation layers or per-card timers.
 document.addEventListener('DOMContentLoaded', function() {
     var reveals = document.querySelectorAll('.reveal');
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches || !('IntersectionObserver' in window)) return;
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var delay = entry.target.dataset.delay || 0;
-                setTimeout(function() {
-                    entry.target.classList.add('visible');
-                }, parseInt(delay));
-                observer.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.remove('reveal-pending');
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    reveals.forEach(function(el) { observer.observe(el); });
+    }, { threshold: 0.05 });
+    reveals.forEach(function(el) {
+        el.classList.add('reveal-pending');
+        el.style.transitionDelay = Math.min(Number(el.dataset.delay) || 0, 160) + 'ms';
+        observer.observe(el);
+    });
+    motion.addEventListener('change', function(e) {
+        if (!e.matches) return;
+        observer.disconnect();
+        reveals.forEach(function(el) { el.classList.remove('reveal-pending'); });
+    });
 });
+
+// One scheduled update per frame, only when scrolling or resizing.
+(function() {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var pending = false;
+    function update() {
+        pending = false;
+        var height = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = height > 0 ? Math.max(0, Math.min(1, window.scrollY / height)) : 0;
+        bar.style.transform = 'scaleX(' + progress + ')';
+    }
+    function schedule() {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(update);
+    }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('load', schedule);
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(document.body);
+    update();
+})();
+
+// Vibration is an explicit preference; visual press feedback works everywhere.
+(function() {
+    if (typeof navigator.vibrate !== 'function') return;
+    var footer = document.querySelector('footer, #footer');
+    if (!footer) return;
+    var enabled = false;
+    try { enabled = localStorage.getItem('portfolio-haptics') === 'on'; } catch (e) {}
+    var toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'haptics-toggle';
+    toggle.id = 'haptics-toggle';
+    function render() {
+        toggle.textContent = 'Touch vibration: ' + (enabled ? 'on' : 'off');
+        toggle.setAttribute('aria-pressed', String(enabled));
+    }
+    render();
+    footer.appendChild(toggle);
+    toggle.addEventListener('click', function() {
+        enabled = !enabled;
+        try { localStorage.setItem('portfolio-haptics', enabled ? 'on' : 'off'); } catch (e) {}
+        render();
+    });
+    var lastPulse = 0;
+    document.addEventListener('click', function(e) {
+        if (!e.isTrusted || !enabled || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var control = e.target.closest('button, a, [role="button"]');
+        if (!control || control.disabled || Date.now() - lastPulse < 100) return;
+        lastPulse = Date.now();
+        navigator.vibrate(8);
+    });
+})();

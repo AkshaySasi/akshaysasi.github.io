@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- Experience Tab Switching ---
-function openTab(tabName) {
+function openTab(tabName, trigger) {
     var tabContents = document.getElementsByClassName("tab-content");
     for (var i = 0; i < tabContents.length; i++) {
         tabContents[i].classList.remove("active-tab");
@@ -56,7 +56,7 @@ function openTab(tabName) {
 
     var targetTab = document.getElementById(tabName);
     if (targetTab) targetTab.classList.add("active-tab");
-    if (event && event.currentTarget) event.currentTarget.classList.add("active");
+    if (trigger) trigger.classList.add("active");
 }
 
 // --- Skill Category Switching ---
@@ -147,10 +147,11 @@ function addMessage(text, isUser) {
             avatarContent +
         '</div>' +
         '<div class="message-bubble">' +
-            '<p>' + text + '</p>' +
+            '<p></p>' +
             '<span class="message-time">' + time + '</span>' +
         '</div>';
 
+    messageDiv.querySelector('.message-bubble p').textContent = text;
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }

@@ -13,7 +13,6 @@
 }
 
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
     /* Primary Colors */
@@ -256,4 +255,45 @@ h1, h2, h3, h4, h5, h6 {
     .sub-title {
         font-size: 2rem;
     }
+}
+
+/* Small press feedback and keyboard visibility. */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 4px;
+}
+:where(button, .resume-btn, .contact-btn) {
+    touch-action: manipulation;
+    transition: transform 160ms ease, background-color 160ms ease;
+}
+:where(button, .resume-btn, .contact-btn):active { transform: scale(0.97); }
+.scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 2px;
+    background: var(--primary-light);
+    transform: scaleX(0);
+    transform-origin: left;
+    pointer-events: none;
+    z-index: 100000;
+}
+.haptics-toggle {
+    padding: 8px 12px;
+    margin: 12px 0;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    cursor: pointer;
+}
+.reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal, .ach-ledger .reveal { opacity: 1 !important; transform: none !important; }
 }

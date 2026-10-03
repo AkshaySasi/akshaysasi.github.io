@@ -308,8 +308,8 @@
 
             <!-- Journey Tabs -->
             <div class="journey-tabs">
-                <button class="tab-btn active" onclick="openTab('professional')">Professional</button>
-                <button class="tab-btn" onclick="openTab('education')">Academic</button>
+                <button class="tab-btn active" onclick="openTab('professional', this)">Professional</button>
+                <button class="tab-btn" onclick="openTab('education', this)">Academic</button>
             </div>
 
             <!-- Professional Experience Content -->
@@ -846,6 +846,16 @@
         <div class="container">
             <h1 class="section-title">Achievements<span class="highlight">.</span></h1>
             <div class="ach-ledger">
+                <div class="ach-group-label reveal">Small wins &amp; open source</div>
+                <div class="ach-row reveal">
+                    <div class="ach-year">Recent</div>
+                    <div class="ach-main">
+                        <h2 class="ach-title">First open source contribution merged</h2>
+                        <p class="ach-meta">LiteLLM &middot; My first contribution to the project was accepted and merged.</p>
+                    </div>
+                    <div class="ach-rank">Merged</div>
+                </div>
+
                 <div class="ach-group-label reveal">Awards</div>
 
                 <div class="ach-row reveal">
@@ -1099,7 +1109,7 @@
 
     <!-- Supabase + Analytics -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="/js/supabase-client.js"></script>
+    <script src="/js/supabase-client.js" defer></script>
     <script src="/js/analytics.js" defer></script>
 
     <!-- EmailJS SDK -->

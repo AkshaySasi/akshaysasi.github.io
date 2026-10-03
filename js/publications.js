@@ -8,22 +8,36 @@
 // Run a canvas animation only while it is actually on screen. Three rAF
 // loops repainting behind a scroll is a real source of mobile jank.
 function runWhenVisible(canvas, step) {
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var visible = false;
-    var running = false;
-
-    function frame() {
-        if (!visible) { running = false; return; }
-        step();
-        requestAnimationFrame(frame);
-    }
-
-    new IntersectionObserver(function(entries) {
-        visible = entries[0].isIntersecting;
-        if (visible && !running) {
-            running = true;
-            requestAnimationFrame(frame);
+    var frameId = null;
+    var lastPaint = 0;
+    step(); // A static illustration is available with reduced motion.
+    function frame(now) {
+        frameId = null;
+        if (!visible || document.hidden || motion.matches) return;
+        if (now - lastPaint >= 1000 / 30) {
+            step();
+            lastPaint = now;
         }
-    }, { rootMargin: '100px' }).observe(canvas);
+        frameId = requestAnimationFrame(frame);
+    }
+    function sync() {
+        if (!visible || document.hidden || motion.matches) {
+            if (frameId !== null) cancelAnimationFrame(frameId);
+            frameId = null;
+        } else if (frameId === null) {
+            frameId = requestAnimationFrame(frame);
+        }
+    }
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function(entries) {
+            visible = entries[0].isIntersecting;
+            sync();
+        }).observe(canvas);
+    }
+    document.addEventListener('visibilitychange', sync);
+    motion.addEventListener('change', sync);
 }
 
 // --- 4D Tesseract Animation (HyperShadow Paper) ---

@@ -13,6 +13,7 @@ var SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
 var supabaseClient = null;
 
 (function() {
+    if (SUPABASE_URL.includes('YOUR_PROJECT_ID') || SUPABASE_ANON_KEY === 'YOUR_ANON_KEY') return;
     if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
         supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } else {
